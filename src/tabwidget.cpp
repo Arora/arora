@@ -178,8 +178,6 @@ TabWidget::TabWidget(QWidget *parent)
     addTabButton->setDefaultAction(m_newTabAction);
     addTabButton->setAutoRaise(true);
     addTabButton->setToolButtonStyle(Qt::ToolButtonIconOnly);
-    connect(addTabButton, SIGNAL(triggered(QAction *)),
-            this, SLOT(aboutToShowRecentTriggeredAction(QAction *)));
     connect(addTabButton, SIGNAL(middle_clicked()),
             this, SLOT(newTabFromClipboard()));
 #endif
