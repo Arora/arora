@@ -72,6 +72,7 @@
 #include "historycompleter.h"
 #include "historymanager.h"
 #include "locationbar.h"
+#include "newtabbutton.h"
 #include "opensearchengine.h"
 #include "opensearchmanager.h"
 #include "tabbar.h"
@@ -82,6 +83,7 @@
 #include "webviewsearch.h"
 
 #include <qcompleter.h>
+#include <qclipboard.h>
 #include <qdir.h>
 #include <qevent.h>
 #include <qlistview.h>
@@ -172,10 +174,14 @@ TabWidget::TabWidget(QWidget *parent)
     m_recentlyClosedTabsAction->setEnabled(false);
 
 #ifndef Q_WS_MAC // can't seem to figure out the background color :(
-    addTabButton = new QToolButton(this);
+    addTabButton = new NewTabButton(this);
     addTabButton->setDefaultAction(m_newTabAction);
     addTabButton->setAutoRaise(true);
     addTabButton->setToolButtonStyle(Qt::ToolButtonIconOnly);
+    connect(addTabButton, SIGNAL(triggered(QAction *)),
+            this, SLOT(aboutToShowRecentTriggeredAction(QAction *)));
+    connect(addTabButton, SIGNAL(middle_clicked()),
+            this, SLOT(newTabFromClipboard()));
 #endif
 
     connect(m_tabBar, SIGNAL(tabCloseRequested(int)),
@@ -362,6 +368,17 @@ int TabWidget::webViewIndex(WebView *webView) const
 void TabWidget::newTab()
 {
     makeNewTab(true);
+}
+
+void TabWidget::newTabFromClipboard()
+{
+    QString url = QApplication::clipboard()->text(QClipboard::Selection);
+    if (url.isNull()) {
+        url = QApplication::clipboard()->text(QClipboard::Clipboard);
+        if (url.isNull())
+            return;
+    }
+    loadString(url,NewTab);
 }
 
 WebView *TabWidget::makeNewTab(bool makeCurrent)
