@@ -452,6 +452,16 @@
             </property>
            </widget>
           </item>
+          <item row="5" column="0" colspan="2">
+           <widget class="QCheckBox" name="enableLocalStorage">
+            <property name="text">
+             <string>Persistent Data Storage</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
          </layout>
         </widget>
        </item>
