@@ -6,6 +6,7 @@
     <title></title>
     <link rel="stylesheet" href="qrc:/startpage.css" type="text/css" />
     <script type="text/javascript">
+        //<![CDATA[
         function update()
         {
             var searchEngine = window.arora.currentEngine;
@@ -40,6 +41,7 @@
             var url = window.arora.searchUrl(string);
             window.location.href = url;
         }
+        //]]>
     </script>
 </head>
 <body onload="document.forms[0].lineEdit.select(); update();">
