@@ -77,6 +77,8 @@ void UserAgentMenu::populateMenu()
         }
     }
     otherUserAgent->setChecked(usingCustomUserAgent);
+
+    lastUserAgentAction = actionGroup->checkedAction();
 }
 
 void UserAgentMenu::addActionsFromFile(const QString &fileName)
@@ -85,7 +87,7 @@ void UserAgentMenu::addActionsFromFile(const QString &fileName)
     if (!file.open(QFile::ReadOnly))
         return;
 
-    QString currentUserAgentString = WebPage::userAgent();
+    const QString currentUserAgentString = WebPage::userAgent();
     QXmlStreamReader xml(&file);
     while (!xml.atEnd()) {
         xml.readNext();
@@ -118,12 +120,14 @@ void UserAgentMenu::changeUserAgent()
 {
     if (QAction *action = qobject_cast<QAction*>(sender())) {
         WebPage::setUserAgent(action->data().toString());
+        lastUserAgentAction = action;
     }
 }
 
 void UserAgentMenu::switchToDefaultUserAgent()
 {
     WebPage::setUserAgent(QString());
+    lastUserAgentAction = actions().first();
 }
 
 void UserAgentMenu::switchToOtherUserAgent()
@@ -134,6 +138,10 @@ void UserAgentMenu::switchToOtherUserAgent()
                                           WebPage::userAgent(), &ok, Qt::Sheet);
     if (ok) {
         WebPage::setUserAgent(text);
+        lastUserAgentAction = actions().last();
+    } else {
+      // Reset the check
+      lastUserAgentAction->setChecked(true);
     }
 }
 
