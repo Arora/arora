@@ -71,7 +71,7 @@ int main(int argc, char **argv)
     }
 
     QWebPage webPage;
-    webPage.mainFrame()->setHtml(inFile.readAll());
+    webPage.mainFrame()->setHtml(in.readAll());
     QFile jsFile(":/extract.js");
     if (!jsFile.open(QFile::ReadOnly)) {
         qWarning() << "Unable to load javascript to extract bookmarks.";
