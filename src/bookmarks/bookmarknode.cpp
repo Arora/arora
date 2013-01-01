@@ -75,7 +75,12 @@ BookmarkNode::~BookmarkNode()
 {
     if (m_parent)
         m_parent->remove(this);
-    qDeleteAll(m_children);
+
+    // Safely delete all children
+    while (!m_children.isEmpty()) {
+      delete m_children.first();
+    }
+
     m_parent = 0;
     m_type = BookmarkNode::Root;
 }

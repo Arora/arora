@@ -170,13 +170,13 @@ void XbelReader::readFolder(BookmarkNode *parent)
 void XbelReader::readTitle(BookmarkNode *parent)
 {
     Q_ASSERT(isStartElement() && name() == QLatin1String("title"));
-    parent->title = readElementText();
+    parent->title = readElementText(QXmlStreamReader::SkipChildElements);
 }
 
 void XbelReader::readDescription(BookmarkNode *parent)
 {
     Q_ASSERT(isStartElement() && name() == QLatin1String("desc"));
-    parent->desc = readElementText();
+    parent->desc = readElementText(QXmlStreamReader::SkipChildElements);
 }
 
 void XbelReader::readSeparator(BookmarkNode *parent)
