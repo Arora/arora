@@ -62,7 +62,7 @@ AutoFillManager::AutoFillManager(QObject *parent)
 
 AutoFillManager::~AutoFillManager()
 {
-    m_saveTimer->saveIfNeccessary();
+    m_saveTimer->saveIfNecessary();
 }
 
 void AutoFillManager::save() const

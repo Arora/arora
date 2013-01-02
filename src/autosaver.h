@@ -80,7 +80,7 @@ class AutoSaver : public QObject
 public:
     AutoSaver(QObject *parent);
     ~AutoSaver();
-    void saveIfNeccessary();
+    void saveIfNecessary();
 
 public slots:
     void changeOccurred();

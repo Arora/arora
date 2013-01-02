@@ -125,7 +125,7 @@ HistoryManager::~HistoryManager()
     // remove history items on application exit
     if (m_daysToExpire == -2)
         clear();
-    m_saveTimer->saveIfNeccessary();
+    m_saveTimer->saveIfNecessary();
 }
 
 QList<HistoryEntry> HistoryManager::history() const
@@ -274,7 +274,7 @@ void HistoryManager::clear()
     m_atomicStringHash.clear();
     m_lastSavedUrl.clear();
     m_saveTimer->changeOccurred();
-    m_saveTimer->saveIfNeccessary();
+    m_saveTimer->saveIfNecessary();
     emit historyReset();
     emit historyCleared();
 }

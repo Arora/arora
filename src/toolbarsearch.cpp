@@ -187,7 +187,7 @@ void ToolbarSearch::focusInEvent(QFocusEvent *event)
 
 ToolbarSearch::~ToolbarSearch()
 {
-    m_autosaver->saveIfNeccessary();
+    m_autosaver->saveIfNecessary();
 }
 
 void ToolbarSearch::save()

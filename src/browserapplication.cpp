@@ -550,7 +550,7 @@ void BrowserApplication::openUrl(const QUrl &url)
 BrowserMainWindow *BrowserApplication::newMainWindow()
 {
     if (!m_mainWindows.isEmpty())
-        mainWindow()->m_autoSaver->saveIfNeccessary();
+        mainWindow()->m_autoSaver->saveIfNecessary();
     BrowserMainWindow *browser = new BrowserMainWindow();
     m_mainWindows.prepend(browser);
     connect(this, SIGNAL(privacyChanged(bool)),

@@ -60,7 +60,7 @@ AdBlockManager::AdBlockManager(QObject *parent)
 
 AdBlockManager::~AdBlockManager()
 {
-    m_saveTimer->saveIfNeccessary();
+    m_saveTimer->saveIfNecessary();
 }
 
 AdBlockManager *AdBlockManager::instance()
@@ -148,7 +148,7 @@ void AdBlockManager::removeSubscription(AdBlockSubscription *subscription)
 #if defined(ADBLOCKMANAGER_DEBUG)
     qDebug() << "AdBlockManager::" << __FUNCTION__ << subscription->location();
 #endif
-    m_saveTimer->saveIfNeccessary();
+    m_saveTimer->saveIfNecessary();
     m_subscriptions.removeOne(subscription);
     if (subscription->parent() == this)
         subscription->deleteLater();
