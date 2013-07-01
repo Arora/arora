@@ -125,7 +125,7 @@ QString LanguageManager::convertStringToLanguageFile(const QString &string) cons
     foreach (const QString &language, m_languages) {
         QString country = QLocale(language).name().split(QLatin1Char('_')).value(0);
         if (country == fallback)
-            return country;
+            return language;
     }
 
     return QString();
