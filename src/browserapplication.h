@@ -118,16 +118,10 @@ public:
     static bool isPrivate();
     static void setPrivate(bool isPrivate);
 
-#if defined(Q_WS_MAC)
-    bool event(QEvent *event);
-#endif
 
 public slots:
     BrowserMainWindow *newMainWindow();
     bool restoreLastSession();
-#if defined(Q_WS_MAC)
-    void lastWindowClosed();
-#endif
     void quitBrowser();
 
     static void setZoomTextOnly(bool textOnly);

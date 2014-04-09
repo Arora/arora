@@ -1,4 +1,4 @@
 TEMPLATE = subdirs
-SUBDIRS  = cacheinfo htmlToXBel placesimport
+SUBDIRS  = cacheinfo htmlToXBel
 
 CONFIG += ordered

@@ -2,7 +2,7 @@ CONFIG += qt warn_on
 contains(QT_BUILD_PARTS, tools): CONFIG += uitools
 else : DEFINES += QT_NO_UITOOLS
 
-win32|os2 : Debug : CONFIG += console
+win32: Debug : CONFIG += console
 
 INCLUDEPATH += $$PWD
 DEPENDPATH += $$PWD
@@ -89,7 +89,6 @@ SOURCES += \
     webview.cpp \
     webviewsearch.cpp
 
-include(adblock/adblock.pri)
 include(bookmarks/bookmarks.pri)
 include(history/history.pri)
 include(locationbar/locationbar.pri)
@@ -105,19 +104,13 @@ RESOURCES += \
     $$PWD/data/searchengines/searchengines.qrc \
     $$PWD/htmls/htmls.qrc
 
-DISTFILES += ../AUTHORS \
-    ../ChangeLog \
-    ../LICENSE.GPL2 \
+DISTFILES += ../LICENSE.GPL2 \
     ../LICENSE.GPL3 \
     ../README
 
 win32 {
     RC_FILE = $$PWD/browser.rc
     LIBS += -luser32
-}
-
-os2 {
-    RC_FILE = $$PWD/browser_os2.rc
 }
 
 mac {

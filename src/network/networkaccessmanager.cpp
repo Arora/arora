@@ -62,9 +62,6 @@
 
 #include "networkaccessmanager.h"
 
-#include "adblockmanager.h"
-#include "adblocknetwork.h"
-#include "adblockschemeaccesshandler.h"
 #include "acceptlanguagedialog.h"
 #include "autofillmanager.h"
 #include "browserapplication.h"
@@ -88,27 +85,23 @@
 #include <qsslerror.h>
 #include <qdatetime.h>
 
-// #define NETWORKACCESSMANAGER_DEBUG
+#define NETWORKACCESSMANAGER_DEBUG
 
 NetworkAccessManager::NetworkAccessManager(QObject *parent)
-    : NetworkAccessManagerProxy(parent)
-    , m_adblockNetwork(0)
+    : NetworkAccessManagerProxy(parent)    
 {
     connect(this, SIGNAL(authenticationRequired(QNetworkReply*, QAuthenticator*)),
             SLOT(authenticationRequired(QNetworkReply*, QAuthenticator*)));
     connect(this, SIGNAL(proxyAuthenticationRequired(const QNetworkProxy&, QAuthenticator*)),
             SLOT(proxyAuthenticationRequired(const QNetworkProxy&, QAuthenticator*)));
-#ifndef QT_NO_OPENSSL
     connect(this, SIGNAL(sslErrors(QNetworkReply*, const QList<QSslError>&)),
             SLOT(sslErrors(QNetworkReply*, const QList<QSslError>&)));
-#endif
     connect(BrowserApplication::instance(), SIGNAL(privacyChanged(bool)),
             this, SLOT(privacyChanged(bool)));
     loadSettings();
 
     // Register custom scheme handlers
     setSchemeHandler(QLatin1String("file"), new FileAccessHandler(this));
-    setSchemeHandler(QLatin1String("abp"), new AdBlockSchemeAccessHandler(this));
     setCookieJar(new CookieJar);
 }
 
@@ -162,7 +155,7 @@ void NetworkAccessManager::loadSettings()
     setProxyFactory(proxyFactory);
     settings.endGroup();
 
-#ifndef QT_NO_OPENSSL
+
     QSslConfiguration sslCfg = QSslConfiguration::defaultConfiguration();
     QList<QSslCertificate> ca_list = sslCfg.caCertificates();
     QList<QSslCertificate> ca_new = QSslCertificate::fromData(settings.value(QLatin1String("CaCertificates")).toByteArray());
@@ -170,7 +163,7 @@ void NetworkAccessManager::loadSettings()
     sslCfg.setCaCertificates(ca_list);
     sslCfg.setProtocol(QSsl::AnyProtocol);
     QSslConfiguration::setDefaultConfiguration(sslCfg);
-#endif
+
 
     settings.beginGroup(QLatin1String("network"));
     QStringList acceptList = settings.value(QLatin1String("acceptLanguages"),
@@ -178,8 +171,6 @@ void NetworkAccessManager::loadSettings()
     m_acceptLanguage = AcceptLanguageDialog::httpString(acceptList);
 
     bool cacheEnabled = settings.value(QLatin1String("cacheEnabled"), true).toBool();
-    if (QLatin1String(qVersion()) == QLatin1String("4.5.1"))
-        cacheEnabled = false;
 
     if (cacheEnabled) {
         NetworkDiskCache *diskCache;
@@ -189,8 +180,7 @@ void NetworkAccessManager::loadSettings()
             diskCache = new NetworkDiskCache(this);
         setCache(diskCache);
         diskCache->loadSettings();
-    } else {
-        if (QLatin1String(qVersion()) > QLatin1String("4.5.1"))
+    } else {        
             setCache(0);
     }
     settings.endGroup();
@@ -250,7 +240,7 @@ void NetworkAccessManager::proxyAuthenticationRequired(const QNetworkProxy &prox
     }
 }
 
-#ifndef QT_NO_OPENSSL
+
 QString NetworkAccessManager::certToFormattedString(QSslCertificate cert)
 {
     QStringList message;
@@ -341,7 +331,6 @@ void NetworkAccessManager::sslErrors(QNetworkReply *reply, const QList<QSslError
         reply->ignoreSslErrors();
     }
 }
-#endif
 
 QNetworkReply *NetworkAccessManager::createRequest(QNetworkAccessManager::Operation op, const QNetworkRequest &request, QIODevice *outgoingData)
 {
@@ -358,19 +347,12 @@ QNetworkReply *NetworkAccessManager::createRequest(QNetworkAccessManager::Operat
         return reply;
 
     QNetworkRequest req = request;
-#if QT_VERSION >= 0x040600
     req.setAttribute(QNetworkRequest::HttpPipeliningAllowedAttribute, true);
-#endif
     if (!m_acceptLanguage.isEmpty())
         req.setRawHeader("Accept-Language", m_acceptLanguage);
 
     // Adblock
     if (op == QNetworkAccessManager::GetOperation) {
-        if (!m_adblockNetwork)
-            m_adblockNetwork = AdBlockManager::instance()->network();
-        reply = m_adblockNetwork->block(req);
-        if (reply)
-            return reply;
     }
 
     reply = QNetworkAccessManager::createRequest(op, req, outgoingData);

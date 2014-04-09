@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>677</width>
-    <height>442</height>
+    <width>706</width>
+    <height>482</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -27,7 +27,7 @@
    <item row="0" column="0">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>2</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="tab">
       <attribute name="title">
@@ -160,13 +160,6 @@
         </widget>
        </item>
        <item row="5" column="0" colspan="3">
-        <widget class="QCheckBox" name="enableAccessKeys">
-         <property name="text">
-          <string>Enable access keys</string>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="0" colspan="3">
         <widget class="QGroupBox" name="groupBox_2">
          <property name="title">
           <string>Downloads</string>
@@ -377,10 +370,20 @@
           <string>Web Content</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_5">
-          <item row="0" column="0" colspan="2">
-           <widget class="QCheckBox" name="blockPopupWindows">
+          <item row="4" column="0" colspan="2">
+           <widget class="QCheckBox" name="enableLocalStorage">
             <property name="text">
-             <string>Block Popup Windows</string>
+             <string>Persistent Data Storage</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0" colspan="2">
+           <widget class="QCheckBox" name="enableImages">
+            <property name="text">
+             <string>View Images</string>
             </property>
             <property name="checked">
              <bool>true</bool>
@@ -397,42 +400,7 @@
             </property>
            </widget>
           </item>
-          <item row="2" column="0">
-           <spacer name="horizontalSpacer_3">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeType">
-             <enum>QSizePolicy::Fixed</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>20</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item row="2" column="1">
-           <widget class="QCheckBox" name="clickToFlash">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="toolTip">
-             <string>If you enable this option, no flash objects will be loaded by default. Instead, each will be replaced by a button, allowing you to control which objects to load, and which not. </string>
-            </property>
-            <property name="text">
-             <string>Use ClickToFlash on flash plugins</string>
-            </property>
-            <property name="checked">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="0" colspan="2">
+          <item row="2" column="0" colspan="2">
            <widget class="QCheckBox" name="enableJavascript">
             <property name="text">
              <string>Enable Javascript</string>
@@ -442,20 +410,10 @@
             </property>
            </widget>
           </item>
-          <item row="4" column="0" colspan="2">
-           <widget class="QCheckBox" name="enableImages">
+          <item row="0" column="0" colspan="2">
+           <widget class="QCheckBox" name="blockPopupWindows">
             <property name="text">
-             <string>View Images</string>
-            </property>
-            <property name="checked">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="0" colspan="2">
-           <widget class="QCheckBox" name="enableLocalStorage">
-            <property name="text">
-             <string>Persistent Data Storage</string>
+             <string>Block Popup Windows</string>
             </property>
             <property name="checked">
              <bool>true</bool>
@@ -1074,7 +1032,6 @@
   <tabstop>languageButton</tabstop>
   <tabstop>blockPopupWindows</tabstop>
   <tabstop>enablePlugins</tabstop>
-  <tabstop>clickToFlash</tabstop>
   <tabstop>enableJavascript</tabstop>
   <tabstop>enableImages</tabstop>
   <tabstop>acceptCombo</tabstop>
@@ -1146,22 +1103,6 @@
     <hint type="destinationlabel">
      <x>280</x>
      <y>291</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>enablePlugins</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>clickToFlash</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>104</x>
-     <y>125</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>162</x>
-     <y>154</y>
     </hint>
    </hints>
   </connection>

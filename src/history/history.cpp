@@ -367,9 +367,9 @@ void HistoryMenu::postPopulated()
         addSeparator();
 
     QAction *showAllAction = new QAction(tr("Show All History"), this);
-#if !defined(Q_WS_MAC)
+
     showAllAction->setShortcut(QKeySequence(Qt::CTRL | Qt::Key_H));
-#endif
+
     connect(showAllAction, SIGNAL(triggered()), this, SLOT(showHistoryDialog()));
     addAction(showAllAction);
 

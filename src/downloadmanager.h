@@ -168,6 +168,7 @@ public slots:
     void cleanup();
 
 private slots:
+    void itemDoubleClicked(const QModelIndex &index);
     void save() const;
     void updateRow(DownloadItem *item);
     void updateRow();

@@ -1,8 +1,8 @@
 TEMPLATE = app
 
-TARGET = arora
+TARGET = fram
 mac {
-    TARGET = Arora
+    TARGET = Fram
     QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.4
 }
 

@@ -3,7 +3,7 @@ TARGET = arora-cacheinfo
 DEPENDPATH += .
 INCLUDEPATH += .
 
-win32|os2: CONFIG += console
+win32: CONFIG += console
 mac:CONFIG -= app_bundle
 
 QT += network

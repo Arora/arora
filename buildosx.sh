@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# This script requires the use of the macdeployqt tool that is found in Qt 4.5
+# This script requires the use of the macdeployqt tool that is found in Qt 4.6
 #
 
 APP="Arora"

@@ -68,10 +68,9 @@
 
 #include "tabwidget.h"
 
-#if QT_VERSION >= 0x040600 || defined(WEBKIT_TRUNK)
 #include <qwebelement.h>
 class QLabel;
-#endif
+
 
 class BrowserMainWindow;
 class TabWidget;
@@ -84,15 +83,10 @@ public:
     WebView(QWidget *parent = 0);
     WebPage *webPage() const { return m_page; }
 
-#if !(QT_VERSION >= 0x040600)
-    static QUrl guessUrlFromString(const QString &url);
-#endif
     void loadSettings();
 
-#if QT_VERSION >= 0x040600 || defined(WEBKIT_TRUNK)
     void keyReleaseEvent(QKeyEvent *event);
     void focusOutEvent(QFocusEvent *event);
-#endif
 
     void loadUrl(const QUrl &url, const QString &title = QString());
     QUrl url() const;
@@ -140,11 +134,7 @@ private slots:
     void blockImage();
     void bookmarkLink();
     void searchRequested(QAction *action);
-#if QT_VERSION >= 0x040600 || defined(WEBKIT_TRUNK)
     void addSearchEngine();
-    void hideAccessKeys();
-    void accessKeyShortcut();
-#endif
 
 private:
     QString m_statusBarText;
@@ -152,17 +142,7 @@ private:
     int m_progress;
     int m_currentZoom;
     QList<int> m_zoomLevels;
-    WebPage *m_page;
-
-#if QT_VERSION >= 0x040600 || defined(WEBKIT_TRUNK)
-    bool m_enableAccessKeys;
-    bool checkForAccessKey(QKeyEvent *event);
-    void showAccessKeys();
-    void makeAccessKeyLabel(const QChar &accessKey, const QWebElement &element);
-    QList<QLabel*> m_accessKeyLabels;
-    QHash<QChar, QWebElement> m_accessKeyNodes;
-    bool m_accessKeysPressed;
-#endif
+    WebPage *m_page;    
 };
 
 #endif

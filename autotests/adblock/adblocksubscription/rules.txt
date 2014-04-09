@@ -1,3 +1,0 @@
-[Adblock Plus 0.7.1]
-http://example.com/ads/*
-@@advice

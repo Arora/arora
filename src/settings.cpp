@@ -129,8 +129,7 @@ void SettingsDialog::loadDefaults()
     enableJavascript->setChecked(defaultSettings->testAttribute(QWebSettings::JavascriptEnabled));
     enablePlugins->setChecked(defaultSettings->testAttribute(QWebSettings::PluginsEnabled));
     enableImages->setChecked(defaultSettings->testAttribute(QWebSettings::AutoLoadImages));
-    enableLocalStorage->setChecked(defaultSettings->testAttribute(QWebSettings::LocalStorageEnabled));
-    clickToFlash->setChecked(false);
+    enableLocalStorage->setChecked(defaultSettings->testAttribute(QWebSettings::LocalStorageEnabled));    
     cookieSessionCombo->setCurrentIndex(0);
     filterTrackingCookiesCheckbox->setChecked(false);
 
@@ -196,8 +195,7 @@ void SettingsDialog::loadFromSettings()
     enablePlugins->setChecked(settings.value(QLatin1String("enablePlugins"), enablePlugins->isChecked()).toBool());
     enableImages->setChecked(settings.value(QLatin1String("enableImages"), enableImages->isChecked()).toBool());
     enableLocalStorage->setChecked(settings.value(QLatin1String("enableLocalStorage"), enableLocalStorage->isChecked()).toBool());
-    userStyleSheet->setText(QString::fromUtf8(settings.value(QLatin1String("userStyleSheet")).toUrl().toEncoded()));
-    clickToFlash->setChecked(settings.value(QLatin1String("enableClickToFlash"), clickToFlash->isChecked()).toBool());
+    userStyleSheet->setText(QString::fromUtf8(settings.value(QLatin1String("userStyleSheet")).toUrl().toEncoded()));    
     int minimumFontSize = settings.value(QLatin1String("minimumFontSize"), 0).toInt();
     minimFontSizeCheckBox->setChecked(minimumFontSize != 0);
     if (minimumFontSize != 0)
@@ -281,13 +279,6 @@ void SettingsDialog::loadFromSettings()
     settings.endGroup();
 
     // Accessibility
-#if QT_VERSION >= 0x040600 || defined(WEBKIT_TRUNK)
-    settings.beginGroup(QLatin1String("WebView"));
-    enableAccessKeys->setChecked(settings.value(QLatin1String("enableAccessKeys"), true).toBool());
-    settings.endGroup();
-#else
-    enableAccessKeys->setEnabled(false);
-#endif
 
     settings.beginGroup(QLatin1String("autofill"));
     autoFillPasswordFormsCheckBox->setChecked(settings.value(QLatin1String("passwordForms"), true).toBool());
@@ -346,8 +337,7 @@ void SettingsDialog::saveToSettings()
     if (QFile::exists(userStyleSheetString))
         settings.setValue(QLatin1String("userStyleSheet"), QUrl::fromLocalFile(userStyleSheetString));
     else
-        settings.setValue(QLatin1String("userStyleSheet"), QUrl::fromEncoded(userStyleSheetString.toUtf8()));
-    settings.setValue(QLatin1String("enableClickToFlash"), clickToFlash->isChecked());
+        settings.setValue(QLatin1String("userStyleSheet"), QUrl::fromEncoded(userStyleSheetString.toUtf8()));    
 
     if (minimFontSizeCheckBox->isChecked())
         settings.setValue(QLatin1String("minimumFontSize"), minimumFontSizeSpinBox->value());
@@ -435,11 +425,6 @@ void SettingsDialog::saveToSettings()
     settings.endGroup();
 
     // Accessibility
-#if QT_VERSION >= 0x040600 || defined(WEBKIT_TRUNK)
-    settings.beginGroup(QLatin1String("WebView"));
-    settings.setValue(QLatin1String("enableAccessKeys"), enableAccessKeys->isChecked());
-    settings.endGroup();
-#endif
 
     BrowserApplication::instance()->loadSettings();
     BrowserApplication::networkAccessManager()->loadSettings();
@@ -458,12 +443,6 @@ void SettingsDialog::saveToSettings()
 void SettingsDialog::accept()
 {
     saveToSettings();
-    // Due to a bug in Qt <= 4.5.1, enabling/disabling cache requires the browser to be restarted.
-    if (QLatin1String(qVersion()) <= QLatin1String("4.5.1") && networkCache->isChecked() != m_cacheEnabled) {
-        QMessageBox::information(this, tr("Restart required"),
-                                 tr("The network cache configuration has changed. "
-                                    "So that it can be taken into account, the browser has to be restarted."));
-    }
     QDialog::accept();
 }
 

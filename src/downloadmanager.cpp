@@ -480,6 +480,7 @@ DownloadManager::DownloadManager(QWidget *parent)
     downloadsView->setAlternatingRowColors(true);
     downloadsView->horizontalHeader()->setStretchLastSection(true);
     downloadsView->setModel(m_model);
+    connect(downloadsView, SIGNAL(doubleClicked(const QModelIndex &)), this, SLOT(itemDoubleClicked(const QModelIndex &)));
     connect(cleanupButton, SIGNAL(clicked()), this, SLOT(cleanup()));
     connect(buttonBox, SIGNAL(rejected()), this, SLOT(close()));
     load();
@@ -620,6 +621,11 @@ void DownloadManager::updateRow()
 {
     if (DownloadItem *item = qobject_cast<DownloadItem*>(sender()))
         updateRow(item);
+}
+
+void DownloadManager::itemDoubleClicked(const QModelIndex &index)
+{
+    m_downloads.at(index.row())->open();
 }
 
 void DownloadManager::updateRow(DownloadItem *item)
