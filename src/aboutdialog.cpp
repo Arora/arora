@@ -27,7 +27,10 @@
 #include <qtextedit.h>
 #include <qtextstream.h>
 
-#if QT_VERSION >= 0x040600 || defined(WEBKIT_TRUNK)
+#if QT_VERSION >= 0x050000 || defined(WEBKIT_TRUNK)
+#include <qwebkitglobal.h>
+#include <qtwebkitversion.h>
+#elif QT_VERSION >= 0x040600
 #include <qwebkitversion.h>
 #endif
 

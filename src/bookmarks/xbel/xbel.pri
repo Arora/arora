@@ -2,9 +2,9 @@ INCLUDEPATH += $$PWD
 DEPENDPATH += $$PWD
 
 HEADERS += \
-    xbelreader.h \
-    xbelwriter.h
+    $$PWD/xbelreader.h \
+    $$PWD/xbelwriter.h
 
 SOURCES += \
-    xbelreader.cpp \
-    xbelwriter.cpp
+    $$PWD/xbelreader.cpp \
+    $$PWD/xbelwriter.cpp

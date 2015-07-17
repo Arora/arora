@@ -28,6 +28,7 @@
 
 #include <qdrag.h>
 #include <qevent.h>
+#include <qmimedata.h>
 #include <qpainter.h>
 #include <qstyleoption.h>
 

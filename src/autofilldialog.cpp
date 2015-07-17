@@ -46,7 +46,8 @@ void AutoFillModel::autoFillChanged()
 {
     AutoFillManager *manager = BrowserApplication::instance()->autoFillManager();
     m_forms = manager->forms();
-    reset();
+    beginResetModel();
+    endResetModel();
 }
 
 QVariant AutoFillModel::headerData(int section, Qt::Orientation orientation, int role) const

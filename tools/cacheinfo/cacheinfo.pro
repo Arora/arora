@@ -18,6 +18,9 @@ OBJECTS_DIR = $$PWD/.obj
 
 include(../../install.pri)
 
+# To support both Qt4 and Qt5
+DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x000000
+
 !mac {
 unix {
     INSTALLS += man man-compress

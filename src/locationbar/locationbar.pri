@@ -2,12 +2,12 @@ INCLUDEPATH += $$PWD
 DEPENDPATH += $$PWD
 
 HEADERS += \
-  locationbar.h \
-  locationbarsiteicon.h \
-  privacyindicator.h
+  $$PWD/locationbar.h \
+  $$PWD/locationbarsiteicon.h \
+  $$PWD/privacyindicator.h
 
 SOURCES += \
-  locationbar.cpp \
-  locationbarsiteicon.cpp \
-  privacyindicator.cpp
+  $$PWD/locationbar.cpp \
+  $$PWD/locationbarsiteicon.cpp \
+  $$PWD/privacyindicator.cpp
 

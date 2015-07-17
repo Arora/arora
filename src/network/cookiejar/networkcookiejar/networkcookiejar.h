@@ -38,6 +38,7 @@
 #define NETWORKCOOKIEJAR_H
 
 #include <qnetworkcookie.h>
+#include <qnetworkcookiejar.h>
 
 class NetworkCookieJarPrivate;
 class NetworkCookieJar : public QNetworkCookieJar {

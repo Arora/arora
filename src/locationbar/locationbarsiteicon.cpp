@@ -19,7 +19,9 @@
 
 #include "locationbarsiteicon.h"
 
+#include <qdrag.h>
 #include <qevent.h>
+#include <qmimedata.h>
 #include <qurl.h>
 
 #include "browserapplication.h"

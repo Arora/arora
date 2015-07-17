@@ -2,25 +2,26 @@ INCLUDEPATH += $$PWD
 DEPENDPATH += $$PWD
 
 HEADERS += \
-    opensearchdialog.h \
-    opensearchengine.h \
-    opensearchenginedelegate.h \
-    opensearchengineaction.h \
-    opensearchenginemodel.h \
-    opensearchmanager.h \
-    opensearchreader.h \
-    opensearchwriter.h
+    $$PWD/opensearchdialog.h \
+    $$PWD/opensearchengine.h \
+    $$PWD/opensearchenginedelegate.h \
+    $$PWD/opensearchengineaction.h \
+    $$PWD/opensearchenginemodel.h \
+    $$PWD/opensearchmanager.h \
+    $$PWD/opensearchreader.h \
+    $$PWD/opensearchwriter.h
 
 SOURCES += \
-    opensearchdialog.cpp \
-    opensearchengine.cpp \
-    opensearchenginedelegate.cpp \
-    opensearchengineaction.cpp \
-    opensearchenginemodel.cpp \
-    opensearchmanager.cpp \
-    opensearchreader.cpp \
-    opensearchwriter.cpp
+    $$PWD/opensearchdialog.cpp \
+    $$PWD/opensearchengine.cpp \
+    $$PWD/opensearchenginedelegate.cpp \
+    $$PWD/opensearchengineaction.cpp \
+    $$PWD/opensearchenginemodel.cpp \
+    $$PWD/opensearchmanager.cpp \
+    $$PWD/opensearchreader.cpp \
+    $$PWD/opensearchwriter.cpp
 
-FORMS += opensearchdialog.ui
+FORMS += \
+    $$PWD/opensearchdialog.ui
 
 QT += script

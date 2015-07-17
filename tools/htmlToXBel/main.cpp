@@ -18,7 +18,13 @@
  */
 
 #include <QtGui/QtGui>
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 0, 0))
+#include <QtWebKitWidgets/QtWebKitWidgets>
+#include <QtWidgets/QtWidgets>
+#else
 #include <QtWebKit/QtWebKit>
+#endif
+
 
 /*!
     A tool to convert html bookmark files into the xbel format.

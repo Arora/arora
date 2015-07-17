@@ -196,5 +196,6 @@ void CookieModel::cookiesChanged()
 {
     if (m_cookieJar)
         m_cookies = m_cookieJar->cookies();
-    reset();
+    beginResetModel();
+    endResetModel();
 }

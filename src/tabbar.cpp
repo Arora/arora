@@ -67,8 +67,10 @@
 #include <qaction.h>
 #include <qapplication.h>
 #include <qclipboard.h>
+#include <qdrag.h>
 #include <qevent.h>
 #include <qmenu.h>
+#include <qmimedata.h>
 #include <qstyle.h>
 #include <qurl.h>
 

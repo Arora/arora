@@ -6,7 +6,11 @@ INCLUDEPATH += .
 win32|os2: CONFIG += console
 mac:CONFIG -= app_bundle
 
-QT += network webkit
+contains(QT_VERSION, ^5.*) {
+    QT += network widgets webkitwidgets printsupport
+} else {
+    QT += network webkit
+}
 
 # Input
 SOURCES += main.cpp

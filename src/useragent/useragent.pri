@@ -2,10 +2,10 @@ INCLUDEPATH += $$PWD
 DEPENDPATH += $$PWD
 
 HEADERS += \
-    useragentmenu.h
+    $$PWD/useragentmenu.h
 
 SOURCES += \
-    useragentmenu.cpp
+    $$PWD/useragentmenu.cpp
 
 RESOURCES += \
-    useragents.qrc
+    $$PWD/useragents.qrc

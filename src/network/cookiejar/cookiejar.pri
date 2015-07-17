@@ -2,22 +2,22 @@ INCLUDEPATH += $$PWD
 DEPENDPATH += $$PWD
 
 HEADERS += \
-  cookiedialog.h \
-  cookieexceptionsdialog.h \
-  cookieexceptionsmodel.h \
-  cookiejar.h \
-  cookiemodel.h
+  $$PWD/cookiedialog.h \
+  $$PWD/cookieexceptionsdialog.h \
+  $$PWD/cookieexceptionsmodel.h \
+  $$PWD/cookiejar.h \
+  $$PWD/cookiemodel.h
 
 SOURCES += \
-  cookiedialog.cpp \
-  cookieexceptionsmodel.cpp \
-  cookiemodel.cpp \
-  cookieexceptionsdialog.cpp \
-  cookiejar.cpp
+  $$PWD/cookiedialog.cpp \
+  $$PWD/cookieexceptionsmodel.cpp \
+  $$PWD/cookiemodel.cpp \
+  $$PWD/cookieexceptionsdialog.cpp \
+  $$PWD/cookiejar.cpp
 
 FORMS += \
-    cookies.ui \
-    cookiesexceptions.ui
+    $$PWD/cookies.ui \
+    $$PWD/cookiesexceptions.ui
 
 include($$PWD/networkcookiejar/networkcookiejar.pri)
 

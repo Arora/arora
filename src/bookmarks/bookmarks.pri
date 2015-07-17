@@ -2,25 +2,25 @@ INCLUDEPATH += $$PWD
 DEPENDPATH += $$PWD
 
 HEADERS += \
-    addbookmarkdialog.h \
-    bookmarksdialog.h \
-    bookmarksmanager.h \
-    bookmarksmenu.h \
-    bookmarksmodel.h \
-    bookmarkstoolbar.h \
-    bookmarknode.h
+    $$PWD/addbookmarkdialog.h \
+    $$PWD/bookmarksdialog.h \
+    $$PWD/bookmarksmanager.h \
+    $$PWD/bookmarksmenu.h \
+    $$PWD/bookmarksmodel.h \
+    $$PWD/bookmarkstoolbar.h \
+    $$PWD/bookmarknode.h
 
 SOURCES += \
-    addbookmarkdialog.cpp \
-    bookmarksdialog.cpp \
-    bookmarksmanager.cpp \
-    bookmarksmenu.cpp \
-    bookmarksmodel.cpp \
-    bookmarkstoolbar.cpp \
-    bookmarknode.cpp
+    $$PWD/addbookmarkdialog.cpp \
+    $$PWD/bookmarksdialog.cpp \
+    $$PWD/bookmarksmanager.cpp \
+    $$PWD/bookmarksmenu.cpp \
+    $$PWD/bookmarksmodel.cpp \
+    $$PWD/bookmarkstoolbar.cpp \
+    $$PWD/bookmarknode.cpp
 
 FORMS += \
-    addbookmarkdialog.ui \
-    bookmarksdialog.ui
+    $$PWD/addbookmarkdialog.ui \
+    $$PWD/bookmarksdialog.ui
 
 include(xbel/xbel.pri)

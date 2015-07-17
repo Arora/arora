@@ -7,7 +7,12 @@ win32|os2 : Debug : CONFIG += console
 INCLUDEPATH += $$PWD
 DEPENDPATH += $$PWD
 
-QT += webkit network
+QT += network
+contains(QT_VERSION, ^5.*) {
+    QT += widgets webkitwidgets printsupport
+} else {
+    QT += webkit
+}
 
 # Share object files for faster compiling
 RCC_DIR     = $$PWD/.rcc
@@ -25,69 +30,69 @@ exists(../.git/HEAD) {
 }
 
 FORMS += \
-    aboutdialog.ui \
-    autofilldialog.ui \
-    acceptlanguagedialog.ui \
-    downloaditem.ui \
-    downloads.ui \
-    searchbanner.ui \
-    settings.ui
+    $$PWD/aboutdialog.ui \
+    $$PWD/autofilldialog.ui \
+    $$PWD/acceptlanguagedialog.ui \
+    $$PWD/downloaditem.ui \
+    $$PWD/downloads.ui \
+    $$PWD/searchbanner.ui \
+    $$PWD/settings.ui
 
 HEADERS += \
-    aboutdialog.h \
-    acceptlanguagedialog.h \
-    autosaver.h \
-    autofilldialog.h \
-    autofillmanager.h \
-    browserapplication.h \
-    browsermainwindow.h \
-    clearprivatedata.h \
-    clearbutton.h \
-    downloadmanager.h \
-    modelmenu.h \
-    modeltoolbar.h \
-    plaintexteditsearch.h \
-    searchbar.h \
-    searchbutton.h \
-    searchlineedit.h \
-    settings.h \
-    sourcehighlighter.h \
-    sourceviewer.h \
-    tabbar.h \
-    tabwidget.h \
-    toolbarsearch.h \
-    webactionmapper.h \
-    webpage.h \
-    webview.h \
-    webviewsearch.h
+    $$PWD/aboutdialog.h \
+    $$PWD/acceptlanguagedialog.h \
+    $$PWD/autosaver.h \
+    $$PWD/autofilldialog.h \
+    $$PWD/autofillmanager.h \
+    $$PWD/browserapplication.h \
+    $$PWD/browsermainwindow.h \
+    $$PWD/clearprivatedata.h \
+    $$PWD/clearbutton.h \
+    $$PWD/downloadmanager.h \
+    $$PWD/modelmenu.h \
+    $$PWD/modeltoolbar.h \
+    $$PWD/plaintexteditsearch.h \
+    $$PWD/searchbar.h \
+    $$PWD/searchbutton.h \
+    $$PWD/searchlineedit.h \
+    $$PWD/settings.h \
+    $$PWD/sourcehighlighter.h \
+    $$PWD/sourceviewer.h \
+    $$PWD/tabbar.h \
+    $$PWD/tabwidget.h \
+    $$PWD/toolbarsearch.h \
+    $$PWD/webactionmapper.h \
+    $$PWD/webpage.h \
+    $$PWD/webview.h \
+    $$PWD/webviewsearch.h
 
 SOURCES += \
-    aboutdialog.cpp \
-    acceptlanguagedialog.cpp \
-    autosaver.cpp \
-    autofilldialog.cpp \
-    autofillmanager.cpp \
-    browserapplication.cpp \
-    browsermainwindow.cpp \
-    clearprivatedata.cpp \
-    clearbutton.cpp \
-    downloadmanager.cpp \
-    modelmenu.cpp \
-    modeltoolbar.cpp \
-    plaintexteditsearch.cpp \
-    searchbar.cpp \
-    searchbutton.cpp \
-    searchlineedit.cpp \
-    settings.cpp \
-    sourcehighlighter.cpp \
-    sourceviewer.cpp \
-    tabbar.cpp \
-    tabwidget.cpp \
-    toolbarsearch.cpp \
-    webactionmapper.cpp \
-    webpage.cpp \
-    webview.cpp \
-    webviewsearch.cpp
+    $$PWD/aboutdialog.cpp \
+    $$PWD/acceptlanguagedialog.cpp \
+    $$PWD/autosaver.cpp \
+    $$PWD/autofilldialog.cpp \
+    $$PWD/autofillmanager.cpp \
+    $$PWD/browserapplication.cpp \
+    $$PWD/browsermainwindow.cpp \
+    $$PWD/clearprivatedata.cpp \
+    $$PWD/clearbutton.cpp \
+    $$PWD/downloadmanager.cpp \
+    $$PWD/modelmenu.cpp \
+    $$PWD/modeltoolbar.cpp \
+    $$PWD/plaintexteditsearch.cpp \
+    $$PWD/searchbar.cpp \
+    $$PWD/searchbutton.cpp \
+    $$PWD/searchlineedit.cpp \
+    $$PWD/settings.cpp \
+    $$PWD/sourcehighlighter.cpp \
+    $$PWD/sourceviewer.cpp \
+    $$PWD/tabbar.cpp \
+    $$PWD/tabwidget.cpp \
+    $$PWD/toolbarsearch.cpp \
+    $$PWD/webactionmapper.cpp \
+    $$PWD/webpage.cpp \
+    $$PWD/webview.cpp \
+    $$PWD/webviewsearch.cpp
 
 include(adblock/adblock.pri)
 include(bookmarks/bookmarks.pri)
@@ -126,6 +131,9 @@ mac {
 }
 
 include(../webkittrunk.pri)
+
+# To support both Qt4 and Qt5
+DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x000000
 
 unix {
     PKGDATADIR = $$DATADIR/arora

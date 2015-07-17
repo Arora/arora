@@ -254,8 +254,14 @@ void NetworkAccessManager::proxyAuthenticationRequired(const QNetworkProxy &prox
 QString NetworkAccessManager::certToFormattedString(QSslCertificate cert)
 {
     QStringList message;
+    QString issuer =
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 0, 0))
+        cert.issuerInfo(QSslCertificate::CommonName).join(QLatin1Char(' '));
+#else
+        cert.issuerInfo(QSslCertificate::CommonName);
+#endif
     message << cert.subjectInfo(QSslCertificate::CommonName);
-    message << tr("Issuer: %1").arg(cert.issuerInfo(QSslCertificate::CommonName));
+    message << tr("Issuer: %1").arg(issuer);
     message << tr("Not valid before: %1").arg(cert.effectiveDate().toString());
     message << tr("Valid until: %1").arg(cert.expiryDate().toString());
 

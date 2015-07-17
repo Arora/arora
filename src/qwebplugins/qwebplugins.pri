@@ -2,12 +2,12 @@ INCLUDEPATH += $$PWD
 DEPENDPATH += $$PWD
 
 HEADERS += \
-  arorawebplugin.h \
-  webpluginfactory.h
+  $$PWD/arorawebplugin.h \
+  $$PWD/webpluginfactory.h
 
 SOURCES += \
-  arorawebplugin.cpp \
-  webpluginfactory.cpp
+  $$PWD/arorawebplugin.cpp \
+  $$PWD/webpluginfactory.cpp
 
 include(clicktoflash/clicktoflash.pri)
 

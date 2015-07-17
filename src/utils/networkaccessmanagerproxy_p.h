@@ -30,6 +30,7 @@
 #define NETWORKACCESSMANAGERPROXY_P_H
 
 #include <qnetworkcookie.h>
+#include <qnetworkcookiejar.h>
 
 #include "networkaccessmanagerproxy.h"
 

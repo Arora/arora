@@ -71,6 +71,7 @@
 
 #include <qbuffer.h>
 #include <qevent.h>
+#include <qmimedata.h>
 
 BookmarksModel::BookmarksModel(BookmarksManager *bookmarkManager, QObject *parent)
     : QAbstractItemModel(parent)

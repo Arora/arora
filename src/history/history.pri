@@ -2,15 +2,15 @@ INCLUDEPATH += $$PWD
 DEPENDPATH += $$PWD
 
 HEADERS += \
-  history.h \
-  historycompleter.h \
-  historymanager.h
+  $$PWD/history.h \
+  $$PWD/historycompleter.h \
+  $$PWD/historymanager.h
 
 SOURCES += \
-  history.cpp \
-  historycompleter.cpp \
-  historymanager.cpp
+  $$PWD/history.cpp \
+  $$PWD/historycompleter.cpp \
+  $$PWD/historymanager.cpp
 
 FORMS += \
-    history.ui
+    $$PWD/history.ui
 

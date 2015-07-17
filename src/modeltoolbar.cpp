@@ -23,6 +23,8 @@
 #include "modelmenu.h"
 
 #include <qevent.h>
+#include <qdrag.h>
+#include <qmimedata.h>
 #include <qtoolbutton.h>
 
 ModelToolBar::ModelToolBar(QWidget *parent)

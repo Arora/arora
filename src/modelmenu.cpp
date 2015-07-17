@@ -67,6 +67,8 @@
 
 #include <qabstractitemmodel.h>
 #include <qapplication.h>
+#include <qdrag.h>
+#include <qmimedata.h>
 #include <qevent.h>
 
 #include <qdebug.h>
@@ -344,7 +346,7 @@ void ModelMenu::mouseMoveEvent(QMouseEvent *event)
     if (drag->exec() == Qt::MoveAction) {
         m_model->removeRow(idx.row(), m_root);
 
-        if (!this->isAncestorOf(drag->target()))
+        if (!this->isAncestorOf(static_cast<QWidget*>(drag->target())))
             close();
         else
             aboutToShow();

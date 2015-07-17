@@ -172,6 +172,7 @@ QVariant OpenSearchEngineModel::headerData(int section, Qt::Orientation orientat
 
 void OpenSearchEngineModel::enginesChanged()
 {
-    QAbstractTableModel::reset();
+    beginResetModel();
+    endResetModel();
 }
 
