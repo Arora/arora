@@ -86,7 +86,7 @@
 #include <qtimer.h>
 #include <qwebframe.h>
 
-#if QT_VERSION >= 0x040600 || defined(WEBKIT_TRUNK)
+
 #if !defined(QTWEBKIT_VERSION) || QTWEBKIT_VERSION < 0x020000
 Q_DECLARE_METATYPE(QWebElement)
 #endif
@@ -97,7 +97,7 @@ Q_DECLARE_METATYPE(QWebElement)
 #include <qtooltip.h>
 #include <qwebelement.h>
 #include <qwindowsstyle.h>
-#endif
+
 
 #include <qdebug.h>
 
@@ -106,20 +106,16 @@ WebView::WebView(QWidget *parent)
     , m_progress(0)
     , m_currentZoom(100)
     , m_page(new WebPage(this))
-#if QT_VERSION >= 0x040600 || defined(WEBKIT_TRUNK)
     , m_enableAccessKeys(true)
     , m_accessKeysPressed(false)
-#endif
 {
     setPage(m_page);
-#if QT_VERSION >= 0x040600
     QPalette p;
     if (p.color(QPalette::Window) != Qt::white) {
         QWindowsStyle s;
         p = s.standardPalette();
         setPalette(p);
     }
-#endif
     connect(page(), SIGNAL(statusBarMessage(const QString&)),
             SLOT(setStatusBarText(const QString&)));
     connect(this, SIGNAL(loadProgress(int)),
@@ -139,67 +135,23 @@ WebView::WebView(QWidget *parent)
     m_zoomLevels << 30 << 50 << 67 << 80 << 90;
     m_zoomLevels << 100;
     m_zoomLevels << 110 << 120 << 133 << 150 << 170 << 200 << 240 << 300;
-#if QT_VERSION >= 0x040600 || defined(WEBKIT_TRUNK)
     connect(m_page, SIGNAL(loadStarted()),
             this, SLOT(hideAccessKeys()));
     connect(m_page, SIGNAL(scrollRequested(int, int, const QRect &)),
             this, SLOT(hideAccessKeys()));
-#endif
     loadSettings();
 }
 
 void WebView::loadSettings()
 {
-#if QT_VERSION >= 0x040600 || defined(WEBKIT_TRUNK)
     QSettings settings;
     settings.beginGroup(QLatin1String("WebView"));
     m_enableAccessKeys = settings.value(QLatin1String("enableAccessKeys"), m_enableAccessKeys).toBool();
 
     if (!m_enableAccessKeys)
         hideAccessKeys();
-#endif
     m_page->loadSettings();
 }
-
-#if !(QT_VERSION >= 0x040600)
-#include <qdir.h>
-// DO NOT CHANGE ANYTHING IN THIS FUNCTION
-// You want to change TabWidget::guessUrlFromString()
-// This is a copy of QWebView::guessUrlFromStringis from
-// QtWebKit and should never be out of sync with that code.
-// This function is fragile, very easy to break, and tested in QtWebKit.
-QUrl WebView::guessUrlFromString(const QString &string)
-{
-    QString trimmedString = string.trimmed();
-
-    // Check the most common case of a valid url with scheme and host first
-    QUrl url = QUrl::fromEncoded(trimmedString.toUtf8(), QUrl::TolerantMode);
-    if (url.isValid() && !url.scheme().isEmpty() && !url.host().isEmpty())
-        return url;
-
-    // Absolute files that exists
-    if (QDir::isAbsolutePath(trimmedString) && QFile::exists(trimmedString))
-        return QUrl::fromLocalFile(trimmedString);
-
-    // If the string is missing the scheme or the scheme is not valid prepend a scheme
-    QString scheme = url.scheme();
-    if (scheme.isEmpty() || scheme.contains(QLatin1Char('.')) || scheme == QLatin1String("localhost")) {
-        // Do not do anything for strings such as "foo", only "foo.com"
-        int dotIndex = trimmedString.indexOf(QLatin1Char('.'));
-        if (dotIndex != -1 || trimmedString.startsWith(QLatin1String("localhost"))) {
-            const QString hostscheme = trimmedString.left(dotIndex).toLower();
-            QByteArray scheme = (hostscheme == QLatin1String("ftp")) ? "ftp" : "http";
-            trimmedString = QLatin1String(scheme) + QLatin1String("://") + trimmedString;
-        }
-        url = QUrl::fromEncoded(trimmedString.toUtf8(), QUrl::TolerantMode);
-    }
-
-    if (url.isValid())
-        return url;
-
-    return QUrl();
-}
-#endif
 
 TabWidget *WebView::tabWidget() const
 {
@@ -267,7 +219,6 @@ void WebView::contextMenuEvent(QContextMenuEvent *event)
         connect(searchMenu, SIGNAL(triggered(QAction *)), this, SLOT(searchRequested(QAction *)));
     }
 
-#if QT_VERSION >= 0x040600 || defined(WEBKIT_TRUNK)
     QWebElement element = r.element();
     if (!element.isNull()
         && element.tagName().toLower() == QLatin1String("input")
@@ -282,7 +233,6 @@ void WebView::contextMenuEvent(QContextMenuEvent *event)
         variant.setValue(element);
         menu->addAction(tr("Add to the toolbar search"), this, SLOT(addSearchEngine()))->setData(variant);
     }
-#endif
 
     if (menu->isEmpty()) {
         delete menu;
@@ -415,7 +365,6 @@ void WebView::searchRequested(QAction *action)
     }
 }
 
-#if QT_VERSION >= 0x040600 || defined(WEBKIT_TRUNK)
 void WebView::addSearchEngine()
 {
     QAction *action = qobject_cast<QAction*>(sender());
@@ -507,7 +456,6 @@ void WebView::addSearchEngine()
 
     ToolbarSearch::openSearchManager()->addEngine(engine);
 }
-#endif
 
 void WebView::setProgress(int progress)
 {
@@ -692,7 +640,6 @@ void WebView::downloadRequested(const QNetworkRequest &request)
 
 void WebView::keyPressEvent(QKeyEvent *event)
 {
-#if QT_VERSION >= 0x040600 || defined(WEBKIT_TRUNK)
     if (m_enableAccessKeys) {
         m_accessKeysPressed = (event->modifiers() == Qt::ControlModifier
                                && event->key() == Qt::Key_Control);
@@ -707,35 +654,10 @@ void WebView::keyPressEvent(QKeyEvent *event)
             QTimer::singleShot(300, this, SLOT(accessKeyShortcut()));
         }
     }
-#endif
 
-#if QT_VERSION < 0x040600
-    switch (event->key()) {
-    case Qt::Key_Back:
-        pageAction(WebPage::Back)->trigger();
-        event->accept();
-        break;
-    case Qt::Key_Forward:
-        pageAction(WebPage::Forward)->trigger();
-        event->accept();
-        break;
-    case Qt::Key_Stop:
-        pageAction(WebPage::Stop)->trigger();
-        event->accept();
-        break;
-    case Qt::Key_Refresh:
-        pageAction(WebPage::Reload)->trigger();
-        event->accept();
-        break;
-    default:
-        QWebView::keyPressEvent(event);
-        return;
-    }
-#endif
     QWebView::keyPressEvent(event);
 }
 
-#if QT_VERSION >= 0x040600 || defined(WEBKIT_TRUNK)
 void WebView::accessKeyShortcut()
 {
     if (!hasFocus()
@@ -906,5 +828,3 @@ void WebView::makeAccessKeyLabel(const QChar &accessKey, const QWebElement &elem
     m_accessKeyLabels.append(label);
     m_accessKeyNodes[accessKey] = element;
 }
-
-#endif

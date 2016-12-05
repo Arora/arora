@@ -38,9 +38,7 @@ public:
 public slots:
     void findNext();
     void findPrevious();
-#if QT_VERSION >= 0x040600 || defined(WEBKIT_TRUNK)
     void highlightAll();
-#endif
 
 private:
     void find(QWebPage::FindFlags flags);

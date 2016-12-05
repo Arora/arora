@@ -32,13 +32,11 @@ WebViewSearch::WebViewSearch(QWebView *webView, QWidget *parent)
     : SearchBar(parent)
 {
     setSearchObject(webView);
-#if QT_VERSION >= 0x040600 || defined(WEBKIT_TRUNK)
     ui.highlightAllButton->setVisible(true);
     connect(ui.highlightAllButton, SIGNAL(toggled(bool)),
             this, SLOT(highlightAll()));
     connect(ui.searchLineEdit, SIGNAL(textEdited(const QString &)),
             this, SLOT(highlightAll()));
-#endif
 }
 
 void WebViewSearch::findNext()
@@ -51,7 +49,6 @@ void WebViewSearch::findPrevious()
     find(QWebPage::FindBackward | QWebPage::FindWrapsAroundDocument);
 }
 
-#if QT_VERSION >= 0x040600 || defined(WEBKIT_TRUNK)
 void WebViewSearch::highlightAll()
 {
     webView()->findText(QString(), QWebPage::HighlightAllOccurrences);
@@ -59,7 +56,6 @@ void WebViewSearch::highlightAll()
     if (ui.highlightAllButton->isChecked())
         find(QWebPage::HighlightAllOccurrences);
 }
-#endif
 
 void WebViewSearch::find(QWebPage::FindFlags flags)
 {

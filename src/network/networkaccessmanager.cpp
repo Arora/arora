@@ -358,9 +358,7 @@ QNetworkReply *NetworkAccessManager::createRequest(QNetworkAccessManager::Operat
         return reply;
 
     QNetworkRequest req = request;
-#if QT_VERSION >= 0x040600
     req.setAttribute(QNetworkRequest::HttpPipeliningAllowedAttribute, true);
-#endif
     if (!m_acceptLanguage.isEmpty())
         req.setRawHeader("Accept-Language", m_acceptLanguage);
 

@@ -157,7 +157,7 @@ TabWidget::TabWidget(QWidget *parent)
 
     m_previousTabAction = new QAction(this);
     connect(m_previousTabAction, SIGNAL(triggered()), this, SLOT(previousTab()));
-#if QT_VERSION >= 0x040600 && defined(Q_WS_X11)
+#if defined(Q_WS_X11)
     m_previousTabAction->setIcon(QIcon::fromTheme(QLatin1String("go-previous")));
     m_nextTabAction->setIcon(QIcon::fromTheme(QLatin1String("go-next")));
 #endif
@@ -576,14 +576,10 @@ void TabWidget::closeTab(int index)
 
         m_recentlyClosedTabsAction->setEnabled(true);
         m_recentlyClosedTabs.prepend(tab->url());
-#if QT_VERSION >= 0x040600
         QByteArray tabHistory;
         QDataStream tabHistoryStream(&tabHistory, QIODevice::WriteOnly);
         tabHistoryStream << *tab->history();
         m_recentlyClosedTabsHistory.prepend(tabHistory);
-#else
-        m_recentlyClosedTabsHistory.prepend(QByteArray());
-#endif
         if (m_recentlyClosedTabs.size() >= TabWidget::m_recentlyClosedTabsSize)
             m_recentlyClosedTabs.removeLast();
     }
@@ -729,11 +725,7 @@ void TabWidget::openLastTab()
         return;
     QUrl url = m_recentlyClosedTabs.takeFirst();
     QByteArray historyState = m_recentlyClosedTabsHistory.takeFirst();
-#if QT_VERSION >= 0x040600
     createTab(historyState, NewTab);
-#else
-    loadUrl(url, NewTab);
-#endif
     m_recentlyClosedTabsAction->setEnabled(!m_recentlyClosedTabs.isEmpty());
 }
 
@@ -742,11 +734,7 @@ void TabWidget::aboutToShowRecentTabsMenu()
     m_recentlyClosedTabsMenu->clear();
     for (int i = 0; i < m_recentlyClosedTabs.count(); ++i) {
         QAction *action = new QAction(m_recentlyClosedTabsMenu);
-#if QT_VERSION >= 0x040600
         action->setData(m_recentlyClosedTabsHistory.at(i));
-#else
-        action->setData(m_recentlyClosedTabs.at(i));
-#endif
         QIcon icon = BrowserApplication::instance()->icon(m_recentlyClosedTabs.at(i));
         action->setIcon(icon);
         action->setText(m_recentlyClosedTabs.at(i).toString());
@@ -759,13 +747,8 @@ void TabWidget::aboutToShowRecentTriggeredAction(QAction *action)
     if (!action)
         return;
 
-#if QT_VERSION >= 0x040600
     QByteArray historyState = action->data().toByteArray();
     createTab(historyState, NewTab);
-#else
-    QUrl url = action->data().toUrl();
-    loadUrl(url, NewTab);
-#endif
 }
 
 void TabWidget::retranslate()
@@ -821,11 +804,8 @@ QUrl TabWidget::guessUrlFromString(const QString &string)
     if (url.isValid())
         return url;
 
-#if QT_VERSION >= 0x040600
+
     url = QUrl::fromUserInput(string);
-#else
-    url = WebView::guessUrlFromString(string);
-#endif
 
     if (url.scheme() == QLatin1String("about")
         && url.path() == QLatin1String("home"))
@@ -1028,7 +1008,6 @@ QByteArray TabWidget::saveState() const
     for (int i = 0; i < count(); ++i) {
         if (WebView *tab = webView(i)) {
             tabs.append(QString::fromUtf8(tab->url().toEncoded()));
-#if QT_VERSION >= 0x040600
             if (tab->history()->count() != 0) {
                 QByteArray tabHistory;
                 QDataStream tabHistoryStream(&tabHistory, QIODevice::WriteOnly);
@@ -1037,9 +1016,6 @@ QByteArray TabWidget::saveState() const
             } else {
                 tabsHistory << QByteArray();
             }
-#else
-            tabsHistory.append(QByteArray());
-#endif
         } else {
             tabs.append(QString::null);
             tabsHistory.append(QByteArray());
@@ -1079,17 +1055,16 @@ bool TabWidget::restoreState(const QByteArray &state)
     for (int i = 0; i < openTabs.count(); ++i) {
         QUrl url = QUrl::fromEncoded(openTabs.at(i).toUtf8());
         TabWidget::OpenUrlIn tab = i == 0 && currentWebView()->url() == QUrl() ? CurrentTab : NewTab;
-#if QT_VERSION >= 0x040600
+
         QByteArray historyState = tabHistory.value(i);
         if (!historyState.isEmpty()) {
             createTab(historyState, tab);
         } else {
-#endif
             if (WebView *webView = getView(tab, currentWebView()))
                 webView->loadUrl(url);
-#if QT_VERSION >= 0x040600
+
         }
-#endif
+
 
     }
     return true;
@@ -1097,15 +1072,9 @@ bool TabWidget::restoreState(const QByteArray &state)
 
 void TabWidget::createTab(const QByteArray &historyState, TabWidget::OpenUrlIn tab)
 {
-#if QT_VERSION >= 0x040600
     if (WebView *webView = getView(tab, currentWebView())) {
         QDataStream historyStream(historyState);
         historyStream >> *webView->history();
     }
-#else
-    qWarning() << "Warning: TabWidget::createTab should not be called, but it is...";
-    Q_UNUSED(historyState);
-    Q_UNUSED(tab);
-#endif
 }
 

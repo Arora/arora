@@ -38,10 +38,8 @@
 #include <qnetworkrequest.h>
 #include <qsettings.h>
 #include <qwebframe.h>
-
-#if QT_VERSION >= 0x040600 || defined(WEBKIT_TRUNK)
 #include <qwebelement.h>
-#endif
+
 
 WebPluginFactory *WebPage::s_webPluginFactory = 0;
 QString WebPage::s_userAgent;
@@ -130,7 +128,6 @@ QList<WebPageLinkedResource> WebPage::linkedResources(const QString &relation)
 {
     QList<WebPageLinkedResource> resources;
 
-#if QT_VERSION >= 0x040600 || defined(WEBKIT_TRUNK)
     QUrl baseUrl = mainFrame()->baseUrl();
 
     QWebElementCollection linkElements = mainFrame()->findAllElements(QLatin1String("html > head > link"));
@@ -154,37 +151,6 @@ QList<WebPageLinkedResource> WebPage::linkedResources(const QString &relation)
 
         resources.append(resource);
     }
-#else
-    QString baseUrlString = mainFrame()->evaluateJavaScript(QLatin1String("document.baseURI")).toString();
-    QUrl baseUrl = QUrl::fromEncoded(baseUrlString.toUtf8());
-
-    QFile file(QLatin1String(":fetchLinks.js"));
-    if (!file.open(QFile::ReadOnly))
-        return resources;
-    QString script = QString::fromUtf8(file.readAll());
-
-    QVariantList list = mainFrame()->evaluateJavaScript(script).toList();
-    foreach (const QVariant &variant, list) {
-        QVariantMap map = variant.toMap();
-        QString rel = map[QLatin1String("rel")].toString();
-        QString type = map[QLatin1String("type")].toString();
-        QString href = map[QLatin1String("href")].toString();
-        QString title = map[QLatin1String("title")].toString();
-
-        if (href.isEmpty() || type.isEmpty())
-            continue;
-        if (!relation.isEmpty() && rel != relation)
-            continue;
-
-        WebPageLinkedResource resource;
-        resource.rel = rel;
-        resource.type = type;
-        resource.href = baseUrl.resolved(QUrl::fromEncoded(href.toUtf8()));
-        resource.title = title;
-
-        resources.append(resource);
-    }
-#endif
 
     return resources;
 }
@@ -199,11 +165,6 @@ void WebPage::populateNetworkRequest(QNetworkRequest &request)
 
 void WebPage::addExternalBinding(QWebFrame *frame)
 {
-#if QT_VERSION < 0x040600
-    QWebSettings *defaultSettings = QWebSettings::globalSettings();
-    if (!defaultSettings->testAttribute(QWebSettings::JavascriptEnabled))
-        return;
-#endif
     if (!m_javaScriptExternalObject)
         m_javaScriptExternalObject = new JavaScriptExternalObject(this);
 

@@ -26,10 +26,8 @@
 #include <qlayout.h>
 #include <qtextedit.h>
 #include <qtextstream.h>
-
-#if QT_VERSION >= 0x040600 || defined(WEBKIT_TRUNK)
 #include <qwebkitversion.h>
-#endif
+
 
 AboutDialog::AboutDialog(QWidget *parent)
     : QDialog(parent)
@@ -39,11 +37,7 @@ AboutDialog::AboutDialog(QWidget *parent)
     logo->setPixmap(qApp->windowIcon().pixmap(128, 128));
     name->setText(qApp->applicationName());
     version->setText(qApp->applicationVersion());
-#if QT_VERSION >= 0x040600 || defined(WEBKIT_TRUNK)
     webkitVersion->setText(tr("WebKit version: %1").arg(qWebKitVersion()));
-#else
-    webkitVersion->hide();
-#endif
     connect(authorsButton, SIGNAL(clicked()),
             this, SLOT(authorsButtonClicked()));
     connect(licenseButton, SIGNAL(clicked()),

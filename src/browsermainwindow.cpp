@@ -538,7 +538,7 @@ void BrowserMainWindow::setupMenu()
     m_fileQuit->setShortcut(QKeySequence(Qt::CTRL | Qt::Key_Q));
     m_fileMenu->addAction(m_fileQuit);
 
-#if QT_VERSION >= 0x040600 && defined(Q_WS_X11)
+#if defined(Q_WS_X11)
     m_fileNewWindowAction->setIcon(QIcon::fromTheme(QLatin1String("window-new")));
     m_fileOpenFileAction->setIcon(QIcon::fromTheme(QLatin1String("document-open")));
     m_filePrintPreviewAction->setIcon(QIcon::fromTheme(QLatin1String("document-print-preview")));
@@ -594,7 +594,7 @@ void BrowserMainWindow::setupMenu()
     connect(m_editFindPreviousAction, SIGNAL(triggered()), this, SLOT(editFindPrevious()));
     m_editMenu->addAction(m_editFindPreviousAction);
 
-#if QT_VERSION >= 0x040600 && defined(Q_WS_X11)
+#if defined(Q_WS_X11)
     m_editUndoAction->setIcon(QIcon::fromTheme(QLatin1String("edit-undo")));
     m_editRedoAction->setIcon(QIcon::fromTheme(QLatin1String("edit-redo")));
     m_editCutAction->setIcon(QIcon::fromTheme(QLatin1String("edit-cut")));
@@ -697,7 +697,6 @@ void BrowserMainWindow::setupMenu()
             this, SLOT(viewPageSource()));
     m_viewMenu->addAction(m_viewSourceAction);
 
-#if QT_VERSION >= 0x040600 || defined(WEBKIT_TRUNK)
     m_viewMenu->addSeparator();
 
     m_viewTextEncodingAction = new QAction(m_viewMenu);
@@ -708,11 +707,10 @@ void BrowserMainWindow::setupMenu()
             this, SLOT(aboutToShowTextEncodingMenu()));
     connect(m_viewTextEncodingMenu, SIGNAL(triggered(QAction *)),
             this, SLOT(viewTextEncoding(QAction *)));
-#endif
 
     m_stopIcon = style()->standardIcon(QStyle::SP_BrowserStop);
     m_reloadIcon = style()->standardIcon(QStyle::SP_BrowserReload);
-#if QT_VERSION >= 0x040600 && defined(Q_WS_X11)
+#if defined(Q_WS_X11)
     m_viewStopAction->setIcon(m_stopIcon);
     m_viewReloadAction->setIcon(m_reloadIcon);
     m_viewZoomInAction->setIcon(QIcon::fromTheme(QLatin1String("zoom-in")));
@@ -795,10 +793,8 @@ void BrowserMainWindow::setupMenu()
     bookmarksActions.append(m_bookmarksAddFolderAction);
     m_bookmarksMenu->setInitialActions(bookmarksActions);
 
-#if QT_VERSION >= 0x040600
     m_bookmarksAddFolderAction->setIcon(QIcon::fromTheme(QLatin1String("folder-new")));
     m_bookmarksShowAllAction->setIcon(QIcon::fromTheme(QLatin1String("user-bookmarks")));
-#endif
 
     // Window
     m_windowMenu = new QMenu(menuBar());
@@ -871,7 +867,7 @@ void BrowserMainWindow::setupMenu()
             this, SLOT(aboutApplication()));
     m_helpMenu->addAction(m_helpAboutApplicationAction);
 
-#if QT_VERSION >= 0x040600 && defined(Q_WS_X11)
+#if defined(Q_WS_X11)
     m_helpChangeLanguageAction->setIcon(QIcon::fromTheme(QLatin1String("preferences-desktop-locale")));
     m_helpAboutQtAction->setIcon(QPixmap(QLatin1String(":/trolltech/qmessagebox/images/qtlogo-64.png")));
     m_helpAboutApplicationAction->setIcon(windowIcon());
@@ -887,7 +883,6 @@ void BrowserMainWindow::aboutToShowViewMenu()
 
 void BrowserMainWindow::aboutToShowTextEncodingMenu()
 {
-#if QT_VERSION >= 0x040600 || defined(WEBKIT_TRUNK)
     m_viewTextEncodingMenu->clear();
 
     int currentCodec = -1;
@@ -917,20 +912,17 @@ void BrowserMainWindow::aboutToShowTextEncodingMenu()
         if (currentCodec == i)
             action->setChecked(true);
     }
-#endif
 }
 
 void BrowserMainWindow::viewTextEncoding(QAction *action)
 {
     Q_UNUSED(action);
-#if QT_VERSION >= 0x040600 || defined(WEBKIT_TRUNK)
     Q_ASSERT(action);
     QString codec = action->data().toString();
     if (codec.isEmpty())
         QWebSettings::globalSettings()->setDefaultTextEncoding(QString());
     else
         QWebSettings::globalSettings()->setDefaultTextEncoding(codec);
-#endif
 }
 
 void BrowserMainWindow::retranslate()
@@ -973,9 +965,7 @@ void BrowserMainWindow::retranslate()
     m_viewSourceAction->setText(tr("Page S&ource"));
     m_viewSourceAction->setShortcut(tr("Ctrl+Alt+U"));
     m_viewFullScreenAction->setText(tr("&Full Screen"));
-#if QT_VERSION >= 0x040600 || defined(WEBKIT_TRUNK)
     m_viewTextEncodingAction->setText(tr("Text Encoding"));
-#endif
 
     m_historyMenu->setTitle(tr("Hi&story"));
     m_historyBackAction->setText(tr("Back"));
