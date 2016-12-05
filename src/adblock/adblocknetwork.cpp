@@ -54,7 +54,9 @@ QNetworkReply *AdBlockNetwork::block(const QNetworkRequest &request)
 
     QString urlString = QString::fromUtf8(url.toEncoded());
     const AdBlockRule *blockedRule = 0;
+#if defined(ADBLOCKNETWORK_DEBUG)
     const AdBlockSubscription *blockingSubscription = 0;
+#endif
 
     QList<AdBlockSubscription*> subscriptions = manager->subscriptions();
     foreach (AdBlockSubscription *subscription, subscriptions) {
@@ -63,7 +65,9 @@ QNetworkReply *AdBlockNetwork::block(const QNetworkRequest &request)
 
         if (const AdBlockRule *rule = subscription->block(urlString)) {
             blockedRule = rule;
+#if defined(ADBLOCKNETWORK_DEBUG)
             blockingSubscription = subscription;
+#endif
             break;
         }
     }
