@@ -47,6 +47,7 @@ private slots:
 
 private:
     void addActionsFromFile(const QString &fileName);
+    QAction *lastUserAgentAction;
 
 };
 
