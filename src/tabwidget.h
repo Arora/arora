@@ -77,6 +77,7 @@ class QStackedWidget;
 QT_END_NAMESPACE
 
 class BrowserMainWindow;
+class NewTabButton;
 class TabBar;
 class WebView;
 class WebActionMapper;
@@ -157,6 +158,7 @@ public slots:
     void loadUrl(const QUrl &url, TabWidget::OpenUrlIn tab = CurrentTab, const QString &title = QString());
     void createTab(const QByteArray &historyState, TabWidget::OpenUrlIn tab = CurrentTab);
     void newTab();
+    void newTabFromClipboard();
     void cloneTab(int index = -1);
     void closeTab(int index = -1);
     void closeOtherTabs(int index);
@@ -207,7 +209,7 @@ private:
     QCompleter *m_lineEditCompleter;
     QStackedWidget *m_locationBars;
     TabBar *m_tabBar;
-    QToolButton *addTabButton;
+    NewTabButton *addTabButton;
     QToolButton *closeTabButton;
 };
 

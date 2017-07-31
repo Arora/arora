@@ -46,6 +46,7 @@ HEADERS += \
     downloadmanager.h \
     modelmenu.h \
     modeltoolbar.h \
+    newtabbutton.h \
     plaintexteditsearch.h \
     searchbar.h \
     searchbutton.h \
@@ -74,6 +75,7 @@ SOURCES += \
     downloadmanager.cpp \
     modelmenu.cpp \
     modeltoolbar.cpp \
+    newtabbutton.cpp \
     plaintexteditsearch.cpp \
     searchbar.cpp \
     searchbutton.cpp \
