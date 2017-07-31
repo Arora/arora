@@ -19,6 +19,7 @@
 
 #include <QtGui/QtGui>
 #include <QtTest/QtTest>
+#include <QAction>
 #include <tabbar.h>
 
 class tst_TabBar : public QObject

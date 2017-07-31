@@ -471,7 +471,7 @@ DownloadManager::DownloadManager(QWidget *parent)
 
     QSettings settings;
     settings.beginGroup(QLatin1String("downloadmanager"));
-    QString defaultLocation = QDesktopServices::storageLocation(QDesktopServices::DesktopLocation);
+    QString defaultLocation = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
     setDownloadDirectory(settings.value(QLatin1String("downloadDirectory"), defaultLocation).toString());
 
     downloadsView->setShowGrid(false);
@@ -601,9 +601,9 @@ void DownloadManager::updateActiveItemCount()
 {
     int acCount = activeDownloads();
     if (acCount > 0) {
-        setWindowTitle(QApplication::translate("DownloadDialog", "Downloading %1", 0, QApplication::UnicodeUTF8).arg(acCount));
+        setWindowTitle(QApplication::translate("DownloadDialog", "Downloading %1", 0).arg(acCount));
     } else {
-        setWindowTitle(QApplication::translate("DownloadDialog", "Downloads", 0, QApplication::UnicodeUTF8));
+        setWindowTitle(QApplication::translate("DownloadDialog", "Downloads", 0));
     }
 }
 

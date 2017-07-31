@@ -194,7 +194,8 @@ bool CookieModel::removeRows(int row, int count, const QModelIndex &parent)
 
 void CookieModel::cookiesChanged()
 {
+    beginResetModel();
     if (m_cookieJar)
         m_cookies = m_cookieJar->cookies();
-    reset();
+    endResetModel();
 }

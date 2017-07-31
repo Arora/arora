@@ -21,6 +21,7 @@
 #include <QtCore/QtCore>
 #include <QtGui/QtGui>
 #include <QtWebKit/QtWebKit>
+#include <QAction>
 
 #include <webactionmapper.h>
 #include <webview.h>

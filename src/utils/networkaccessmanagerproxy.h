@@ -29,7 +29,7 @@
 #ifndef NETWORKACCESSMANAGERPROXY_H
 #define NETWORKACCESSMANAGERPROXY_H
 
-#include <qnetworkaccessmanager.h>
+#include <QNetworkAccessManager>
 
 class WebPageProxy;
 class NetworkAccessManagerProxy : public QNetworkAccessManager

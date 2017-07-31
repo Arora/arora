@@ -91,6 +91,7 @@ HistoryModel::HistoryModel(HistoryManager *history, QObject *parent)
     , m_history(history)
 {
     Q_ASSERT(m_history);
+    connect(m_history, SIGNAL(historyGoingToChange()), this, SLOT(historyGoingToChange()));
     connect(m_history, SIGNAL(historyReset()),
             this, SLOT(historyReset()));
     connect(m_history, SIGNAL(entryRemoved(const HistoryEntry &)),
@@ -104,7 +105,12 @@ HistoryModel::HistoryModel(HistoryManager *history, QObject *parent)
 
 void HistoryModel::historyReset()
 {
-    reset();
+    endResetModel();
+}
+
+void HistoryModel::historyGoingToChange()
+{
+    beginResetModel();
 }
 
 void HistoryModel::entryAdded()
@@ -557,8 +563,9 @@ void HistoryFilterModel::recalculateFrecencies()
 
 void HistoryFilterModel::sourceReset()
 {
+    beginResetModel();
     m_loaded = false;
-    reset();
+    endResetModel();
 }
 
 int HistoryFilterModel::rowCount(const QModelIndex &parent) const
@@ -681,11 +688,11 @@ bool HistoryFilterModel::removeRows(int row, int count, const QModelIndex &paren
 {
     if (row < 0 || count <= 0 || row + count > rowCount(parent) || parent.isValid())
         return false;
+    beginResetModel();
     int lastRow = row + count - 1;
     disconnect(sourceModel(), SIGNAL(rowsRemoved(const QModelIndex &, int, int)),
                this, SLOT(sourceRowsRemoved(const QModelIndex &, int, int)));
     beginRemoveRows(parent, row, lastRow);
-    int oldCount = rowCount();
     int start = sourceModel()->rowCount() - m_filteredRows[row].tailOffset;
     int end = sourceModel()->rowCount() - m_filteredRows[lastRow].tailOffset;
     sourceModel()->removeRows(start, end - start + 1);
@@ -693,8 +700,7 @@ bool HistoryFilterModel::removeRows(int row, int count, const QModelIndex &paren
     connect(sourceModel(), SIGNAL(rowsRemoved(const QModelIndex &, int, int)),
             this, SLOT(sourceRowsRemoved(const QModelIndex &, int, int)));
     m_loaded = false;
-    if (oldCount - count != rowCount())
-        reset();
+    endResetModel();
     return true;
 }
 
@@ -838,7 +844,7 @@ QModelIndex HistoryTreeModel::index(int row, int column, const QModelIndex &pare
         return QModelIndex();
 
     if (!parent.isValid())
-        return createIndex(row, column, 0);
+        return createIndex(row, column, (void*) 0);
     return createIndex(row, column, parent.row() + 1);
 }
 
@@ -847,7 +853,7 @@ QModelIndex HistoryTreeModel::parent(const QModelIndex &index) const
     int offset = index.internalId();
     if (offset == 0 || !index.isValid())
         return QModelIndex();
-    return createIndex(offset - 1, 0, 0);
+    return createIndex(offset - 1, 0, (void*) 0);
 }
 
 bool HistoryTreeModel::hasChildren(const QModelIndex &parent) const
@@ -867,6 +873,8 @@ Qt::ItemFlags HistoryTreeModel::flags(const QModelIndex &index) const
 
 void HistoryTreeModel::setSourceModel(QAbstractItemModel *newSourceModel)
 {
+    beginResetModel();
+
     if (sourceModel()) {
         disconnect(sourceModel(), SIGNAL(modelReset()), this, SLOT(sourceReset()));
         disconnect(sourceModel(), SIGNAL(layoutChanged()), this, SLOT(sourceReset()));
@@ -887,13 +895,14 @@ void HistoryTreeModel::setSourceModel(QAbstractItemModel *newSourceModel)
                 this, SLOT(sourceRowsRemoved(const QModelIndex &, int, int)));
     }
 
-    reset();
+    endResetModel();
 }
 
 void HistoryTreeModel::sourceReset()
 {
+    beginResetModel();
     m_sourceRowCache.clear();
-    reset();
+    endResetModel();
 }
 
 void HistoryTreeModel::sourceRowsInserted(const QModelIndex &parent, int start, int end)
@@ -901,8 +910,9 @@ void HistoryTreeModel::sourceRowsInserted(const QModelIndex &parent, int start, 
     Q_UNUSED(parent); // Avoid warnings when compiling release
     Q_ASSERT(!parent.isValid());
     if (start != 0 || start != end) {
+        beginResetModel();
         m_sourceRowCache.clear();
-        reset();
+        endResetModel();
         return;
     }
 
@@ -964,8 +974,9 @@ bool HistoryTreeModel::removeRows(int row, int count, const QModelIndex &parent)
 void HistoryTreeModel::sourceRowsRemoved(const QModelIndex &parent, int start, int end)
 {
     if (!removingDown) {
-        reset();
+        beginResetModel();
         m_sourceRowCache.clear();
+        endResetModel();
         return;
     }
     Q_UNUSED(parent); // Avoid warnings when compiling release

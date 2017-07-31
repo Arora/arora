@@ -36,6 +36,7 @@
 #include <qfile.h>
 #include <qnetworkreply.h>
 #include <qtextstream.h>
+#include <QUrlQuery>
 
 // #define ADBLOCKSUBSCRIPTION_DEBUG
 
@@ -57,12 +58,11 @@ void AdBlockSubscription::parseUrl(const QUrl &url)
         return;
     if (url.path() != QLatin1String("subscribe"))
         return;
-
-    m_title = QUrl::fromPercentEncoding(url.encodedQueryItemValue("title"));
-    m_enabled = QUrl::fromPercentEncoding(url.encodedQueryItemValue("enabled")) != QLatin1String("false");
-    m_location = QUrl::fromPercentEncoding(url.encodedQueryItemValue("location")).toUtf8();
-    QByteArray lastUpdateByteArray = url.encodedQueryItemValue("lastUpdate");
-    QString lastUpdateString = QUrl::fromPercentEncoding(lastUpdateByteArray);
+    QUrlQuery query(url.query());
+    m_title = query.queryItemValue("title");
+    m_enabled = query.queryItemValue("enabled") != QLatin1String("false");
+    m_location = query.queryItemValue("location").toUtf8();
+    QString lastUpdateString = query.queryItemValue("lastUpdate");
     m_lastUpdate = QDateTime::fromString(lastUpdateString, Qt::ISODate);
     loadRules();
 }
@@ -73,16 +73,15 @@ QUrl AdBlockSubscription::url() const
     url.setScheme(QLatin1String("abp"));
     url.setPath(QLatin1String("subscribe"));
 
-    typedef QPair<QString, QString> Query;
-    QList<Query> queryItems;
+    QUrlQuery queryItems;
 
-    queryItems.append(Query(QLatin1String("location"), QString::fromUtf8(m_location)));
-    queryItems.append(Query(QLatin1String("title"), m_title));
+    queryItems.addQueryItem(QLatin1String("location"), QString::fromUtf8(m_location));
+    queryItems.addQueryItem(QLatin1String("title"), m_title);
     if (!m_enabled)
-        queryItems.append(Query(QLatin1String("enabled"), QLatin1String("false")));
+        queryItems.addQueryItem(QLatin1String("enabled"), QLatin1String("false"));
     if (m_lastUpdate.isValid())
-        queryItems.append(Query(QLatin1String("lastUpdate"), m_lastUpdate.toString(Qt::ISODate)));
-    url.setQueryItems(queryItems);
+        queryItems.addQueryItem(QLatin1String("lastUpdate"), m_lastUpdate.toString(Qt::ISODate));
+    url.setQuery(queryItems);
     return url;
 }
 

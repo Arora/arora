@@ -38,6 +38,7 @@
 #define NETWORKCOOKIEJARPRIVATE_H
 
 #include "trie_p.h"
+#include <QNetworkCookie>
 
 QT_BEGIN_NAMESPACE
 QDataStream &operator<<(QDataStream &stream, const QNetworkCookie &cookie)

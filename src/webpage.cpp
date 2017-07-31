@@ -38,6 +38,7 @@
 #include <qnetworkrequest.h>
 #include <qsettings.h>
 #include <qwebframe.h>
+#include <QUiLoader>
 
 #if QT_VERSION >= 0x040600 || defined(WEBKIT_TRUNK)
 #include <qwebelement.h>

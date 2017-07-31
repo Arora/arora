@@ -201,6 +201,7 @@ void CookieExceptionsModel::addRule(QString host, CookieJar::CookieRule rule)
 
 void CookieExceptionsModel::addHost(QString host, QStringList &add, QStringList &remove1, QStringList &remove2)
 {
+    beginResetModel();
     if (!add.contains(host)) {
         add.append(host);
         remove1.removeOne(host);
@@ -217,6 +218,6 @@ void CookieExceptionsModel::addHost(QString host, QStringList &add, QStringList 
     add.removeOne(otherRule);
     remove1.removeOne(otherRule);
     remove2.removeOne(otherRule);
-    reset();
+    endResetModel();
 }
 

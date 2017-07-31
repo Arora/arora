@@ -21,6 +21,8 @@
 
 #include <qevent.h>
 #include <qurl.h>
+#include <QDrag>
+#include <QMimeData>
 
 #include "browserapplication.h"
 #include "webview.h"

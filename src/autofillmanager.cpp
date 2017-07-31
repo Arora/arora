@@ -43,6 +43,7 @@
 #include <qwebframe.h>
 #include <qwebpage.h>
 #include <qwebsettings.h>
+#include <QUrlQuery>
 
 #include <qdebug.h>
 
@@ -91,7 +92,7 @@ void AutoFillManager::loadSettings()
 
 QString AutoFillManager::autoFillDataFile()
 {
-    QString fileName = QDesktopServices::storageLocation(QDesktopServices::DataLocation);
+    QString fileName = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/data/Arora";
     fileName += QLatin1String("/autofill.dat");
     return fileName;
 }
@@ -226,7 +227,7 @@ void AutoFillManager::post(const QNetworkRequest &request, const QByteArray &out
 AutoFillManager::Form AutoFillManager::findForm(QWebPage *webPage, const QByteArray &outgoingData) const
 {
     Form form;
-    QUrl argsUrl = QUrl::fromEncoded(QByteArray("foo://bar.com/?" + outgoingData));
+    QUrlQuery argsUrl(outgoingData);
     QList<QPair<QString, QString> > encodedArgs = argsUrl.queryItems();
     QSet<QPair<QString, QString> > args;
     // XXX Is there a Qt function to do this? (unencode '+' to ' ')
@@ -293,7 +294,7 @@ AutoFillManager::Form AutoFillManager::findForm(QWebPage *webPage, const QByteAr
 QUrl AutoFillManager::stripUrl(const QUrl &url)
 {
     QUrl cleanUrl = url;
-    cleanUrl.setQueryItems(QList<QPair<QString, QString> >());
+    cleanUrl.setQuery(QUrlQuery());
     cleanUrl.setFragment(QString());
     cleanUrl.setUserInfo(QString());
     return cleanUrl;

@@ -38,6 +38,8 @@
 #ifndef EXPLORERSTYLE_H
 #define EXPLORERSTYLE_H
 
+#ifdef Q_OS_WIN
+
 #include <qwindowsvistastyle.h>
 
 class ExplorerStyle : public QWindowsVistaStyle
@@ -71,5 +73,6 @@ private:
     mutable QRect m_currentTopRect; //current toolbar top area size
     mutable QRect m_currentBottomRect; //current toolbar top area size
 };
+#endif
 
 #endif //EXPLORERSTYLE_H

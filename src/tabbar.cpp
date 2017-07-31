@@ -71,6 +71,8 @@
 #include <qmenu.h>
 #include <qstyle.h>
 #include <qurl.h>
+#include <QMimeData>
+#include <QDrag>
 
 #include <qdebug.h>
 

@@ -76,7 +76,7 @@ void tst_DownloadManager::init()
     QSettings settings;
     settings.clear();
 
-    QFile file(QDesktopServices::storageLocation(QDesktopServices::DesktopLocation) + '/' + BIGFILENAME);
+    QFile file(QStandardPaths::writableLocation(QStandardPaths::DesktopLocation)  + '/' + BIGFILENAME);
     file.remove();
 }
 
@@ -149,7 +149,7 @@ void tst_DownloadManager::cleanupButton()
         }
     }
 
-    QFile file(QDesktopServices::storageLocation(QDesktopServices::DesktopLocation) + '/' + BIGFILENAME);
+    QFile file(QStandardPaths::writableLocation(QStandardPaths::DesktopLocation) + '/' + BIGFILENAME);
     QCOMPARE(file.exists(), true);
     file.remove();
 }
@@ -200,7 +200,7 @@ void tst_DownloadManager::download()
     }
 
     for (int i = 0; i < requestfilename.count(); ++i) {
-        QFile file(QDesktopServices::storageLocation(QDesktopServices::DesktopLocation) + '/' + requestfilename[i]);
+        QFile file(QStandardPaths::writableLocation(QStandardPaths::DesktopLocation) + '/' + requestfilename[i]);
         // bad file stil returns a 404 webpage
         QVERIFY(file.exists());
         file.remove();
@@ -237,7 +237,7 @@ void tst_DownloadManager::removePolicy()
         QCOMPARE(view->model()->rowCount(), (removePolicy == DownloadManager::SuccessFullDownload) ? 0 : 1);
     }
 
-    QFile file(QDesktopServices::storageLocation(QDesktopServices::DesktopLocation) + '/' + BIGFILENAME);
+    QFile file(QStandardPaths::writableLocation(QStandardPaths::DesktopLocation) + '/' + BIGFILENAME);
     file.remove();
 
     SubDownloadManager manager;

@@ -44,6 +44,7 @@ class AdBlockManager : public QObject
     Q_OBJECT
 
 signals:
+    void rulesGoingToChange();
     void rulesChanged();
 
 public:

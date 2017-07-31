@@ -70,6 +70,7 @@
 #include <qmetaobject.h>
 #include <qsettings.h>
 #include <qurl.h>
+#include <QNetworkCookie>
 
 #include <qdebug.h>
 

@@ -27,8 +27,9 @@
 #include <qtextedit.h>
 #include <qtextstream.h>
 
-#if QT_VERSION >= 0x040600 || defined(WEBKIT_TRUNK)
-#include <qwebkitversion.h>
+#if QT_VERSION >= 0x050000 || defined(WEBKIT_TRUNK)
+#include <qtwebkitversion.h>
+#include <qwebkitglobal.h>
 #endif
 
 AboutDialog::AboutDialog(QWidget *parent)
@@ -39,7 +40,7 @@ AboutDialog::AboutDialog(QWidget *parent)
     logo->setPixmap(qApp->windowIcon().pixmap(128, 128));
     name->setText(qApp->applicationName());
     version->setText(qApp->applicationVersion());
-#if QT_VERSION >= 0x040600 || defined(WEBKIT_TRUNK)
+#if QT_VERSION >= 0x050000 || defined(WEBKIT_TRUNK)
     webkitVersion->setText(tr("WebKit version: %1").arg(qWebKitVersion()));
 #else
     webkitVersion->hide();

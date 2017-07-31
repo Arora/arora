@@ -29,8 +29,6 @@
 #ifndef QTRY_H
 #define QTRY_H
 
-#include <qtest.h>
-
 #ifndef QTRY_COMPARE
 
 #define __TRY_TIMEOUT__ 5000

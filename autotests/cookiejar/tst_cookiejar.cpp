@@ -126,7 +126,7 @@ void tst_CookieJar::cookiejar()
     jar.call_cookiesChanged();
     QCOMPARE(jar.call_isOnDomainList(QStringList(), QString()), false);
 #endif
-    QSKIP("Test is not implemented.", SkipAll);
+    QSKIP("Test is not implemented.");
 }
 
 Q_DECLARE_METATYPE(CookieJar::AcceptPolicy)
@@ -152,7 +152,7 @@ void tst_CookieJar::acceptPolicy()
 
     QCOMPARE(spy0.count(), 0);
 #endif
-    QSKIP("Test is not implemented.", SkipAll);
+    QSKIP("Test is not implemented.");
 }
 
 void tst_CookieJar::allowedCookies_data()
@@ -177,7 +177,7 @@ void tst_CookieJar::allowedCookies()
 
     QCOMPARE(spy0.count(), 0);
 #endif
-    QSKIP("Test is not implemented.", SkipAll);
+    QSKIP("Test is not implemented.");
 }
 
 void tst_CookieJar::allowForSessionCookies_data()
@@ -202,7 +202,7 @@ void tst_CookieJar::allowForSessionCookies()
 
     QCOMPARE(spy0.count(), 0);
 #endif
-    QSKIP("Test is not implemented.", SkipAll);
+    QSKIP("Test is not implemented.");
 }
 
 void tst_CookieJar::blockedCookies_data()
@@ -227,7 +227,7 @@ void tst_CookieJar::blockedCookies()
 
     QCOMPARE(spy0.count(), 0);
 #endif
-    QSKIP("Test is not implemented.", SkipAll);
+    QSKIP("Test is not implemented.");
 }
 
 void tst_CookieJar::clear_data()
@@ -251,7 +251,7 @@ void tst_CookieJar::clear()
 
     QCOMPARE(spy0.count(), 0);
 #endif
-    QSKIP("Test is not implemented.", SkipAll);
+    QSKIP("Test is not implemented.");
 }
 
 void tst_CookieJar::cookiesForUrl_data()
@@ -278,7 +278,7 @@ void tst_CookieJar::cookiesForUrl()
 
     QCOMPARE(spy0.count(), 0);
 #endif
-    QSKIP("Test is not implemented.", SkipAll);
+    QSKIP("Test is not implemented.");
 }
 
 Q_DECLARE_METATYPE(CookieJar::KeepPolicy)
@@ -304,7 +304,7 @@ void tst_CookieJar::keepPolicy()
 
     QCOMPARE(spy0.count(), 0);
 #endif
-    QSKIP("Test is not implemented.", SkipAll);
+    QSKIP("Test is not implemented.");
 }
 
 void tst_CookieJar::loadSettings_data()
@@ -328,7 +328,7 @@ void tst_CookieJar::loadSettings()
 
     QCOMPARE(spy0.count(), 0);
 #endif
-    QSKIP("Test is not implemented.", SkipAll);
+    QSKIP("Test is not implemented.");
 }
 
 void tst_CookieJar::setAcceptPolicy_data()
@@ -353,7 +353,7 @@ void tst_CookieJar::setAcceptPolicy()
 
     QCOMPARE(spy0.count(), 0);
 #endif
-    QSKIP("Test is not implemented.", SkipAll);
+    QSKIP("Test is not implemented.");
 }
 
 void tst_CookieJar::setAllowedCookies_data()
@@ -378,7 +378,7 @@ void tst_CookieJar::setAllowedCookies()
 
     QCOMPARE(spy0.count(), 0);
 #endif
-    QSKIP("Test is not implemented.", SkipAll);
+    QSKIP("Test is not implemented.");
 }
 
 void tst_CookieJar::setAllowForSessionCookies_data()
@@ -403,7 +403,7 @@ void tst_CookieJar::setAllowForSessionCookies()
 
     QCOMPARE(spy0.count(), 0);
 #endif
-    QSKIP("Test is not implemented.", SkipAll);
+    QSKIP("Test is not implemented.");
 }
 
 void tst_CookieJar::setBlockedCookies_data()
@@ -428,7 +428,7 @@ void tst_CookieJar::setBlockedCookies()
 
     QCOMPARE(spy0.count(), 0);
 #endif
-    QSKIP("Test is not implemented.", SkipAll);
+    QSKIP("Test is not implemented.");
 }
 
 void tst_CookieJar::setCookiesFromUrl_data()
@@ -457,7 +457,7 @@ void tst_CookieJar::setCookiesFromUrl()
 
     QCOMPARE(spy0.count(), 0);
 #endif
-    QSKIP("Test is not implemented.", SkipAll);
+    QSKIP("Test is not implemented.");
 }
 
 void tst_CookieJar::setKeepPolicy_data()
@@ -482,7 +482,7 @@ void tst_CookieJar::setKeepPolicy()
 
     QCOMPARE(spy0.count(), 0);
 #endif
-    QSKIP("Test is not implemented.", SkipAll);
+    QSKIP("Test is not implemented.");
 }
 
 void tst_CookieJar::cookiesChanged_data()
@@ -506,7 +506,7 @@ void tst_CookieJar::cookiesChanged()
 
     QCOMPARE(spy0.count(), 0);
 #endif
-    QSKIP("Test is not implemented.", SkipAll);
+    QSKIP("Test is not implemented.");
 }
 
 void tst_CookieJar::isOnDomainList_data()

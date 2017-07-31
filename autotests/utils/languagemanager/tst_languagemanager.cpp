@@ -154,7 +154,7 @@ void tst_LanguageManager::chooseNewLanguage()
 
     manager.chooseNewLanguage();
 #endif
-    QSKIP("Test is not implemented.", SkipAll);
+    QSKIP("Test is not implemented.");
 }
 
 void tst_LanguageManager::setCurrentLanguage_data()
@@ -173,7 +173,7 @@ void tst_LanguageManager::setCurrentLanguage_data()
 
     QString validLanguage = manager.languages().value(0);
     if (validLanguage.isEmpty())
-        QSKIP("no languages to test with", SkipAll);
+        QSKIP("no languages to test with");
     QTest::newRow(validLanguage.toLatin1()) << validLanguage << true << validLanguage;
     QTest::newRow("fallback") << "ca_ES" << true << "ca_ES";
 }

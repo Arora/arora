@@ -22,7 +22,7 @@
 #include <qdebug.h>
 #include <qdir.h>
 #include <qfile.h>
-#include <qsqldatabase.h>
+#include <QSqlDatabase>
 #include <qsqlerror.h>
 #include <qsqlquery.h>
 #include <qtextstream.h>

@@ -37,11 +37,17 @@ AdBlockModel::AdBlockModel(QObject *parent)
     , m_manager(AdBlockManager::instance())
 {
     connect(m_manager, SIGNAL(rulesChanged()), this, SLOT(rulesChanged()));
+    connect(m_manager, SIGNAL(rulesGoingToChange()), this, SLOT(rulesGoingToChange()));
+}
+
+void AdBlockModel::rulesGoingToChange()
+{
+    beginResetModel();
 }
 
 void AdBlockModel::rulesChanged()
 {
-    reset();
+    endResetModel();
 }
 
 const AdBlockRule AdBlockModel::rule(const QModelIndex &index) const
@@ -67,7 +73,7 @@ QModelIndex AdBlockModel::index(AdBlockSubscription *subscription)
     int row = m_manager->subscriptions().indexOf(subscription);
     if (row < 0 || row >= m_manager->subscriptions().count())
         return QModelIndex();
-    return createIndex(row, 0, 0);
+    return createIndex(row, 0, (void*) 0);
 }
 
 QVariant AdBlockModel::headerData(int section, Qt::Orientation orientation, int role) const
@@ -159,7 +165,7 @@ QModelIndex AdBlockModel::parent(const QModelIndex &index) const
         return QModelIndex();
 
     int parentRow = m_manager->subscriptions().indexOf(parent);
-    return createIndex(parentRow, 0, 0);
+    return createIndex(parentRow, 0, (void*)0);
 }
 
 Qt::ItemFlags AdBlockModel::flags(const QModelIndex &index) const

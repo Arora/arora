@@ -297,7 +297,7 @@ void OpenSearchManager::restoreDefaults()
 
 QString OpenSearchManager::enginesDirectory() const
 {
-    QDir directory(QDesktopServices::storageLocation(QDesktopServices::DataLocation));
+    QDir directory(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/data/Arora");
     return directory.filePath(QLatin1String("searchengines"));
 }
 

@@ -145,6 +145,7 @@ void HistoryManager::addHistoryEntry(const QString &url)
 
 void HistoryManager::setHistory(const QList<HistoryEntry> &history, bool loadedAndSorted)
 {
+    emit historyGoingToChange();
     m_history = history;
 
     // verify that it is sorted by date
@@ -266,6 +267,7 @@ void HistoryManager::setDaysToExpire(int limit)
 
 void HistoryManager::clear()
 {
+    emit historyGoingToChange();
     m_history.clear();
     m_atomicStringHash.clear();
     m_lastSavedUrl.clear();

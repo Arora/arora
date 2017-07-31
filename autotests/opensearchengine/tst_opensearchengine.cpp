@@ -18,7 +18,7 @@
  * Boston, MA  02110-1301  USA
  */
 
-#include <qtest.h>
+#include <QtTest/QtTest>
 #include "qtry.h"
 #include "opensearchengine.h"
 #include "opensearchenginedelegate.h"
@@ -29,7 +29,6 @@
 #include <qnetworkaccessmanager.h>
 #include <qnetworkreply.h>
 #include <qnetworkrequest.h>
-#include <qsignalspy.h>
 #include <qtimer.h>
 
 typedef OpenSearchEngine::Parameters Parameters;
@@ -866,8 +865,10 @@ void tst_OpenSearchEngine::delegate()
     QCOMPARE(delegate.lastData, QByteArray());
     QNetworkRequest request(QUrl(engine.call_parseTemplate(QString("baz"), engine.searchUrlTemplate())));
     QCOMPARE(delegate.lastRequest, request);
-    QVERIFY(delegate.lastRequest.url().hasQueryItem("q"));
-    QCOMPARE(delegate.lastRequest.url().queryItemValue("q"), QString("baz"));
+
+    QUrlQuery urlQuery(delegate.lastRequest.url().query());
+    QVERIFY(urlQuery.hasQueryItem("q"));
+    QCOMPARE(urlQuery.queryItemValue("q"), QString("baz"));
 
     engine.setSearchParameters(Parameters() << Parameter("a", "b") << Parameter("b", "c"));
     engine.requestSearchResults(QString("baz"));
@@ -876,12 +877,13 @@ void tst_OpenSearchEngine::delegate()
     QCOMPARE(delegate.lastOperation, QNetworkAccessManager::GetOperation);
     QCOMPARE(delegate.lastData, QByteArray());
 
-    QVERIFY(delegate.lastRequest.url().hasQueryItem("a"));
-    QCOMPARE(delegate.lastRequest.url().queryItemValue("a"), QString("b"));
-    QVERIFY(delegate.lastRequest.url().hasQueryItem("b"));
-    QCOMPARE(delegate.lastRequest.url().queryItemValue("b"), QString("c"));
-    QVERIFY(delegate.lastRequest.url().hasQueryItem("q"));
-    QCOMPARE(delegate.lastRequest.url().queryItemValue("q"), QString("baz"));
+    QUrlQuery q2(delegate.lastRequest.url().query());
+    QVERIFY(q2.hasQueryItem("a"));
+    QCOMPARE(q2.queryItemValue("a"), QString("b"));
+    QVERIFY(q2.hasQueryItem("b"));
+    QCOMPARE(q2.queryItemValue("b"), QString("c"));
+    QVERIFY(q2.hasQueryItem("q"));
+    QCOMPARE(q2.queryItemValue("q"), QString("baz"));
 
     QUrl url(engine.call_parseTemplate(QString("baz"), engine.searchUrlTemplate()));
     QCOMPARE(delegate.lastRequest.url().toString(QUrl::RemoveQuery), url.toString(QUrl::RemoveQuery));
@@ -893,8 +895,10 @@ void tst_OpenSearchEngine::delegate()
     QCOMPARE(delegate.lastOperation, QNetworkAccessManager::PostOperation);
     request = QNetworkRequest(QUrl(engine.call_parseTemplate(QString("baz"), engine.searchUrlTemplate())));
     QCOMPARE(delegate.lastRequest, request);
-    QVERIFY(delegate.lastRequest.url().hasQueryItem("q"));
-    QCOMPARE(delegate.lastRequest.url().queryItemValue("q"), QString("baz"));
+
+    QUrlQuery q3(delegate.lastRequest.url().query());
+    QVERIFY(q3.hasQueryItem("q"));
+    QCOMPARE(q3.queryItemValue("q"), QString("baz"));
 
     QVERIFY(!delegate.lastData.isEmpty());
     QStringList query = QString(delegate.lastData).split('&');

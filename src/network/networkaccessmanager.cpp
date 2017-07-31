@@ -213,7 +213,7 @@ void NetworkAccessManager::authenticationRequired(QNetworkReply *reply, QAuthent
     passwordDialog.iconLabel->setPixmap(mainWindow->style()->standardIcon(QStyle::SP_MessageBoxQuestion, 0, mainWindow).pixmap(32, 32));
 
     QString introMessage = tr("<qt>Enter username and password for \"%1\" at %2</qt>");
-    introMessage = introMessage.arg(Qt::escape(auth->realm())).arg(Qt::escape(reply->url().toString()));
+    introMessage = introMessage.arg(QString(auth->realm()).toHtmlEscaped().arg(reply->url().toString().toHtmlEscaped()));
     passwordDialog.introLabel->setText(introMessage);
     passwordDialog.introLabel->setWordWrap(true);
 
@@ -240,7 +240,7 @@ void NetworkAccessManager::proxyAuthenticationRequired(const QNetworkProxy &prox
     proxyDialog.iconLabel->setPixmap(mainWindow->style()->standardIcon(QStyle::SP_MessageBoxQuestion, 0, mainWindow).pixmap(32, 32));
 
     QString introMessage = tr("<qt>Connect to proxy \"%1\" using:</qt>");
-    introMessage = introMessage.arg(Qt::escape(proxy.hostName()));
+    introMessage = introMessage.arg(QString(proxy.hostName()).toHtmlEscaped());
     proxyDialog.introLabel->setText(introMessage);
     proxyDialog.introLabel->setWordWrap(true);
 
@@ -255,11 +255,13 @@ QString NetworkAccessManager::certToFormattedString(QSslCertificate cert)
 {
     QStringList message;
     message << cert.subjectInfo(QSslCertificate::CommonName);
-    message << tr("Issuer: %1").arg(cert.issuerInfo(QSslCertificate::CommonName));
+    foreach (QString issuer, cert.issuerInfo(QSslCertificate::CommonName)) {
+        message << tr("Issuer: %1").arg(issuer.toHtmlEscaped());
+    }
     message << tr("Not valid before: %1").arg(cert.effectiveDate().toString());
     message << tr("Valid until: %1").arg(cert.expiryDate().toString());
 
-    QMultiMap<QSsl::AlternateNameEntryType, QString> names = cert.alternateSubjectNames();
+    QMultiMap<QSsl::AlternativeNameEntryType, QString> names = cert.subjectAlternativeNames();
     if (names.count() > 0) {
         QString list;
         list += QLatin1String("<br />");

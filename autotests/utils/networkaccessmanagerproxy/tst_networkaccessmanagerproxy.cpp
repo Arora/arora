@@ -25,6 +25,7 @@
 #include <qnetworkcookie.h>
 #include <qnetworkrequest.h>
 #include <qnetworkreply.h>
+#include <QNetworkCookieJar>
 
 class tst_NetworkAccessManagerProxy : public QObject
 {

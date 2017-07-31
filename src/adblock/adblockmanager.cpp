@@ -85,6 +85,7 @@ void AdBlockManager::setEnabled(bool enabled)
 {
     if (isEnabled() == enabled)
         return;
+    emit rulesGoingToChange();
     m_enabled = enabled;
     emit rulesChanged();
 }
@@ -149,6 +150,7 @@ void AdBlockManager::removeSubscription(AdBlockSubscription *subscription)
     qDebug() << "AdBlockManager::" << __FUNCTION__ << subscription->location();
 #endif
     m_saveTimer->saveIfNeccessary();
+    emit rulesGoingToChange();
     m_subscriptions.removeOne(subscription);
     if (subscription->parent() == this)
         subscription->deleteLater();
@@ -162,7 +164,9 @@ void AdBlockManager::addSubscription(AdBlockSubscription *subscription)
 #if defined(ADBLOCKMANAGER_DEBUG)
     qDebug() << "AdBlockManager::" << __FUNCTION__ << subscription->location();
 #endif
+    emit rulesGoingToChange();
     m_subscriptions.append(subscription);
+    connect(subscription, SIGNAL(goingToChange()), this, SIGNAL(rulesGoingToChange()));
     connect(subscription, SIGNAL(rulesChanged()), this, SIGNAL(rulesChanged()));
     connect(subscription, SIGNAL(changed()), this, SIGNAL(rulesChanged()));
     emit rulesChanged();
@@ -211,6 +215,7 @@ void AdBlockManager::load()
     foreach (const QString &subscription, subscriptions) {
         QUrl url = QUrl::fromEncoded(subscription.toUtf8());
         AdBlockSubscription *adBlockSubscription = new AdBlockSubscription(url, this);
+        connect(adBlockSubscription, SIGNAL(goingToChange()), this, SIGNAL(rulesGoingToChange()));
         connect(adBlockSubscription, SIGNAL(rulesChanged()), this, SIGNAL(rulesChanged()));
         connect(adBlockSubscription, SIGNAL(changed()), this, SIGNAL(rulesChanged()));
         m_subscriptions.append(adBlockSubscription);

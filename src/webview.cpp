@@ -87,17 +87,15 @@
 #include <qwebframe.h>
 
 #if QT_VERSION >= 0x040600 || defined(WEBKIT_TRUNK)
-#if !defined(QTWEBKIT_VERSION) || QTWEBKIT_VERSION < 0x020000
-Q_DECLARE_METATYPE(QWebElement)
-#endif
 #include <qinputdialog.h>
 #include <qlabel.h>
 #include <qmessagebox.h>
 #include <qsettings.h>
 #include <qtooltip.h>
 #include <qwebelement.h>
-#include <qwindowsstyle.h>
 #endif
+#include <QMimeData>
+#include <QUrlQuery>
 
 #include <qdebug.h>
 
@@ -115,9 +113,10 @@ WebView::WebView(QWidget *parent)
 #if QT_VERSION >= 0x040600
     QPalette p;
     if (p.color(QPalette::Window) != Qt::white) {
+/* TODO: Qt 5 port?
         QWindowsStyle s;
         p = s.standardPalette();
-        setPalette(p);
+        setPalette(p);*/
     }
 #endif
     connect(page(), SIGNAL(statusBarMessage(const QString&)),
@@ -445,6 +444,8 @@ void WebView::addSearchEngine()
     QUrl searchUrl(page()->mainFrame()->baseUrl().resolved(QUrl(formElement.attribute(QLatin1String("action")))));
     QMap<QString, QString> searchEngines;
     QWebElementCollection inputFields = formElement.findAll(QLatin1String("input"));
+    QUrlQuery query(searchUrl.query());
+
     foreach (QWebElement inputField, inputFields) {
         QString type = inputField.attribute(QLatin1String("type"), QLatin1String("text"));
         QString name = inputField.attribute(QLatin1String("name"));
@@ -456,13 +457,13 @@ void WebView::addSearchEngine()
             if (inputField == element)
                 value = QLatin1String("{searchTerms}");
 
-            searchUrl.addQueryItem(name, value);
+            query.addQueryItem(name, value);
         } else if (type == QLatin1String("checkbox") || type == QLatin1String("radio")) {
             if (inputField.evaluateJavaScript(QLatin1String("this.checked")).toBool()) {
-                searchUrl.addQueryItem(name, value);
+                query.addQueryItem(name, value);
             }
         } else if (type == QLatin1String("hidden")) {
-            searchUrl.addQueryItem(name, value);
+            query.addQueryItem(name, value);
         }
     }
 
@@ -475,7 +476,7 @@ void WebView::addSearchEngine()
 
         QWebElementCollection options = selectField.findAll(QLatin1String("option"));
         QString value = options.at(selectedIndex).toPlainText();
-        searchUrl.addQueryItem(name, value);
+        query.addQueryItem(name, value);
     }
 
     bool ok = true;
@@ -486,8 +487,9 @@ void WebView::addSearchEngine()
         if (!ok)
             return;
         if (!searchEngines[searchEngine].isEmpty())
-            searchUrl.addQueryItem(searchEngines[searchEngine], searchEngine);
+            query.addQueryItem(searchEngines[searchEngine], searchEngine);
     }
+    searchUrl.setQuery(query);
 
     QString engineName;
     QWebElementCollection labels = formElement.findAll(QString(QLatin1String("label[for=\"%1\"]")).arg(elementName));
@@ -580,7 +582,7 @@ void WebView::loadFinished()
 void WebView::loadUrl(const QUrl &url, const QString &title)
 {
     if (url.scheme() == QLatin1String("javascript")) {
-        QString scriptSource = QUrl::fromPercentEncoding(url.toString(Q_FLAGS(QUrl::TolerantMode|QUrl::RemoveScheme)).toAscii());
+        QString scriptSource = QUrl::fromPercentEncoding(url.toString(Q_FLAGS(QUrl::TolerantMode|QUrl::RemoveScheme)).toLatin1());
         QVariant result = page()->mainFrame()->evaluateJavaScript(scriptSource);
         return;
     }

@@ -24,6 +24,9 @@
 
 #include <qevent.h>
 #include <qtoolbutton.h>
+#include <QDrag>
+#include <QMimeData>
+
 
 ModelToolBar::ModelToolBar(QWidget *parent)
     : QToolBar(parent)

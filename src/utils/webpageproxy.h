@@ -30,7 +30,7 @@
 #define WEBPAGEPROXY_H
 
 #include <qnetworkaccessmanager.h>
-#include <qwebpage.h>
+#include <QWebPage>
 
 class WebPageProxy : public QWebPage
 {

@@ -27,9 +27,9 @@
 #include <qnetworkrequest.h>
 #include <qnetworkreply.h>
 #include <qregexp.h>
-#include <qscriptengine.h>
-#include <qscriptvalue.h>
 #include <qstringlist.h>
+#include <QScriptEngine>
+#include <QUrlQuery>
 
 /*!
     \class OpenSearchEngine
@@ -206,13 +206,15 @@ QUrl OpenSearchEngine::searchUrl(const QString &searchTerm) const
         return QUrl();
 
     QUrl retVal = QUrl::fromEncoded(parseTemplate(searchTerm, m_searchUrlTemplate).toUtf8());
+    QUrlQuery query(retVal.query());
 
     if (m_searchMethod != QLatin1String("post")) {
         Parameters::const_iterator end = m_searchParameters.constEnd();
         Parameters::const_iterator i = m_searchParameters.constBegin();
         for (; i != end; ++i)
-            retVal.addQueryItem(i->first, parseTemplate(searchTerm, i->second));
+            query.addQueryItem(i->first, parseTemplate(searchTerm, i->second));
     }
+    retVal.setQuery(query);
 
     return retVal;
 }
@@ -258,13 +260,15 @@ QUrl OpenSearchEngine::suggestionsUrl(const QString &searchTerm) const
         return QUrl();
 
     QUrl retVal = QUrl::fromEncoded(parseTemplate(searchTerm, m_suggestionsUrlTemplate).toUtf8());
+    QUrlQuery query(retVal.query());
 
     if (m_suggestionsMethod != QLatin1String("post")) {
         Parameters::const_iterator end = m_suggestionsParameters.constEnd();
         Parameters::const_iterator i = m_suggestionsParameters.constBegin();
         for (; i != end; ++i)
-            retVal.addQueryItem(i->first, parseTemplate(searchTerm, i->second));
+            query.addQueryItem(i->first, parseTemplate(searchTerm, i->second));
     }
+    retVal.setQuery(query);
 
     return retVal;
 }

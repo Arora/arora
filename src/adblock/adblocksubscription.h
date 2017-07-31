@@ -43,6 +43,7 @@ class AdBlockSubscription : public QObject
     Q_OBJECT
 
 signals:
+    void goingToChange();
     void changed();
     void rulesChanged();
 

@@ -20,7 +20,7 @@
 #ifndef QTEST_ARORA_H
 #define QTEST_ARORA_H
 
-#include <qtest.h>
+#include <QtTest/QtTest>
 
 #include <browserapplication.h>
 

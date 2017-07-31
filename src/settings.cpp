@@ -123,7 +123,7 @@ void SettingsDialog::loadDefaults()
     m_fixedFont = QFont(fixedFontFamily, fixedFontSize);
     fixedLabel->setText(QString(QLatin1String("%1 %2")).arg(m_fixedFont.family()).arg(m_fixedFont.pointSize()));
 
-    downloadsLocation->setText(QDesktopServices::storageLocation(QDesktopServices::DesktopLocation));
+    downloadsLocation->setText(QStandardPaths::writableLocation(QStandardPaths::DesktopLocation));
 
     blockPopupWindows->setChecked(!defaultSettings->testAttribute(QWebSettings::JavascriptCanOpenWindows));
     enableJavascript->setChecked(defaultSettings->testAttribute(QWebSettings::JavascriptEnabled));
@@ -185,8 +185,8 @@ void SettingsDialog::loadFromSettings()
 
     // Appearance
     settings.beginGroup(QLatin1String("websettings"));
-    m_fixedFont = qVariantValue<QFont>(settings.value(QLatin1String("fixedFont"), m_fixedFont));
-    m_standardFont = qVariantValue<QFont>(settings.value(QLatin1String("standardFont"), m_standardFont));
+    m_fixedFont = settings.value(QLatin1String("fixedFont"), m_fixedFont).value<QFont>();
+    m_standardFont = settings.value(QLatin1String("standardFont"), m_standardFont).value<QFont>();
 
     standardLabel->setText(QString(QLatin1String("%1 %2")).arg(m_standardFont.family()).arg(m_standardFont.pointSize()));
     fixedLabel->setText(QString(QLatin1String("%1 %2")).arg(m_fixedFont.family()).arg(m_fixedFont.pointSize()));

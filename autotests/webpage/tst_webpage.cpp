@@ -21,6 +21,7 @@
 #include <QtGui/QtGui>
 #include <QtWebKit/QtWebKit>
 #include <QtNetwork/QtNetwork>
+#include <QWebFrame>
 
 #include <webpage.h>
 #include "qtest_arora.h"
@@ -140,10 +141,10 @@ void tst_WebPage::loadSettings()
 
     QCOMPARE(spy0.count(), 0);
 #endif
-    QSKIP("Test is not implemented.", SkipAll);
+    QSKIP("Test is not implemented.");
 }
 
-Q_DECLARE_METATYPE(WebPluginFactory*)
+// Q_DECLARE_METATYPE(WebPluginFactory*)
 void tst_WebPage::webPluginFactory_data()
 {
 #if 0
@@ -166,7 +167,7 @@ void tst_WebPage::webPluginFactory()
 
     QCOMPARE(spy0.count(), 0);
 #endif
-    QSKIP("Test is not implemented.", SkipAll);
+    QSKIP("Test is not implemented.");
 }
 
 Q_DECLARE_METATYPE(QWebPage::WebWindowType)
@@ -256,7 +257,7 @@ void tst_WebPage::createPlugin()
 
     QCOMPARE(spy0.count(), 0);
 #endif
-    QSKIP("Test is not implemented.", SkipAll);
+    QSKIP("Test is not implemented.");
 }
 
 Q_DECLARE_METATYPE(QWebPage*)
@@ -284,7 +285,7 @@ void tst_WebPage::createWindow()
 
     QCOMPARE(spy0.count(), 0);
 #endif
-    QSKIP("Test is not implemented.", SkipAll);
+    QSKIP("Test is not implemented.");
 }
 
 void tst_WebPage::handleUnsupportedContent()

@@ -30,6 +30,7 @@
 #include <qevent.h>
 #include <qpainter.h>
 #include <qstyleoption.h>
+#include <QMimeData>
 
 #include <qdebug.h>
 

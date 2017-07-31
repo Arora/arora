@@ -104,6 +104,7 @@ class HistoryManager : public QWebHistoryInterface
 
 signals:
     void historyCleared();
+    void historyGoingToChange();
     void historyReset();
     void entryAdded(const HistoryEntry &item);
     void entryRemoved(const HistoryEntry &item);

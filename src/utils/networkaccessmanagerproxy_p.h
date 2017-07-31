@@ -29,7 +29,8 @@
 #ifndef NETWORKACCESSMANAGERPROXY_P_H
 #define NETWORKACCESSMANAGERPROXY_P_H
 
-#include <qnetworkcookie.h>
+#include <QNetworkCookieJar>
+#include <QNetworkCookie>
 
 #include "networkaccessmanagerproxy.h"
 

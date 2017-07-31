@@ -19,6 +19,8 @@
 
 #include <QtTest/QtTest>
 #include <QtGui/QtGui>
+#include <QAction>
+#include <QLineEdit>
 #include "qtest_arora.h"
 
 #include <tabwidget.h>
@@ -250,7 +252,7 @@ void tst_TabWidget::currentLocationBar()
     QCOMPARE(spy5.count(), 0);
     QCOMPARE(spy6.count(), 0);
     */
-    QSKIP("Test is not implemented.", SkipAll);
+    QSKIP("Test is not implemented.");
 }
 
 Q_DECLARE_METATYPE(WebView*)
@@ -286,7 +288,7 @@ void tst_TabWidget::currentWebView()
     QCOMPARE(spy5.count(), 0);
     QCOMPARE(spy6.count(), 0);
     */
-    QSKIP("Test is not implemented.", SkipAll);
+    QSKIP("Test is not implemented.");
 }
 
 Q_DECLARE_METATYPE(QWidget*)
@@ -322,7 +324,7 @@ void tst_TabWidget::locationBarStack()
     QCOMPARE(spy5.count(), 0);
     QCOMPARE(spy6.count(), 0);
     */
-    QSKIP("Test is not implemented.", SkipAll);
+    QSKIP("Test is not implemented.");
 }
 
 void tst_TabWidget::loadUrl_data()
@@ -355,7 +357,7 @@ void tst_TabWidget::loadUrl()
     QCOMPARE(spy5.count(), 0);
     QCOMPARE(spy6.count(), 0);
     */
-    QSKIP("Test is not implemented.", SkipAll);
+    QSKIP("Test is not implemented.");
 }
 
 void tst_TabWidget::newTab_data()
@@ -388,7 +390,7 @@ void tst_TabWidget::newTab()
     QCOMPARE(spy5.count(), 0);
     QCOMPARE(spy6.count(), 0);
     */
-    QSKIP("Test is not implemented.", SkipAll);
+    QSKIP("Test is not implemented.");
 }
 
 void tst_TabWidget::nextTab_data()
@@ -421,7 +423,7 @@ void tst_TabWidget::nextTab()
     QCOMPARE(spy5.count(), 0);
     QCOMPARE(spy6.count(), 0);
     */
-    QSKIP("Test is not implemented.", SkipAll);
+    QSKIP("Test is not implemented.");
 }
 
 void tst_TabWidget::previousTab_data()
@@ -454,7 +456,7 @@ void tst_TabWidget::previousTab()
     QCOMPARE(spy5.count(), 0);
     QCOMPARE(spy6.count(), 0);
     */
-    QSKIP("Test is not implemented.", SkipAll);
+    QSKIP("Test is not implemented.");
 }
 
 void tst_TabWidget::recentlyClosedTabsAction_data()
@@ -489,7 +491,7 @@ void tst_TabWidget::recentlyClosedTabsAction()
     QCOMPARE(spy5.count(), 0);
     QCOMPARE(spy6.count(), 0);
     */
-    QSKIP("Test is not implemented.", SkipAll);
+    QSKIP("Test is not implemented.");
 }
 
 void tst_TabWidget::linkHovered_data()
@@ -522,7 +524,7 @@ void tst_TabWidget::linkHovered(const QString &)
     QCOMPARE(spy5.count(), 0);
     QCOMPARE(spy6.count(), 0);
     */
-    QSKIP("Test is not implemented.", SkipAll);
+    QSKIP("Test is not implemented.");
 }
 
 void tst_TabWidget::loadProgress_data()
@@ -555,7 +557,7 @@ void tst_TabWidget::loadProgress(int)
     QCOMPARE(spy5.count(), 0);
     QCOMPARE(spy6.count(), 0);
     */
-    QSKIP("Test is not implemented.", SkipAll);
+    QSKIP("Test is not implemented.");
 }
 
 void tst_TabWidget::setCurrentTitle_data()
@@ -588,7 +590,7 @@ void tst_TabWidget::setCurrentTitle(const QString &)
     QCOMPARE(spy5.count(), 0);
     QCOMPARE(spy6.count(), 0);
     */
-    QSKIP("Test is not implemented.", SkipAll);
+    QSKIP("Test is not implemented.");
 }
 
 void tst_TabWidget::showStatusBarMessage_data()
@@ -621,7 +623,7 @@ void tst_TabWidget::showStatusBarMessage(const QString &)
     QCOMPARE(spy5.count(), 0);
     QCOMPARE(spy6.count(), 0);
     */
-    QSKIP("Test is not implemented.", SkipAll);
+    QSKIP("Test is not implemented.");
 }
 
 void tst_TabWidget::tabsChanged_data()
@@ -654,7 +656,7 @@ void tst_TabWidget::tabsChanged()
     QCOMPARE(spy5.count(), 0);
     QCOMPARE(spy6.count(), 0);
     */
-    QSKIP("Test is not implemented.", SkipAll);
+    QSKIP("Test is not implemented.");
 }
 
 void tst_TabWidget::saveState()

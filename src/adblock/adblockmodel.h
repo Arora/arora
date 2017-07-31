@@ -57,6 +57,7 @@ public:
     QModelIndex index(AdBlockSubscription *subscription);
 
 private slots:
+    void rulesGoingToChange();
     void rulesChanged();
 
 private:

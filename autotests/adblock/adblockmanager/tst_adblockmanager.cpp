@@ -26,8 +26,6 @@
  * SUCH DAMAGE.
  */
 
-#include <qtest.h>
-#include <qsignalspy.h>
 #include <qtry.h>
 
 #include "adblockdialog.h"
@@ -35,6 +33,10 @@
 #include "adblocksubscription.h"
 
 #include <qdebug.h>
+#include <QSignalSpy>
+#include <QTest>
+#include <QUrl>
+
 
 class tst_AdBlockManager : public QObject
 {

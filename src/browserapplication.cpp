@@ -303,9 +303,7 @@ void BrowserApplication::quitBrowser()
  */
 void BrowserApplication::postLaunch()
 {
-    QDesktopServices::StandardLocation location;
-    location = QDesktopServices::CacheLocation;
-    QString directory = QDesktopServices::storageLocation(location);
+    QString directory = QStandardPaths::writableLocation(QStandardPaths::CacheLocation);
     if (directory.isEmpty())
         directory = QDir::homePath() + QLatin1String("/.") + QCoreApplication::applicationName();
     QWebSettings::setIconDatabasePath(directory);
@@ -356,7 +354,7 @@ void BrowserApplication::loadSettings()
     QString standardFontFamily = defaultSettings->fontFamily(QWebSettings::StandardFont);
     int standardFontSize = defaultSettings->fontSize(QWebSettings::DefaultFontSize);
     QFont standardFont = QFont(standardFontFamily, standardFontSize);
-    standardFont = qVariantValue<QFont>(settings.value(QLatin1String("standardFont"), standardFont));
+    standardFont = settings.value(QLatin1String("standardFont"), standardFont).value<QFont>();
     defaultSettings->setFontFamily(QWebSettings::StandardFont, standardFont.family());
     defaultSettings->setFontSize(QWebSettings::DefaultFontSize, standardFont.pointSize());
     int minimumFontSize = settings.value(QLatin1String("minimumFontSize"),
@@ -366,7 +364,7 @@ void BrowserApplication::loadSettings()
     QString fixedFontFamily = defaultSettings->fontFamily(QWebSettings::FixedFont);
     int fixedFontSize = defaultSettings->fontSize(QWebSettings::DefaultFixedFontSize);
     QFont fixedFont = QFont(fixedFontFamily, fixedFontSize);
-    fixedFont = qVariantValue<QFont>(settings.value(QLatin1String("fixedFont"), fixedFont));
+    fixedFont = settings.value(QLatin1String("fixedFont"), fixedFont).value<QFont>();
     defaultSettings->setFontFamily(QWebSettings::FixedFont, fixedFont.family());
     defaultSettings->setFontSize(QWebSettings::DefaultFixedFontSize, fixedFont.pointSize());
 
@@ -658,7 +656,7 @@ QString BrowserApplication::installedDataDirectory()
 
 QString BrowserApplication::dataFilePath(const QString &fileName)
 {
-    QString directory = QDesktopServices::storageLocation(QDesktopServices::DataLocation);
+    QString directory = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/data/Arora";
     if (directory.isEmpty())
         directory = QDir::homePath() + QLatin1String("/.") + QCoreApplication::applicationName();
     if (!QFile::exists(directory)) {

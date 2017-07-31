@@ -81,6 +81,7 @@ class HistoryModel : public QAbstractTableModel
 
 public slots:
     void historyReset();
+    void historyGoingToChange();
     void entryAdded();
     void entryUpdated(int offset);
 

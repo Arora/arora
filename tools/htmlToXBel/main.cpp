@@ -17,8 +17,8 @@
  * Boston, MA  02110-1301  USA
  */
 
-#include <QtGui/QtGui>
-#include <QtWebKit/QtWebKit>
+#include <QApplication>
+#include <QtWebKitWidgets>
 
 /*!
     A tool to convert html bookmark files into the xbel format.

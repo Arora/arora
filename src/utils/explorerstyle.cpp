@@ -37,6 +37,8 @@
 
 #include "explorerstyle.h"
 
+#ifdef Q_OS_WIN
+
 #include <qlibrary.h>
 #include <qpixmapcache.h>
 #include <qmainwindow.h>
@@ -62,6 +64,8 @@ static PtrOpenThemeData pOpenThemeData = 0;
 static PtrIsAppThemed pIsAppThemed = 0;
 static bool vista = false;
 
+#endif
+
 bool isAppThemed()
 {
 #ifdef Q_OS_WIN
@@ -70,6 +74,8 @@ bool isAppThemed()
     return false;
 #endif
 }
+
+#ifdef Q_OS_WIN
 
 ExplorerStyle::ExplorerStyle()
     : QWindowsVistaStyle()
@@ -349,3 +355,6 @@ QPixmap ExplorerStyle::standardPixmap(StandardPixmap standardPixmap, const QStyl
     else
         return QWindowsXPStyle::standardPixmap(standardPixmap, opt, widget);
 }
+
+#endif
+
