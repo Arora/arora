@@ -108,7 +108,7 @@ BookmarksManager::BookmarksManager(QObject *parent)
 
 BookmarksManager::~BookmarksManager()
 {
-    m_saveTimer->saveIfNeccessary();
+    m_saveTimer->saveIfNecessary();
     delete m_bookmarkRootNode;
 }
 

@@ -161,7 +161,7 @@ void FileAccessReply::listDirectory()
             continue;
         }
 
-        // Fetch file icon and generate a corresponding CSS class if neccessary
+        // Fetch file icon and generate a corresponding CSS class if necessary
         QIcon icon = iconProvider.icon(list[i]);
         QString cssClass = cssLinkClass(icon, iconSize);
         QByteArray cssData = cssClass.toLatin1();

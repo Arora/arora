@@ -81,7 +81,7 @@ AutoSaver::~AutoSaver()
     if (m_timer.isActive()) {
         qWarning() << "AutoSaver: still active when destroyed, changes not saved.";
         if (parent() && parent()->metaObject())
-            qWarning() << parent() << parent()->metaObject()->className() << "should call saveIfNeccessary";
+            qWarning() << parent() << parent()->metaObject()->className() << "should call saveIfNecessary";
     }
 }
 
@@ -91,7 +91,7 @@ void AutoSaver::changeOccurred()
         m_firstChange.start();
 
     if (m_firstChange.elapsed() > MAXWAIT) {
-        saveIfNeccessary();
+        saveIfNecessary();
     } else {
         m_timer.start(AUTOSAVE_IN, this);
     }
@@ -100,13 +100,13 @@ void AutoSaver::changeOccurred()
 void AutoSaver::timerEvent(QTimerEvent *event)
 {
     if (event->timerId() == m_timer.timerId()) {
-        saveIfNeccessary();
+        saveIfNecessary();
     } else {
         QObject::timerEvent(event);
     }
 }
 
-void AutoSaver::saveIfNeccessary()
+void AutoSaver::saveIfNecessary()
 {
     if (!m_timer.isActive())
         return;

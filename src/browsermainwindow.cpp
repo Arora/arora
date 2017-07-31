@@ -233,7 +233,7 @@ BrowserMainWindow::BrowserMainWindow(QWidget *parent, Qt::WindowFlags flags)
 BrowserMainWindow::~BrowserMainWindow()
 {
     m_autoSaver->changeOccurred();
-    m_autoSaver->saveIfNeccessary();
+    m_autoSaver->saveIfNecessary();
 }
 
 void BrowserMainWindow::keyPressEvent(QKeyEvent *event)

@@ -63,7 +63,7 @@ public:
 
     ~TestClass()
     {
-        AutoSaver->saveIfNeccessary();
+        AutoSaver->saveIfNecessary();
     }
 
     SubAutoSaver *AutoSaver;
@@ -104,7 +104,7 @@ void tst_AutoSaver::AutoSaver()
 {
     SubAutoSaver save(this);
     save.changeOccurred();
-    save.saveIfNeccessary();
+    save.saveIfNecessary();
 }
 
 void tst_AutoSaver::save()

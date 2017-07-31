@@ -51,7 +51,7 @@ OpenSearchManager::OpenSearchManager(QObject *parent)
 
 OpenSearchManager::~OpenSearchManager()
 {
-    m_autoSaver->saveIfNeccessary();
+    m_autoSaver->saveIfNecessary();
     qDeleteAll(m_engines.values());
     m_engines.clear();
 }

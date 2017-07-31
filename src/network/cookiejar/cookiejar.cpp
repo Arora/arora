@@ -127,7 +127,7 @@ CookieJar::~CookieJar()
 {
     if (m_loaded && m_keepCookies == KeepUntilExit)
         clear();
-    m_saveTimer->saveIfNeccessary();
+    m_saveTimer->saveIfNecessary();
 }
 
 void CookieJar::setPrivate(bool isPrivate)
