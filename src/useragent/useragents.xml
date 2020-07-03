@@ -1,24 +1,28 @@
 <useragentswitcher>
     <separator/>
-    <useragent description="Safari 4.0.4 (Mac)" useragent="Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_1; en-us) AppleWebKit/531.21.8 (KHTML, like Gecko) Version/4.0.4 Safari/531.21.10"/>
-    <useragent description="Mobile Safari 3.1.2 (iPhone)" useragent="Mozilla/5.0 (iPhone; U; CPU iPhone OS 3_1_2 like Mac OS X; en-us) AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7D11 Safari/528.16"/>
-    <useragent description="Mobile Safari 3.1.2 (iPod touch)" useragent="Mozilla/5.0 (iPod; U; CPU iPhone OS 3_1_2 like Mac OS X; en-us) AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7D11 Safari/528.16"/>
+    <useragent description="Safari 13.1.1 (Mac/iPhone/iPad)" useragent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36"/>
+    <useragent description="Safari (iPod touch)" useragent="Mozilla/5.0 (iPod; CPU iPhone OS 13_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/83.0.4103.88 Mobile/15E148 Safari/604.1"/>
 
     <separator/>
-    <useragent description="Firefox 3.5.3 (Windows)" useragent="Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.3) Gecko/20090824 Firefox/3.5.3"/>
+    <useragent description="Firefox 78 (Windows)" useragent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101 Firefox/78.0"/>
+    <useragent description="Firefox 78 (Android)" useragent="Mozilla/5.0 (Android 10; Mobile; rv:68.0) Gecko/68.0 Firefox/68.0"/>
 
     <separator/>
-    <useragent description="Internet Explorer 8.0" useragent="Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1)"/>
-    <useragent description="Internet Explorer 7.0" useragent="Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0)"/>
-    <useragent description="Internet Explorer 6.0" useragent="Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)"/>
+    <useragent description="Microsoft Edge 83 (Windows)" useragent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36 Edg/83.0.478.58"/>
+    <useragent description="Microsoft Edge 83 (Android)" useragent="Mozilla/5.0 (Linux; Android 10; Pixel 3 XL) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36 EdgA/45.3.4.4958"/>
+    <useragent description="Internet Explorer 11" useragent="Mozilla/5.0 (Windows NT 10.0; Trident/7.0; rv:11.0) like Gecko"/>
 
     <separator/>
-    <useragent description="Opera 10.0 (Mac)" useragent="Opera/9.80 (Macintosh; Intel Mac OS X; U; en) Presto/2.2.15 Version/10.00"/>
-    <useragent description="Opera 10.0 (Windows)" useragent="Opera/9.80 (Windows NT 6.0; U; en) Presto/2.2.15 Version/10.00"/>
+    <useragent description="Opera 68 (Windows)" useragent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36 OPR/68.0.3618.173"/>
+    <useragent description="Opera 68 (Android)" useragent="Mozilla/5.0 (Linux; Android 10; Pixel 3 XL) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36 OPR/58.2.2878.53403"/>
+
+    <separator/>
+    <useragent description="Google Chrome 83 (Windows)" useragent="Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36"/>
+    <useragent description="Google Chrome 83 (Android)" useragent="Mozilla/5.0 (Linux; Android 10) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36"/>
 
     <separator/>
     <useragent description="Googlebot 2.1" useragent="Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"/>
-    <useragent description="Msnbot 1.1" useragent="msnbot/1.1 (+http://search.msn.com/msnbot.htm)" appcodename="" appname="" appversion="" platform="" vendor="" vendorsub=""/>
+    <useragent description="Bingbot 2.0 on Edge 83" useragent="Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm) Chrome/83.0.4103.116 Safari/537.36 Edg/83.0.478.58" appcodename="" appname="" appversion="" platform="" vendor="" vendorsub=""/>
     <useragent description="Yahoo Slurp" useragent="Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp)" appcodename="" appname="" appversion="" platform="" vendor="" vendorsub=""/>
 
 </useragentswitcher>
