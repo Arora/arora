@@ -3,7 +3,7 @@
 SetCompressor /SOLID /FINAL lzma
 
 !define PRODUCT_NAME "Arora"
-!define /date PRODUCT_VERSION "0.14.0"
+!define /date PRODUCT_VERSION "0.12.1"
 ;!define /date PRODUCT_VERSION "Snapshot (%#m-%#d-%#Y)"
 !define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\arora.exe"
 !define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"

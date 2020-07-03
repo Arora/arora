@@ -1,5 +1,5 @@
 #!/bin/bash
-./generateAuthors 0.11.0..HEAD | while read line
+./generateAuthors 0.12.0..HEAD | while read line
 do
         name=`echo $line | sed -e 's/ [^ ]*@[^ ]*//g'`
         email=`echo $line | sed -e 's/.* //g' | tr [A-Z] [a-z]`
