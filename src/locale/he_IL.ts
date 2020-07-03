@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="he_IL">
+<TS version="2.1" language="he_IL">
 <context>
     <name>AboutDialog</name>
     <message>
@@ -19,7 +19,7 @@
         <source>Lightweight WebKit-based web browser</source>
         <translation>דפדפן רשת קליל מבוסס WebKit</translation>
     </message>
-    <message utf8="true">
+    <message>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -43,13 +43,13 @@ p, li { white-space: pre-wrap; }
         <source>About %1</source>
         <translation>אודות %1</translation>
     </message>
-    <message utf8="true">
+    <message>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot;font-size:9pt;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Copyright © 2007-2009 Benjamin C. Meyer &amp;lt;&lt;a href=&quot;mailto:ben@meyerhome.net&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;ben@meyerhome.net&lt;/span&gt;&lt;/a&gt;&amp;gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+        <translation type="vanished">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot;font-size:9pt;&quot;&gt;
@@ -58,6 +58,18 @@ p, li { white-space: pre-wrap; }
     <message>
         <source>WebKit version: %1</source>
         <translation>גרסת WebKit: %1</translation>
+    </message>
+    <message>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot;font-size:9pt;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Copyright © 2007-2010 Benjamin C. Meyer &amp;lt;&lt;a href=&quot;mailto:ben@meyerhome.net&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;ben@meyerhome.net&lt;/span&gt;&lt;/a&gt;&amp;gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot;font-size:9pt;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;כל הזכויות שמורות © 2007-2009 Benjamin C. Meyer &amp;lt;&lt;a href=&quot;mailto:ben@meyerhome.net&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;ben@meyerhome.net&lt;/span&gt;&lt;/a&gt;&amp;gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt; {3C?} {4.0/?} {3.?} {40/?} {1&quot;?} {9p?} {0p?} {0p?} {0p?} {0p?} {0;?} {0p?} {2007-2010 ?} {0057a?}</translation>
     </message>
 </context>
 <context>
@@ -198,7 +210,7 @@ p, li { white-space: pre-wrap; }
     <name>AutoFillManager</name>
     <message>
         <source>&lt;b&gt;Would you like to save this password?&lt;/b&gt;&lt;br&gt;         To review passwords you have saved and remove them, open the AutoFill pane of preferences.</source>
-        <translation>&lt;b&gt;האם ברצונך לשמור את הססמה הזאת?&lt;b&gt;&lt;br&gt; לעיון בססמאות השמורות, ובכדי למחוק אותן, אנא פתח את חלון ההגדרות בלשונית המילוי האוטומטי.</translation>
+        <translation type="vanished">&lt;b&gt;האם ברצונך לשמור את הססמה הזאת?&lt;b&gt;&lt;br&gt; לעיון בססמאות השמורות, ובכדי למחוק אותן, אנא פתח את חלון ההגדרות בלשונית המילוי האוטומטי.</translation>
     </message>
     <message>
         <source>Never for this site</source>
@@ -207,6 +219,10 @@ p, li { white-space: pre-wrap; }
     <message>
         <source>Not now</source>
         <translation>לא כעת</translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;Would you like to save this password?&lt;/b&gt;&lt;br&gt;         To review passwords you have saved and remove them, open the AutoFill panel of preferences.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -856,6 +872,22 @@ Do you want to reload all pages?</source>
         <source>&amp;Ad Block...</source>
         <translation>&amp;חסימת פרסומות - AdBlock</translation>
     </message>
+    <message>
+        <source>User Agent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reload / Stop</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation type="unfinished">עצור</translation>
+    </message>
+    <message>
+        <source>Reload</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ClearButton</name>
@@ -1079,6 +1111,10 @@ Do you want to reload all pages?</source>
         <source>&amp;OK</source>
         <translation type="obsolete">&amp;אישור</translation>
     </message>
+    <message>
+        <source>Downloading %1</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>DownloadItem</name>
@@ -1154,7 +1190,7 @@ Do you want to reload all pages?</source>
     </message>
     <message>
         <source>%1 of %2 - Stopped</source>
-        <translation>%1 מתוך %2 - נעצר</translation>
+        <translation type="vanished">%1 מתוך %2 - נעצר</translation>
     </message>
     <message>
         <source>bytes</source>
@@ -1175,6 +1211,10 @@ Do you want to reload all pages?</source>
     <message>
         <source>Download directory (%1) couldn&apos;t be created.</source>
         <translation>אין אפשרות ליצור את תיקיית ההורדה (%1).</translation>
+    </message>
+    <message>
+        <source>%1 of %2 - Download Complete</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1244,6 +1284,10 @@ Do you want to quit anyway?</source>
     <message>
         <source>%1 KB</source>
         <translation>%1 ק&quot;ב</translation>
+    </message>
+    <message>
+        <source>Show Hidden Files</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1341,6 +1385,10 @@ Don&apos;t ask why next time, ok? :)</translatorcomment>
     <message>
         <source>About Arora</source>
         <translation>אודות Arora</translation>
+    </message>
+    <message>
+        <source>Search the web with</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1965,6 +2013,30 @@ Do you want to ignore these errors?&lt;/qt&gt;</source>
         <source>Browse...</source>
         <translation>עיון...</translation>
     </message>
+    <message>
+        <source>Enable access keys</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use this external download program:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Choose Program...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Minimum Font size:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>If you enable this option, no flash objects will be loaded by default. Instead, each will be replaced by a button, allowing you to control which objects to load, and which not. </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Persistent Data Storage</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SettingsDialog</name>
@@ -1984,6 +2056,10 @@ Do you want to ignore these errors?&lt;/qt&gt;</source>
         <source>Choose CSS File</source>
         <translatorcomment>Please put at the start of the translation RLE and at the end PDF, k? 10x bye</translatorcomment>
         <translation>‫בחר קובץ CSS‬</translation>
+    </message>
+    <message>
+        <source>Choose Program</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2139,6 +2215,25 @@ Do you really want to close this page?
     <message>
         <source>Configure Search Engines...</source>
         <translation type="obsolete">הגדרת מנועי חיפוש...</translation>
+    </message>
+</context>
+<context>
+    <name>UserAgentMenu</name>
+    <message>
+        <source>Default</source>
+        <translation type="unfinished">ברירת מחדל</translation>
+    </message>
+    <message>
+        <source>Other...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Custom user agent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>User agent:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

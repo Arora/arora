@@ -15,7 +15,7 @@
             document.getElementById('footer').innerHTML = window.arora.translate('Search results provided by') + ' '
                                                           + searchEngine.name + ' | ' + '<a href="http://arora-browser.org/">'
                                                           + window.arora.translate('About Arora') + '</a>';
-            document.getElementById('lineEdit').placeholder = searchEngine.name;
+            document.getElementById('lineEdit').placeholder = window.arora.translate('Search the Web with') + searchEngine.name;
 
             // Try to change the direction of the page:
             //   This string is defined in QApplication

@@ -63,6 +63,7 @@ JavaScriptAroraObject::JavaScriptAroraObject(QObject *parent)
         QT_TR_NOOP("Welcome to Arora!"),
         QT_TR_NOOP("Arora Start"),
         QT_TR_NOOP("Search!"),
+        QT_TR_NOOP("Search the web with"),
         QT_TR_NOOP("Search results provided by"),
         QT_TR_NOOP("About Arora")
     };

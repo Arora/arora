@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="cs">
+<TS version="2.1" language="cs">
 <context>
     <name>AboutDialog</name>
     <message>
@@ -23,13 +23,13 @@
         <source>Lightweight WebKit-based web browser</source>
         <translation>Lehký webový prohlížeč založený na WebKitu</translation>
     </message>
-    <message utf8="true">
+    <message>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot;font-size:9pt;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Copyright © 2007-2009 Benjamin C. Meyer &amp;lt;&lt;a href=&quot;mailto:ben@meyerhome.net&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;ben@meyerhome.net&lt;/span&gt;&lt;/a&gt;&amp;gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+        <translation type="vanished">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot;font-size:9pt;&quot;&gt;
@@ -46,6 +46,18 @@ p, li { white-space: pre-wrap; }
     <message>
         <source>WebKit version: %1</source>
         <translation>Verze WebKitu: %1</translation>
+    </message>
+    <message>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot;font-size:9pt;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Copyright © 2007-2010 Benjamin C. Meyer &amp;lt;&lt;a href=&quot;mailto:ben@meyerhome.net&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;ben@meyerhome.net&lt;/span&gt;&lt;/a&gt;&amp;gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot;font-size:9pt;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Autorská práva vyhrazena © 2007-2009 Benjamin C. Meyer &amp;lt;&lt;a href=&quot;mailto:ben@meyerhome.net&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;ben@meyerhome.net&lt;/span&gt;&lt;/a&gt;&amp;gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt; {3C?} {4.0/?} {3.?} {40/?} {1&quot;?} {9p?} {0p?} {0p?} {0p?} {0p?} {0;?} {0p?} {2007-2010 ?} {0057a?}</translation>
     </message>
 </context>
 <context>
@@ -186,7 +198,7 @@ p, li { white-space: pre-wrap; }
     <name>AutoFillManager</name>
     <message>
         <source>&lt;b&gt;Would you like to save this password?&lt;/b&gt;&lt;br&gt;         To review passwords you have saved and remove them, open the AutoFill pane of preferences.</source>
-        <translation>&lt;b&gt;Chcete uložit toto heslo?&lt;/b&gt;&lt;br&gt;         Pro prohlížení uložených hesel a jejich odstranění otevřete kartu Automatické doplňování v dialogu nastavení.</translation>
+        <translation type="vanished">&lt;b&gt;Chcete uložit toto heslo?&lt;/b&gt;&lt;br&gt;         Pro prohlížení uložených hesel a jejich odstranění otevřete kartu Automatické doplňování v dialogu nastavení.</translation>
     </message>
     <message>
         <source>Never for this site</source>
@@ -195,6 +207,10 @@ p, li { white-space: pre-wrap; }
     <message>
         <source>Not now</source>
         <translation>Nyní ne</translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;Would you like to save this password?&lt;/b&gt;&lt;br&gt;         To review passwords you have saved and remove them, open the AutoFill panel of preferences.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -921,6 +937,22 @@ Chcete znovu načíst všechny stránky?</translation>
         <source>Private Browsing</source>
         <translation>Soukromé prohlížení</translation>
     </message>
+    <message>
+        <source>User Agent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reload / Stop</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation type="unfinished">Zastavit</translation>
+    </message>
+    <message>
+        <source>Reload</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ClearButton</name>
@@ -1148,6 +1180,10 @@ Chcete znovu načíst všechny stránky?</translation>
         <source>0 Items</source>
         <translation>0 položek</translation>
     </message>
+    <message>
+        <source>Downloading %1</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>DownloadItem</name>
@@ -1217,7 +1253,7 @@ Chcete znovu načíst všechny stránky?</translation>
     </message>
     <message>
         <source>%1 of %2 - Stopped</source>
-        <translation>%1 z %2 - Zastaveno</translation>
+        <translation type="vanished">%1 z %2 - Zastaveno</translation>
     </message>
     <message>
         <source>bytes</source>
@@ -1246,6 +1282,10 @@ Chcete znovu načíst všechny stránky?</translation>
     <message>
         <source>Download directory (%1) couldn&apos;t be created.</source>
         <translation>Složka pro stahování (%1) nemůže být vytvořena.</translation>
+    </message>
+    <message>
+        <source>%1 of %2 - Download Complete</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1326,6 +1366,10 @@ Přesto ukončit?</translation>
     <message>
         <source>%1 KB</source>
         <translation>%1 KB</translation>
+    </message>
+    <message>
+        <source>Show Hidden Files</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1425,6 +1469,10 @@ Přesto ukončit?</translation>
     <message>
         <source>About Arora</source>
         <translation>O Aroře</translation>
+    </message>
+    <message>
+        <source>Search the web with</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2127,6 +2175,30 @@ Chceš ignorovat tyto chyby?</translation>
         <source>Browse...</source>
         <translation>Prohlížet...</translation>
     </message>
+    <message>
+        <source>Enable access keys</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use this external download program:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Choose Program...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Minimum Font size:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>If you enable this option, no flash objects will be loaded by default. Instead, each will be replaced by a button, allowing you to control which objects to load, and which not. </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Persistent Data Storage</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SettingsDialog</name>
@@ -2145,6 +2217,10 @@ Chceš ignorovat tyto chyby?</translation>
     <message>
         <source>Choose CSS File</source>
         <translation>Vybrat soubor CSS</translation>
+    </message>
+    <message>
+        <source>Choose Program</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2313,6 +2389,25 @@ Opravdu chcete zavřít tuto stránku?
     <message>
         <source>Clear Recent Searches</source>
         <translation>Vyčistit nedávná vyhledávání</translation>
+    </message>
+</context>
+<context>
+    <name>UserAgentMenu</name>
+    <message>
+        <source>Default</source>
+        <translation type="unfinished">Výchozí</translation>
+    </message>
+    <message>
+        <source>Other...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Custom user agent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>User agent:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
