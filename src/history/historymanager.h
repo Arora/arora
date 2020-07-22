@@ -129,6 +129,8 @@ public:
     HistoryModel *historyModel() const;
     HistoryFilterModel *historyFilterModel() const;
     HistoryTreeModel *historyTreeModel() const;
+    
+    QString dataFilePath(const QString &fileName);
 
 public slots:
     void clear();

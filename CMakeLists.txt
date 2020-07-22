@@ -1,0 +1,11 @@
+project(Arora)
+cmake_minimum_required(VERSION 3.16)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_BUILD_TYPE Release)
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+add_definitions(-Wall)
+
+add_subdirectory(src)
+add_subdirectory(tools)

@@ -63,7 +63,10 @@
 
 #include "modelmenu.h"
 
+// option to remove the browserapplication for arora-placesimport
+#ifndef NO_BROWSERAPPLICATION
 #include "browserapplication.h"
+#endif
 
 #include <qabstractitemmodel.h>
 #include <qapplication.h>
@@ -310,12 +313,14 @@ void ModelMenu::mousePressEvent(QMouseEvent *event)
     QMenu::mousePressEvent(event);
 }
 
+#ifndef NO_BROWSERAPPLICATION
 void ModelMenu::mouseReleaseEvent(QMouseEvent *event)
 {
     BrowserApplication::instance()->setEventMouseButtons(event->button());
     BrowserApplication::instance()->setEventKeyboardModifiers(event->modifiers());
     QMenu::mouseReleaseEvent(event);
 }
+#endif
 
 void ModelMenu::mouseMoveEvent(QMouseEvent *event)
 {

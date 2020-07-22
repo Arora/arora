@@ -63,7 +63,9 @@
 #include "history.h"
 
 #include "autosaver.h"
+#ifndef NO_BROWSERAPPLICATION
 #include "browserapplication.h"
+#endif
 #include "historymanager.h"
 #include "treesortfilterproxymodel.h"
 
@@ -164,10 +166,12 @@ QVariant HistoryModel::data(const QModelIndex &index, int role) const
             return item.url;
         }
     }
+#ifndef NO_BROWSERAPPLICATION
     case Qt::DecorationRole:
         if (index.column() == 0) {
             return BrowserApplication::instance()->icon(item.url);
         }
+#endif
     }
     return QVariant();
 }
@@ -332,7 +336,7 @@ QMimeData *HistoryMenuModel::mimeData(const QModelIndexList &indexes) const
     return mimeData;
 }
 
-
+#ifndef NO_BROWSERAPPLICATION
 HistoryMenu::HistoryMenu(QWidget *parent)
     : ModelMenu(parent)
     , m_history(0)
@@ -476,7 +480,7 @@ void HistoryDialog::copy()
     QClipboard *clipboard = QApplication::clipboard();
     clipboard->setText(url);
 }
-
+#endif
 HistoryFilterModel::HistoryFilterModel(QAbstractItemModel *sourceModel, QObject *parent)
     : QAbstractProxyModel(parent)
     , m_loaded(false)

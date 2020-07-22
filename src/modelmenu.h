@@ -114,7 +114,9 @@ protected:
     void dropEvent(QDropEvent *event);
 
     void mousePressEvent(QMouseEvent *event);
+#ifndef NO_BROWSERAPPLICATION
     void mouseReleaseEvent(QMouseEvent *event);
+#endif
     void mouseMoveEvent(QMouseEvent *event);
 
 private slots:

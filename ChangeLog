@@ -1,3 +1,15 @@
+UNRELEASED:
+
+Fixed issues:
+    arora-placesimport sometimes resulted in an "Invalid cross-device link" error.
+
+Behind the scene:
+    Add alternative CMake build system
+        This is not final yet, and currently only works on Linux.
+        When it is finished, it will replace qmake.
+        CMake currently reduces the size of arora-placesimport from about 2 MB to about 250 KB.
+        This improvement will be added to QMake later.
+
 0.12.1
 
 Interface:
@@ -23,7 +35,7 @@ Fixed issues:
     Issue: 931: Fix for fullscreen on Mac
     Issue: 957: Workaround for a bug in QCompleter
     
-Behind the scenses:
+Behind the scene:
     Support persistent data storage (HTML5 localStorage)
     Update to QT5 & latest WebKit to fix many issues with modern websites
     Update some internal pages to HTML5

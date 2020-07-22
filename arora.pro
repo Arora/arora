@@ -7,6 +7,7 @@ SUBDIRS  = src tools
 CONFIG += ordered
 
 unix {
+    warning("It is recommended to use CMake instead of QMake")
     # this is an ugly work around to do .PHONY: doc
     doxygen.target = doc dox
     doxygen.commands = doxygen Doxyfile

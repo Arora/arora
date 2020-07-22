@@ -19,3 +19,4 @@ massif.out.*
 ms_print.*
 doc/
 .qmake.stash
+build

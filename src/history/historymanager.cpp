@@ -63,7 +63,6 @@
 #include "historymanager.h"
 
 #include "autosaver.h"
-#include "browserapplication.h"
 #include "history.h"
 
 #include <qbuffer.h>
@@ -76,6 +75,18 @@
 #include <qwebsettings.h>
 
 #include <qdebug.h>
+
+
+// Fix so we don't have to include browserapplication. Reduces the size.
+QString  HistoryManager::dataFilePath(const QString &fileName)
+{
+    QString directory = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/data/Arora";
+    if (!QFile::exists(directory)) {
+        QDir dir;
+        dir.mkpath(directory);
+    }
+    return directory + QLatin1String("/") + fileName;
+}
 
 QString HistoryEntry::userTitle() const
 {
@@ -150,7 +161,7 @@ void HistoryManager::setHistory(const QList<HistoryEntry> &history, bool loadedA
 
     // verify that it is sorted by date
     if (!loadedAndSorted)
-        qSort(m_history.begin(), m_history.end());
+        std::sort(m_history.begin(), m_history.end());
 
     checkForExpired();
 
@@ -289,7 +300,7 @@ void HistoryManager::load()
 {
     loadSettings();
 
-    QFile historyFile(BrowserApplication::dataFilePath(QLatin1String("history")));
+    QFile historyFile(HistoryManager::dataFilePath(QLatin1String("history")));
 
     if (!historyFile.exists())
         return;
@@ -340,7 +351,7 @@ void HistoryManager::load()
         lastInsertedItem = item;
     }
     if (needToSort)
-        qSort(list.begin(), list.end());
+        std::sort(list.begin(), list.end());
 
     setHistory(list, true);
 
@@ -380,7 +391,7 @@ void HistoryManager::save()
     if (first == m_history.count() - 1)
         saveAll = true;
 
-    QFile historyFile(BrowserApplication::dataFilePath(QLatin1String("history")));
+    QFile historyFile(HistoryManager::dataFilePath(QLatin1String("history")));
 
     // When saving everything use a temporary file to prevent possible data loss.
     QTemporaryFile tempFile;
@@ -411,8 +422,10 @@ void HistoryManager::save()
     if (saveAll) {
         if (historyFile.exists() && !historyFile.remove())
             qWarning() << "History: error removing old history." << historyFile.errorString();
-        if (!tempFile.rename(historyFile.fileName()))
+        if (!tempFile.copy(historyFile.fileName()))
             qWarning() << "History: error moving new history over old." << tempFile.errorString() << historyFile.fileName();
+        if (!tempFile.remove())
+            qWarning() << "History: error deleting temporary file." << tempFile.errorString() << tempFile.fileName();
     }
     m_lastSavedUrl = m_history.value(0).url;
 }

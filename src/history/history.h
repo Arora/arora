@@ -210,6 +210,8 @@ private:
     HistoryTreeModel *m_treeModel;
 };
 
+
+#ifndef NO_BROWSERAPPLICATION
 // Menu that is dynamically populated from the history
 class HistoryMenu : public ModelMenu
 {
@@ -236,6 +238,7 @@ private:
     HistoryMenuModel *m_historyMenuModel;
     QList<QAction*> m_initialActions;
 };
+#endif
 
 // proxy model for the history model that converts the list
 // into a tree, one top level node per day.
@@ -272,6 +275,7 @@ private:
 
 };
 
+#ifndef NO_BROWSERAPPLICATION
 #include "ui_history.h"
 
 class HistoryDialog : public QDialog, public Ui_HistoryDialog
@@ -290,6 +294,6 @@ private slots:
     void copy();
 
 };
-
+#endif
 #endif // HISTORY_H
 
