@@ -1,5 +1,0 @@
-arora (0.11.0~git##DATE##-1~##DIST##1~upstream1) ##DIST##; urgency=low
-
-  * Initial release (LP: #231731)
-
- -- Matvey Kozhev <sikon@ubuntu.com>  ##RDATE##

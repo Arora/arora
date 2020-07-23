@@ -14,7 +14,7 @@ builddir:
 	mkdir -p builddir
 
 builddir/Makefile: builddir
-	cd builddir && qmake-qt4 PREFIX=/usr ../arora.pro
+	cd builddir && cmake ..
 
 build: build-stamp
 

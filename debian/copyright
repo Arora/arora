@@ -47,3 +47,5 @@ Public License can be found in `/usr/share/common-licenses/GPL-2'.
 
 The Debian packaging is (C) 2008, Sune Vuorela <debian@pusling.com> and
 is licensed under the GPL, see above.
+
+The bebian package was updated for QT5 by Aaron Dewes.

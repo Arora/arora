@@ -1,8 +1,8 @@
 Source: arora
 Section: web
 Priority: extra
-Maintainer: Sune Vuorela <debian@pusling.com>
-Build-Depends: debhelper (>= 5), libqt4-dev (>= 4.5)
+Maintainer: Aaron Dewes <aaron.dewes@web.de>
+Build-Depends: debhelper (>= 5), qtbase5-dev (>= 5.14), cmake (>= 3.16)
 Standards-Version: 3.7.3
 
 Package: arora
