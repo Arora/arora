@@ -176,6 +176,7 @@ TabWidget::TabWidget(QWidget *parent)
     addTabButton->setDefaultAction(m_newTabAction);
     addTabButton->setAutoRaise(true);
     addTabButton->setToolButtonStyle(Qt::ToolButtonIconOnly);
+    addTabButton->setIconSize(QSize(50, 100));
 #endif
 
     connect(m_tabBar, SIGNAL(tabCloseRequested(int)),
@@ -1016,7 +1017,7 @@ QByteArray TabWidget::saveState() const
                 tabsHistory << QByteArray();
             }
         } else {
-            tabs.append(QString::null);
+            tabs.append(QString());
             tabsHistory.append(QByteArray());
         }
     }

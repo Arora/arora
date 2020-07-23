@@ -941,7 +941,7 @@ QModelIndex HistoryTreeModel::mapFromSource(const QModelIndex &sourceIndex) cons
         rowCount(QModelIndex());
 
     QList<int>::iterator it;
-    it = qLowerBound(m_sourceRowCache.begin(), m_sourceRowCache.end(), sourceIndex.row());
+    it = std::lower_bound(m_sourceRowCache.begin(), m_sourceRowCache.end(), sourceIndex.row());
     if (*it != sourceIndex.row())
         --it;
     int dateRow = qMax(0, it - m_sourceRowCache.begin());
@@ -988,7 +988,7 @@ void HistoryTreeModel::sourceRowsRemoved(const QModelIndex &parent, int start, i
     if (!m_sourceRowCache.isEmpty())
     for (int i = end; i >= start;) {
         QList<int>::iterator it;
-        it = qLowerBound(m_sourceRowCache.begin(), m_sourceRowCache.end(), i);
+        it = std::lower_bound(m_sourceRowCache.begin(), m_sourceRowCache.end(), i);
         if (*it != i)
             --it;
         int row = qMax(0, it - m_sourceRowCache.begin());

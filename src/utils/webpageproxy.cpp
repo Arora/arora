@@ -45,7 +45,7 @@ int WebPageProxy::pageAttributeId()
 
 void WebPageProxy::populateNetworkRequest(QNetworkRequest &request)
 {
-    QVariant variant = qVariantFromValue((void *) this);
+    QVariant variant = QVariant::fromValue((void *) this);
     request.setAttribute((QNetworkRequest::Attribute)(pageAttributeId()), variant);
 }
 

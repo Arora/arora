@@ -160,9 +160,9 @@ void CookieJar::load()
     m_exceptions_block = cookieSettings.value(QLatin1String("block")).toStringList();
     m_exceptions_allow = cookieSettings.value(QLatin1String("allow")).toStringList();
     m_exceptions_allowForSession = cookieSettings.value(QLatin1String("allowForSession")).toStringList();
-    qSort(m_exceptions_block.begin(), m_exceptions_block.end());
-    qSort(m_exceptions_allow.begin(), m_exceptions_allow.end());
-    qSort(m_exceptions_allowForSession.begin(), m_exceptions_allowForSession.end());
+    std::sort(m_exceptions_block.begin(), m_exceptions_block.end());
+    std::sort(m_exceptions_allow.begin(), m_exceptions_allow.end());
+    std::sort(m_exceptions_allowForSession.begin(), m_exceptions_allowForSession.end());
 
     loadSettings();
 }
@@ -206,7 +206,7 @@ void CookieJar::save()
         if (cookies.at(i).isSessionCookie())
             cookies.removeAt(i);
     }
-    cookieSettings.setValue(QLatin1String("cookies"), qVariantFromValue<QList<QNetworkCookie> >(cookies));
+    cookieSettings.setValue(QLatin1String("cookies"), QVariant::fromValue(cookies));
     cookieSettings.beginGroup(QLatin1String("Exceptions"));
     cookieSettings.setValue(QLatin1String("block"), m_exceptions_block);
     cookieSettings.setValue(QLatin1String("allow"), m_exceptions_allow);
@@ -436,7 +436,7 @@ void CookieJar::setBlockedCookies(const QStringList &list)
     if (!m_loaded)
         load();
     m_exceptions_block = list;
-    qSort(m_exceptions_block.begin(), m_exceptions_block.end());
+    std::sort(m_exceptions_block.begin(), m_exceptions_block.end());
     applyRules();
     m_saveTimer->changeOccurred();
 }
@@ -446,7 +446,7 @@ void CookieJar::setAllowedCookies(const QStringList &list)
     if (!m_loaded)
         load();
     m_exceptions_allow = list;
-    qSort(m_exceptions_allow.begin(), m_exceptions_allow.end());
+    std::sort(m_exceptions_allow.begin(), m_exceptions_allow.end());
     applyRules();
     m_saveTimer->changeOccurred();
 }
@@ -456,7 +456,7 @@ void CookieJar::setAllowForSessionCookies(const QStringList &list)
     if (!m_loaded)
         load();
     m_exceptions_allowForSession = list;
-    qSort(m_exceptions_allowForSession.begin(), m_exceptions_allowForSession.end());
+    std::sort(m_exceptions_allowForSession.begin(), m_exceptions_allowForSession.end());
     applyRules();
     m_saveTimer->changeOccurred();
 }

@@ -255,7 +255,7 @@ void ModelToolBar::mouseMoveEvent(QMouseEvent *event)
     QDrag *drag = new QDrag(this);
     drag->setMimeData(m_model->mimeData(QModelIndexList() << index));
     QRect actionRect = actionGeometry(action);
-    drag->setPixmap(QPixmap::grabWidget(this, actionRect));
+    drag->setPixmap(this->grab(actionRect));
 
     if (drag->exec() == Qt::MoveAction)
         m_model->removeRow(index.row(), m_rootIndex);

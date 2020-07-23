@@ -347,7 +347,7 @@ void ModelMenu::mouseMoveEvent(QMouseEvent *event)
     QDrag *drag = new QDrag(this);
     drag->setMimeData(m_model->mimeData((QModelIndexList() << idx)));
     QRect actionRect = actionGeometry(action);
-    drag->setPixmap(QPixmap::grabWidget(this, actionRect));
+    drag->setPixmap(this->grab(actionRect));
 
     if (drag->exec() == Qt::MoveAction) {
         m_model->removeRow(idx.row(), m_root);
