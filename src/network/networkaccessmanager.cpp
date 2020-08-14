@@ -164,6 +164,7 @@ void NetworkAccessManager::loadSettings()
 
 #ifndef QT_NO_OPENSSL
     QSslConfiguration sslCfg = QSslConfiguration::defaultConfiguration();
+    sslCfg.setCaCertificates(sslCfg.systemCaCertificates());
     QList<QSslCertificate> ca_list = sslCfg.caCertificates();
     QList<QSslCertificate> ca_new = QSslCertificate::fromData(settings.value(QLatin1String("CaCertificates")).toByteArray());
     ca_list += ca_new;
