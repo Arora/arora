@@ -113,8 +113,6 @@ set(Arora_SRCS
 	opensearch/opensearchwriter.cpp
 	qwebplugins/arorawebplugin.cpp
 	qwebplugins/webpluginfactory.cpp
-	qwebplugins/clicktoflash/clicktoflash.cpp
-	qwebplugins/clicktoflash/clicktoflashplugin.cpp
 	useragent/useragentmenu.cpp
 	utils/editlistview.cpp
 	utils/edittableview.cpp
@@ -145,8 +143,6 @@ set(Arora_UIS
 	network/cookiejar/cookies.ui
 	network/cookiejar/cookiesexceptions.ui
 	opensearch/opensearchdialog.ui
-	qwebplugins/clicktoflash/clicktoflash.ui
-	qwebplugins/clicktoflash/clicktoflashsettings.ui
 )
 QT5_WRAP_UI(UIS ${Arora_UIS})
 
@@ -156,7 +152,6 @@ set(Arora_RSCS
 	data/searchengines/searchengines.qrc
 	htmls/htmls.qrc
 	useragent/useragents.qrc
-	qwebplugins/clicktoflash/clicktoflash.qrc
 )
 QT5_ADD_RESOURCES(RSCS ${Arora_RSCS})
 

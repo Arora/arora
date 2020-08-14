@@ -9,5 +9,3 @@ HEADERS += \
 SOURCES += \
   arorawebplugin.cpp \
   webpluginfactory.cpp
-
-include(clicktoflash/clicktoflash.pri)

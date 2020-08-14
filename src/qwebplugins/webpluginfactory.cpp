@@ -19,8 +19,6 @@
 
 #include "webpluginfactory.h"
 
-#include "clicktoflashplugin.h"
-
 #include <qwidget.h>
 #include <qurl.h>
 #include <qdebug.h>
@@ -87,7 +85,6 @@ void WebPluginFactory::init() const
     m_pluginsCache.clear();
     qDeleteAll(m_plugins);
     m_plugins.clear();
-    m_plugins.append(new ClickToFlashPlugin);
     foreach (AroraWebPlugin *plugin, m_plugins) {
         foreach (const QWebPluginFactory::MimeType &pluginMimeType, plugin->metaPlugin().mimeTypes)
             m_pluginsCache.insert(pluginMimeType.name, plugin);

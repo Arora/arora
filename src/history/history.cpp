@@ -435,7 +435,7 @@ HistoryDialog::HistoryDialog(QWidget *parent, HistoryManager *setHistory) : QDia
     tree->setExpanded(proxyModel->index(0, 0), true);
     tree->setAlternatingRowColors(true);
     QFontMetrics fm(font());
-    int header = fm.width(QLatin1Char('m')) * 40;
+    int header = fm.horizontalAdvance(QLatin1Char('m')) * 40;
     tree->header()->resizeSection(0, header);
     tree->header()->setStretchLastSection(true);
     connect(tree, SIGNAL(activated(const QModelIndex&)),

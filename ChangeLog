@@ -10,6 +10,9 @@ Behind the scene:
         CMake currently reduces the size of arora-placesimport from about 2 MB to about 250 KB.
         This improvement will be added to QMake later.
 
+Other:
+    Remove ClickToFlash
+        Flash will reach its end-of-life soon, and shouldn't be used at all, so this feature was get removed.
 0.12.1
 
 Interface:

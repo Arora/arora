@@ -197,7 +197,6 @@ void SettingsDialog::loadFromSettings()
     enableImages->setChecked(settings.value(QLatin1String("enableImages"), enableImages->isChecked()).toBool());
     enableLocalStorage->setChecked(settings.value(QLatin1String("enableLocalStorage"), enableLocalStorage->isChecked()).toBool());
     userStyleSheet->setText(QString::fromUtf8(settings.value(QLatin1String("userStyleSheet")).toUrl().toEncoded()));
-    clickToFlash->setChecked(settings.value(QLatin1String("enableClickToFlash"), clickToFlash->isChecked()).toBool());
     int minimumFontSize = settings.value(QLatin1String("minimumFontSize"), 0).toInt();
     minimFontSizeCheckBox->setChecked(minimumFontSize != 0);
     if (minimumFontSize != 0)

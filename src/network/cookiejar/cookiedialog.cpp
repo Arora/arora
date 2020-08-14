@@ -101,16 +101,16 @@ CookieDialog::CookieDialog(CookieJar *cookieJar, QWidget *parent)
         int header = cookiesTable->horizontalHeader()->sectionSizeHint(i);
         switch (i) {
         case 0:
-            header = fm.width(QLatin1String("averagehost.domain.com"));
+            header = fm.horizontalAdvance(QLatin1String("averagehost.domain.com"));
             break;
         case 1:
-            header = fm.width(QLatin1String("_session_id"));
+            header = fm.horizontalAdvance(QLatin1String("_session_id"));
             break;
         case 4:
-            header = fm.width(QDateTime::currentDateTime().toString(Qt::LocalDate));
+            header = fm.horizontalAdvance(QDateTime::currentDateTime().toString(Qt::LocalDate));
             break;
         }
-        int buffer = fm.width(QLatin1String("xx"));
+        int buffer = fm.horizontalAdvance(QLatin1String("xx"));
         header += buffer;
         cookiesTable->horizontalHeader()->resizeSection(i, header);
     }

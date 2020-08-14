@@ -82,7 +82,7 @@ QVariant CookieExceptionsModel::headerData(int section, Qt::Orientation orientat
         font.setPointSize(10);
         QFontMetrics fm(font);
         int height = fm.height() + fm.height() / 3;
-        int width = fm.width(headerData(section, orientation, Qt::DisplayRole).toString());
+        int width = fm.horizontalAdvance(headerData(section, orientation, Qt::DisplayRole).toString());
         return QSize(width, height);
     }
 
