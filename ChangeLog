@@ -12,7 +12,7 @@ Behind the scene:
 
 Other:
     Remove ClickToFlash
-        Flash will reach its end-of-life soon, and shouldn't be used at all, so this feature was get removed.
+        Flash will reach its end-of-life soon, and shouldn't be used at all, so this feature was removed.
     Remove usage of some deprecated QT features
 
 Fixed issues:
