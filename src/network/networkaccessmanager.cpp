@@ -179,8 +179,6 @@ void NetworkAccessManager::loadSettings()
     m_acceptLanguage = AcceptLanguageDialog::httpString(acceptList);
 
     bool cacheEnabled = settings.value(QLatin1String("cacheEnabled"), true).toBool();
-    if (QLatin1String(qVersion()) == QLatin1String("4.5.1"))
-        cacheEnabled = false;
 
     if (cacheEnabled) {
         NetworkDiskCache *diskCache;
@@ -191,8 +189,7 @@ void NetworkAccessManager::loadSettings()
         setCache(diskCache);
         diskCache->loadSettings();
     } else {
-        if (QLatin1String(qVersion()) > QLatin1String("4.5.1"))
-            setCache(0);
+        setCache(0);
     }
     settings.endGroup();
 }

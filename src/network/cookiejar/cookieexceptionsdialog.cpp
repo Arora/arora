@@ -110,13 +110,13 @@ CookieExceptionsDialog::CookieExceptionsDialog(CookieJar *cookieJar, QWidget *pa
         int header = exceptionTable->horizontalHeader()->sectionSizeHint(i);
         switch (i) {
         case 0:
-            header = fm.width(QLatin1String("averagebiglonghost.domain.com"));
+            header = fm.horizontalAdvance(QLatin1String("averagebiglonghost.domain.com"));
             break;
         case 1:
-            header = fm.width(QLatin1String("Allow For Session"));
+            header = fm.horizontalAdvance(QLatin1String("Allow For Session"));
             break;
         }
-        int buffer = fm.width(QLatin1String("xx"));
+        int buffer = fm.horizontalAdvance(QLatin1String("xx"));
         header += buffer;
         exceptionTable->horizontalHeader()->resizeSection(i, header);
     }
