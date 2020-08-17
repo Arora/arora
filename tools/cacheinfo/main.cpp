@@ -17,6 +17,7 @@
  * Boston, MA  02110-1301  USA
  */
 
+#include <Qt>
 #include <QtNetwork/QtNetwork>
 #include <QtGui/QtGui>
 
@@ -38,8 +39,8 @@ int main(int argc, char **argv)
     args.takeFirst();
     if (args.isEmpty()) {
         QTextStream stream(stdout);
-        stream << "arora-cacheinfo is a tool for viewing and extracting information out of Arora cache files." << endl;
-        stream << "arora-cacheinfo [-o cachefile] [file | url]" << endl;
+        stream << "arora-cacheinfo is a tool for viewing and extracting information out of Arora cache files." << Qt::endl;
+        stream << "arora-cacheinfo [-o cachefile] [file | url]" << Qt::endl;
         return 0;
     }
 
@@ -91,19 +92,19 @@ int main(int argc, char **argv)
     }
 
     QTextStream stream(stdout);
-    stream << "URL: " << metaData.url().toString() << endl;
-    stream << "Expiration Date: " << metaData.expirationDate().toString() << endl;
-    stream << "Last Modified Date: " << metaData.lastModified().toString() << endl;
-    stream << "Save to disk: " << metaData.saveToDisk() << endl;
-    stream << "Headers:" << endl;
+    stream << "URL: " << metaData.url().toString() << Qt::endl;
+    stream << "Expiration Date: " << metaData.expirationDate().toString() << Qt::endl;
+    stream << "Last Modified Date: " << metaData.lastModified().toString() << Qt::endl;
+    stream << "Save to disk: " << metaData.saveToDisk() << Qt::endl;
+    stream << "Headers:" << Qt::endl;
     foreach (const QNetworkCacheMetaData::RawHeader &header, metaData.rawHeaders())
-        stream << "\t" << header.first << ": " << header.second << endl;
+        stream << "\t" << header.first << ": " << header.second << Qt::endl;
     QIODevice *device = diskCache.data(metaData.url());
     if (device) {
-        stream << "Data Size: " << device->size() << endl;
+        stream << "Data Size: " << device->size() << Qt::endl;
         stream << "First line: " << device->readLine(100);
     } else {
-        stream << "No data? Either the file is corrupt or there is an error." << endl;
+        stream << "No data? Either the file is corrupt or there is an error." << Qt::endl;
     }
 
     delete device;
