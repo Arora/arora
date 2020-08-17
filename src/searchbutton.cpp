@@ -23,6 +23,7 @@
 #include <qevent.h>
 #include <qlineedit.h>
 #include <qpainter.h>
+#include <QPainterPath>
 
 SearchButton::SearchButton(QWidget *parent)
     : QAbstractButton(parent)
