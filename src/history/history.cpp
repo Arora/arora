@@ -601,7 +601,7 @@ QModelIndex HistoryFilterModel::mapFromSource(const QModelIndex &sourceIndex) co
 
     int sourceOffset = sourceModel()->rowCount() - sourceIndex.row();
 
-    QList<HistoryData>::iterator pos = qBinaryFind(m_filteredRows.begin(),
+    QList<HistoryData>::iterator pos = std::lower_bound(m_filteredRows.begin(),
         m_filteredRows.end(), HistoryData(sourceOffset, -1));
 
     if (pos == m_filteredRows.end())
@@ -642,7 +642,7 @@ void HistoryFilterModel::load() const
             m_historyHash.insert(url, sourceOffset);
         } else {
             // we already know about this url: just increment its frecency score
-            QList<HistoryData>::iterator pos = qBinaryFind(m_filteredRows.begin(),
+            QList<HistoryData>::iterator pos = std::lower_bound(m_filteredRows.begin(),
                 m_filteredRows.end(), HistoryData(m_historyHash[url], -1));
             Q_ASSERT(pos != m_filteredRows.end());
             pos->frecency += frecencyScore(idx);
@@ -661,7 +661,7 @@ void HistoryFilterModel::sourceRowsInserted(const QModelIndex &parent, int start
     QString url = idx.data(HistoryModel::UrlStringRole).toString();
     int currentFrecency = 0;
     if (m_historyHash.contains(url)) {
-        QList<HistoryData>::iterator pos = qBinaryFind(m_filteredRows.begin(),
+        QList<HistoryData>::iterator pos = std::lower_bound(m_filteredRows.begin(),
             m_filteredRows.end(), HistoryData(m_historyHash[url], -1));
         Q_ASSERT(pos != m_filteredRows.end());
         int realRow = pos - m_filteredRows.begin();

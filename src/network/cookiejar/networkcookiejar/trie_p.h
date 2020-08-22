@@ -141,7 +141,7 @@ bool Trie<T>::remove(const QStringList &key, const T &value) {
             Trie<T> *parent = walkTo(parentKey, false);
             Q_ASSERT(parent);
             QStringList::iterator iterator;
-            iterator = qBinaryFind(parent->childrenKeys.begin(),
+            iterator = std::lower_bound(parent->childrenKeys.begin(),
                                    parent->childrenKeys.end(),
                                    currentLevelKey);
             Q_ASSERT(iterator != parent->childrenKeys.end());
@@ -210,7 +210,7 @@ const Trie<T>* Trie<T>::walkTo(const QStringList &key) const {
         const QString currentLevelKey = key.at(depth--);
         begin = node->childrenKeys.constBegin();
         end = node->childrenKeys.constEnd();
-        childIterator = qBinaryFind(begin, end, currentLevelKey);
+        childIterator = std::lower_bound(begin, end, currentLevelKey);
         if (childIterator == end)
             return 0;
         node = &node->children.at(childIterator - begin);
@@ -228,7 +228,7 @@ Trie<T>* Trie<T>::walkTo(const QStringList &key, bool create) {
         const QString currentLevelKey = key.at(depth--);
         begin = node->childrenKeys.begin();
         end = node->childrenKeys.end();
-        iterator = qBinaryFind(begin, end, currentLevelKey);
+        iterator = std::lower_bound(begin, end, currentLevelKey);
 #if defined(TRIE_DEBUG)
         qDebug() << "\t" << node << key << currentLevelKey << node->childrenKeys;
 #endif
@@ -236,7 +236,7 @@ Trie<T>* Trie<T>::walkTo(const QStringList &key, bool create) {
         if (iterator == end) {
             if (!create)
                 return 0;
-            iterator = qLowerBound(begin,
+            iterator = std::lower_bound(begin,
                                    end,
                                    currentLevelKey);
             index = iterator - begin;

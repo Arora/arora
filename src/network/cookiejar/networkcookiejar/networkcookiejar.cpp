@@ -147,7 +147,7 @@ QList<QNetworkCookie> NetworkCookieJar::cookiesForUrl(const QUrl &url) const
     }
 
     // shorter paths should go first
-    qSort(cookies.begin(), cookies.end(), shorterPaths);
+    std::sort(cookies.begin(), cookies.end(), shorterPaths);
 #if defined(NETWORKCOOKIEJAR_DEBUG)
     qDebug() << "NetworkCookieJar::" << __FUNCTION__ << "returning" << cookies.count();
     qDebug() << cookies;
@@ -327,7 +327,7 @@ bool NetworkCookieJarPrivate::matchesBlacklist(const QString &string) const
         setSecondLevelDomain = true;
     }
     QStringList::const_iterator i =
-         qBinaryFind(secondLevelDomains.constBegin(), secondLevelDomains.constEnd(), string);
+         std::lower_bound(secondLevelDomains.constBegin(), secondLevelDomains.constEnd(), string);
         return (i != secondLevelDomains.constEnd());
 }
 
@@ -371,5 +371,5 @@ void NetworkCookieJar::setSecondLevelDomains(const QStringList &secondLevelDomai
 {
     d->setSecondLevelDomain = true;
     d->secondLevelDomains = secondLevelDomains;
-    qSort(d->secondLevelDomains);
+    std::sort(d->secondLevelDomains.begin(), d->secondLevelDomains.end());
 }
