@@ -1,6 +1,8 @@
+# Git hooks
+
 These are various git hooks that are used to help improve the quality of Arora.
 
-They are managed using the git-hooks tool (Available here http://github.com/icefox/git-hooks)
+They are managed using the [git-hooks tool](https://github.com/AaronDewes/git-hooks).
 
 To enable them run "git hooks --install"
 

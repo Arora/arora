@@ -1,7 +1,0 @@
-Arora web browser
-
-Arora is a cross platform web browser built using Qt and WebKit.
-
-Building:
-Arora uses the qmake build system.  If you already have Qt 4.5 or newer on your system building is as easy as running the command 'qmake' and then 'make' or 'nmake' on Windows.
-For more detailed information see https://github.com/Arora/arora/wiki/BeginnerStepByStepInstructions
