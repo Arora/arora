@@ -84,7 +84,19 @@ void LocationBar::webViewUrlChanged(const QUrl &url)
 {
     if (hasFocus())
         return;
-    setText(QString::fromUtf8(url.toEncoded()));
+    if(!url.toString().startsWith(QString("qrc:/"))) {
+        setText(QString::fromUtf8(url.toEncoded()));
+    } else {
+        QUrl newurl = QUrl(url.toString());
+        QString url_tmp = newurl.toString().mid(5);
+        newurl = QUrl(QLatin1String("arora://") + url_tmp);
+        QString urlstr = newurl.toString();
+        if(urlstr.endsWith(QLatin1String(".html"))) {
+            urlstr.chop(5);
+            newurl = QUrl(urlstr);
+        }
+        setText(QString::fromUtf8(newurl.toEncoded()));
+    }
     setCursorPosition(0);
 }
 

@@ -222,7 +222,7 @@ void BrowserApplication::messageReceived(QLocalSocket *socket)
         return;
 
     // Got a normal url
-    if (!message.startsWith(QLatin1String("aroramessage://"))) {
+    if (!message.startsWith(QLatin1String("arora://"))) {
         QSettings settings;
         settings.beginGroup(QLatin1String("tabs"));
         TabWidget::OpenUrlIn tab = TabWidget::OpenUrlIn(settings.value(QLatin1String("openLinksFromAppsIn"), TabWidget::NewSelectedTab).toInt());
@@ -234,37 +234,48 @@ void BrowserApplication::messageReceived(QLocalSocket *socket)
         }
         mainWindow()->tabWidget()->loadString(message, tab);
         return;
-    }
+    } else {
+        if (message.startsWith(QLatin1String("arora://getwinid"))) {
+        #ifdef Q_OS_WIN
+            QString winid = QString(QLatin1String("%1")).arg((qlonglong)mainWindow()->winId());
+        #else
+            mainWindow()->show();
+            mainWindow()->setFocus();
+            mainWindow()->raise();
+            mainWindow()->activateWindow();
+            alert(mainWindow());
+            QString winid;
+        #endif
+        #ifdef BROWSERAPPLICATION_DEBUG
+            qDebug() << "BrowserApplication::" << __FUNCTION__ << "sending win id" << winid << mainWindow()->winId();
+        #endif
+            QString message = QLatin1String("arora://winid/") + winid;
+            socket->write(message.toUtf8());
+            socket->waitForBytesWritten();
+            return;
+	}
 
-    if (message.startsWith(QLatin1String("aroramessage://getwinid"))) {
-#ifdef Q_OS_WIN
-        QString winid = QString(QLatin1String("%1")).arg((qlonglong)mainWindow()->winId());
-#else
-        mainWindow()->show();
-        mainWindow()->setFocus();
-        mainWindow()->raise();
-        mainWindow()->activateWindow();
-        alert(mainWindow());
-        QString winid;
-#endif
-#ifdef BROWSERAPPLICATION_DEBUG
-        qDebug() << "BrowserApplication::" << __FUNCTION__ << "sending win id" << winid << mainWindow()->winId();
-#endif
-        QString message = QLatin1String("aroramessage://winid/") + winid;
-        socket->write(message.toUtf8());
-        socket->waitForBytesWritten();
-        return;
-    }
-
-    if (message.startsWith(QLatin1String("aroramessage://winid"))) {
-        QString winid = message.mid(21);
-#ifdef BROWSERAPPLICATION_DEBUG
-        qDebug() << "BrowserApplication::" << __FUNCTION__ << "got win id:" << winid;
-#endif
-#ifdef Q_OS_WIN
-        WId wid = (WId)winid.toLongLong();
-        SetForegroundWindow(wid);
-#endif
+       if (message.startsWith(QLatin1String("arora://winid"))) {
+            QString winid = message.mid(21);
+        #ifdef BROWSERAPPLICATION_DEBUG
+            qDebug() << "BrowserApplication::" << __FUNCTION__ << "got win id:" << winid;
+        #endif
+        #ifdef Q_OS_WIN
+            WId wid = (WId)winid.toLongLong();
+            SetForegroundWindow(wid);
+        #endif
+            return;
+        }
+        QSettings settings;
+        settings.beginGroup(QLatin1String("tabs"));
+        TabWidget::OpenUrlIn tab = TabWidget::OpenUrlIn(settings.value(QLatin1String("openLinksFromAppsIn"), TabWidget::NewSelectedTab).toInt());
+        settings.endGroup();
+        if (QUrl(message) == m_lastAskedUrl
+                && m_lastAskedUrlDateTime.addSecs(10) > QDateTime::currentDateTime()) {
+            qWarning() << "Possible recursive openUrl called, ignoring url:" << m_lastAskedUrl;
+            return;
+        }
+        mainWindow()->tabWidget()->loadString(message, tab);
         return;
     }
 }

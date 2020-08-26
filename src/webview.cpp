@@ -532,7 +532,17 @@ void WebView::loadUrl(const QUrl &url, const QString &title)
         emit titleChanged(tr("Loading..."));
     else
         emit titleChanged(title);
-    load(url);
+    QUrl oldurl = QUrl(url.toString());
+    QUrl newurl = QUrl(url.toString());
+    if(newurl.toString().startsWith(QLatin1String("arora://"))) {
+        QString url_tmp = newurl.toString().mid(8);
+        newurl = QUrl(QLatin1String("qrc:/") + url_tmp);
+        QString urlstr = newurl.toString();
+        if(!urlstr.endsWith(QLatin1String(".html"))) {
+            newurl = QUrl(urlstr + QLatin1String(".html"));
+        }
+    }
+    load(newurl);
 }
 
 QString WebView::lastStatusBarText() const
