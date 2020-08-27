@@ -92,7 +92,7 @@ void AutoFillManager::loadSettings()
 
 QString AutoFillManager::autoFillDataFile()
 {
-    QString fileName = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/data/Arora";
+    QString fileName = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/data/Endorphin";
     fileName += QLatin1String("/autofill.dat");
     return fileName;
 }

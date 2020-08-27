@@ -6,7 +6,7 @@ CONFIG += qtestlib
 include($$PWD/../src/src.pri)
 include($$PWD/modeltest/modeltest.pri)
 
-HEADERS += qtest_arora.h
+HEADERS += qtest_endorphin.h
 
 DEFINES += AUTOTESTS
 

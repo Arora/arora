@@ -1,8 +1,8 @@
 <!DOCTYPE RCC><RCC version="1.0">
 <qresource>
-    <file>128x128/arora.png</file>
+    <file>128x128/endorphin.png</file>
     <file>128x128/run.png</file>
-    <file>arora.svg</file>
+    <file>endorphin.svg</file>
     <file>defaultbookmarks.xbel</file>
     <file>fetchLinks.js</file>
     <file>parseForms.js</file>

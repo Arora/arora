@@ -1,0 +1,3 @@
+?package(endorphin):needs="x11" section="Applications/Network/Web Browsing" \
+  title="Endorphin" longtitle="Endorphin Web Browser" \
+  command="endorphin" icon="/usr/share/pixmaps/endorphin.xpm"

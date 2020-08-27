@@ -56,23 +56,23 @@ void JavaScriptExternalObject::AddSearchProvider(const QString &url)
 }
 
 Q_DECLARE_METATYPE(OpenSearchEngine*)
-JavaScriptAroraObject::JavaScriptAroraObject(QObject *parent)
+JavaScriptEndorphinObject::JavaScriptEndorphinObject(QObject *parent)
     : QObject(parent)
 {
     static const char *translations[] = {
-        QT_TR_NOOP("Welcome to Arora!"),
-        QT_TR_NOOP("Arora Start"),
+        QT_TR_NOOP("Welcome to Endorphin!"),
+        QT_TR_NOOP("Endorphin Start"),
         QT_TR_NOOP("Search!"),
         QT_TR_NOOP("Search the web with"),
         QT_TR_NOOP("Search results provided by"),
-        QT_TR_NOOP("About Arora")
+        QT_TR_NOOP("About Endorphin")
     };
     Q_UNUSED(translations);
 
     qRegisterMetaType<OpenSearchEngine*>("OpenSearchEngine*");
 }
 
-QString JavaScriptAroraObject::translate(const QString &string)
+QString JavaScriptEndorphinObject::translate(const QString &string)
 {
     QString translatedString = tr(string.toUtf8().constData());
 
@@ -85,12 +85,12 @@ QString JavaScriptAroraObject::translate(const QString &string)
         return qApp->tr(string.toUtf8().constData());
 }
 
-QObject *JavaScriptAroraObject::currentEngine() const
+QObject *JavaScriptEndorphinObject::currentEngine() const
 {
     return ToolbarSearch::openSearchManager()->currentEngine();
 }
 
-QString JavaScriptAroraObject::searchUrl(const QString &string) const
+QString JavaScriptEndorphinObject::searchUrl(const QString &string) const
 {
     return QString::fromUtf8(ToolbarSearch::openSearchManager()->currentEngine()->searchUrl(string).toEncoded());
 }
@@ -99,7 +99,7 @@ WebPage::WebPage(QObject *parent)
     : WebPageProxy(parent)
     , m_openTargetBlankLinksIn(TabWidget::NewWindow)
     , m_javaScriptExternalObject(0)
-    , m_javaScriptAroraObject(0)
+    , m_javaScriptEndorphinObject(0)
 {
     setPluginFactory(webPluginFactory());
     NetworkAccessManagerProxy *networkManagerProxy = new NetworkAccessManagerProxy(this);
@@ -176,10 +176,10 @@ void WebPage::addExternalBinding(QWebFrame *frame)
         if (frame->url().scheme() == QLatin1String("qrc")
             && frame->url().path() == QLatin1String("/startpage.html")) {
 
-            if (!m_javaScriptAroraObject)
-                m_javaScriptAroraObject = new JavaScriptAroraObject(this);
+            if (!m_javaScriptEndorphinObject)
+                m_javaScriptEndorphinObject = new JavaScriptEndorphinObject(this);
 
-            frame->addToJavaScriptWindowObject(QLatin1String("arora"), m_javaScriptAroraObject);
+            frame->addToJavaScriptWindowObject(QLatin1String("endorphin"), m_javaScriptEndorphinObject);
         }
     } else { // called from QWebPage::frameCreated
         connect(frame, SIGNAL(javaScriptWindowObjectCleared()),
@@ -401,7 +401,7 @@ void WebPage::handleUnsupportedContent(QNetworkReply *reply)
     html = html.arg(title,
                     reply->errorString(),
                     tr("When connecting to: %1.").arg(QString::fromUtf8(replyUrl.toEncoded())),
-                    tr("Check the address for errors such as <b>ww</b>.arora-browser.org instead of <b>www</b>.arora-browser.org"),
+                    tr("Check the address for errors such as <b>ww</b>.example.com instead of <b>www</b>.example.com"),
                     tr("If the address is correct, try checking the network connection."),
                     tr("If your computer or network is protected by a firewall or proxy, make sure that the browser is permitted to access the network."));
     notFoundFrame->setHtml(html, replyUrl);

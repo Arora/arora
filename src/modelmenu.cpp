@@ -63,7 +63,7 @@
 
 #include "modelmenu.h"
 
-// option to remove the browserapplication for arora-placesimport
+// option to remove the browserapplication for endorphin-placesimport
 #ifndef NO_BROWSERAPPLICATION
 #include "browserapplication.h"
 #endif

@@ -28,7 +28,7 @@
      <item row="1" column="1" >
       <widget class="LineEdit" name="leftLineEdit" >
        <property name="text" >
-        <string>Foo Bar Baz Arora LineEdit Manual Test This is the end</string>
+        <string>Foo Bar Baz Endorphin LineEdit Manual Test This is the end</string>
        </property>
       </widget>
      </item>
@@ -45,14 +45,14 @@
      <item row="2" column="1" >
       <widget class="LineEdit" name="rightLineEdit" >
        <property name="text" >
-        <string>Foo Bar Baz Arora LineEdit Manual Test This is the end</string>
+        <string>Foo Bar Baz Endorphin LineEdit Manual Test This is the end</string>
        </property>
       </widget>
      </item>
      <item row="0" column="1" >
       <widget class="LineEdit" name="emptyLineEdit" >
        <property name="text" >
-        <string>Foo Bar Baz Arora LineEdit Manual Test This is the end</string>
+        <string>Foo Bar Baz Endorphin LineEdit Manual Test This is the end</string>
        </property>
       </widget>
      </item>
@@ -106,7 +106,7 @@
      <item>
       <widget class="LineEdit" name="lineEdit" >
        <property name="text" >
-        <string>Foo Bar Baz Arora LineEdit Manual Test</string>
+        <string>Foo Bar Baz Endorphin LineEdit Manual Test</string>
        </property>
       </widget>
      </item>

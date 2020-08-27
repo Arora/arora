@@ -89,7 +89,7 @@ void LocationBar::webViewUrlChanged(const QUrl &url)
     } else {
         QUrl newurl = QUrl(url.toString());
         QString url_tmp = newurl.toString().mid(5);
-        newurl = QUrl(QLatin1String("arora://") + url_tmp);
+        newurl = QUrl(QLatin1String("endorphin://") + url_tmp);
         QString urlstr = newurl.toString();
         if(urlstr.endsWith(QLatin1String(".html"))) {
             urlstr.chop(5);

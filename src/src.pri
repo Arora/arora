@@ -126,7 +126,7 @@ mac {
 include(../webkittrunk.pri)
 
 unix {
-    PKGDATADIR = $$DATADIR/arora
+    PKGDATADIR = $$DATADIR/endorphin
     DEFINES += DATADIR=\\\"$$DATADIR\\\" PKGDATADIR=\\\"$$PKGDATADIR\\\"
 }
 

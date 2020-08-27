@@ -1,7 +1,7 @@
 The utils directory is a collection of classes:
-- They are stand alone classes with no dependency on Arora or each other.
+- They are stand alone classes with no dependency on Endorphin or each other.
 - Provide functionality that can not be found in Qt.
 - Licensed under the BSD or public domain.
 - Have auto tests and or manual tests were applicable.
 
-The purpose of the utils classes is to provide functionality that is missing from Qt, but not specific to Arora.  For example the SqueezeLabel provides a QLabel that can take a string larger than the size of the widget and insert "..." in the middle to squeeze the text into the size of the widget.  Such a class could be useful for many Qt application and might even be a feature added to Qt one day.
+The purpose of the utils classes is to provide functionality that is missing from Qt, but not specific to Endorphin.  For example the SqueezeLabel provides a QLabel that can take a string larger than the size of the widget and insert "..." in the middle to squeeze the text into the size of the widget.  Such a class could be useful for many Qt application and might even be a feature added to Qt one day.

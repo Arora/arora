@@ -1172,7 +1172,7 @@ void BrowserMainWindow::updateWindowTitle(const QString &title)
 #if defined(Q_WS_MAC)
         setWindowTitle(title);
 #else
-        setWindowTitle(tr("%1 - Arora", "Page title and Browser name").arg(title));
+        setWindowTitle(tr("%1 - Endorphin", "Page title and Browser name").arg(title));
 #endif
     }
 }

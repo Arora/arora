@@ -1,4 +1,4 @@
-# To build Arora against WebKit trunk:
+# To build Endorphin against WebKit trunk:
 #   export QT_WEBKIT=webkit_trunk
 #   export WEBKITDIR=$HOME/dev/webkit
 #

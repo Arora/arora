@@ -1,6 +1,6 @@
 # Git hooks
 
-These are various git hooks that are used to help improve the quality of Arora.
+These are various git hooks that are used to help improve the quality of Endorphin.
 
 They are managed using the [git-hooks tool](https://github.com/AaronDewes/git-hooks).
 

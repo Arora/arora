@@ -1,8 +1,8 @@
 TEMPLATE = app
 
-TARGET = arora
+TARGET = endorphin
 mac {
-    TARGET = Arora
+    TARGET = Endorphin
     QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.10
 }
 
@@ -27,28 +27,28 @@ unix {
     translations.files += .qm/locale
 
     desktop.path = $$DATADIR/applications
-    desktop.files += arora.desktop
+    desktop.files += endorphin.desktop
 
     iconxpm.path = $$DATADIR/pixmaps
-    iconxpm.files += data/arora.xpm
+    iconxpm.files += data/endorphin.xpm
 
     iconsvg.path = $$DATADIR/icons/hicolor/scalable/apps
-    iconsvg.files += data/arora.svg
+    iconsvg.files += data/endorphin.svg
 
     icon16.path = $$DATADIR/icons/hicolor/16x16/apps
-    icon16.files += data/16x16/arora.png
+    icon16.files += data/16x16/endorphin.png
 
     icon32.path = $$DATADIR/icons/hicolor/32x32/apps
-    icon32.files += data/32x32/arora.png
+    icon32.files += data/32x32/endorphin.png
 
     icon128.path = $$DATADIR/icons/hicolor/128x128/apps
-    icon128.files += data/128x128/arora.png
+    icon128.files += data/128x128/endorphin.png
 
     man.path = $$DATADIR/man/man1
-    man.files += data/arora.1
+    man.files += data/endorphin.1
 
     man-compress.path = $$DATADIR/man/man1
-    man-compress.extra = "" "gzip -9 -f \$(INSTALL_ROOT)/$$DATADIR/man/man1/arora.1" ""
+    man-compress.extra = "" "gzip -9 -f \$(INSTALL_ROOT)/$$DATADIR/man/man1/endorphin.1" ""
     man-compress.depends = install_man
 
     GNOME_DEFAULT_APPS_PATH = $$system(pkg-config --variable=defappsdir gnome-default-applications)
@@ -57,7 +57,7 @@ unix {
         INSTALLS += gnome-default-app
 
         gnome-default-app.path = $$GNOME_DEFAULT_APPS_PATH
-        gnome-default-app.files = data/arora.xml
+        gnome-default-app.files = data/endorphin.xml
     }
 }
 }

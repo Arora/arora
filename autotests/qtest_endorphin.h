@@ -17,8 +17,8 @@
  * Boston, MA  02110-1301  USA
  */
 
-#ifndef QTEST_ARORA_H
-#define QTEST_ARORA_H
+#ifndef QTEST_ENDORPHIN_H
+#define QTEST_ENDORPHIN_H
 
 #include <QtTest/QtTest>
 

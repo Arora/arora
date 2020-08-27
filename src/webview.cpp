@@ -534,8 +534,8 @@ void WebView::loadUrl(const QUrl &url, const QString &title)
         emit titleChanged(title);
     QUrl oldurl = QUrl(url.toString());
     QUrl newurl = QUrl(url.toString());
-    if(newurl.toString().startsWith(QLatin1String("arora://"))) {
-        QString url_tmp = newurl.toString().mid(8);
+    if(newurl.toString().startsWith(QLatin1String("endorphin://"))) {
+        QString url_tmp = newurl.toString().mid(12);
         newurl = QUrl(QLatin1String("qrc:/") + url_tmp);
         QString urlstr = newurl.toString();
         if(!urlstr.endsWith(QLatin1String(".html"))) {

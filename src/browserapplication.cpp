@@ -103,9 +103,9 @@ BrowserApplication::BrowserApplication(int &argc, char **argv)
     : SingleApplication(argc, argv)
     , quitting(false)
 {
-    QCoreApplication::setOrganizationDomain(QLatin1String("arora-browser.org"));
-    QCoreApplication::setApplicationName(QLatin1String("Arora"));
-    QCoreApplication::setApplicationVersion(QLatin1String("0.12.0"
+    QCoreApplication::setOrganizationDomain(QLatin1String("aarondewes.github.io/endorphin/"));
+    QCoreApplication::setApplicationName(QLatin1String("Endorphin"));
+    QCoreApplication::setApplicationVersion(QLatin1String("0.12.1"
 #ifdef GITVERSION
     " (Git: " GITCHANGENUMBER " " GITVERSION ")"
 #endif
@@ -120,13 +120,13 @@ BrowserApplication::BrowserApplication(int &argc, char **argv)
         QString message = parseArgumentUrl(args.last());
         sendMessage(message.toUtf8());
     }
-    // If we could connect to another Arora then exit
-    QString message = QString(QLatin1String("aroramessage://getwinid"));
+    // If we could connect to another Endorphin then exit
+    QString message = QString(QLatin1String("endorphin://getwinid"));
     if (sendMessage(message.toUtf8(), 500))
         return;
 
 #ifdef BROWSERAPPLICATION_DEBUG
-    qDebug() << "BrowserApplication::" << __FUNCTION__ << "I am the only arora";
+    qDebug() << "BrowserApplication::" << __FUNCTION__ << "I am the only endorphin";
 #endif
 
     // not sure what else to do...
@@ -158,7 +158,7 @@ BrowserApplication::BrowserApplication(int &argc, char **argv)
 
     // setting this in the postLaunch actually takes a lot more time
     // because the event has to be propagated to everyone.
-    setWindowIcon(QIcon(QLatin1String(":128x128/arora.png")));
+    setWindowIcon(QIcon(QLatin1String(":128x128/endorphin.png")));
 
 #ifndef AUTOTESTS
     QTimer::singleShot(0, this, SLOT(postLaunch()));
@@ -222,7 +222,7 @@ void BrowserApplication::messageReceived(QLocalSocket *socket)
         return;
 
     // Got a normal url
-    if (!message.startsWith(QLatin1String("arora://"))) {
+    if (!message.startsWith(QLatin1String("endorphin://"))) {
         QSettings settings;
         settings.beginGroup(QLatin1String("tabs"));
         TabWidget::OpenUrlIn tab = TabWidget::OpenUrlIn(settings.value(QLatin1String("openLinksFromAppsIn"), TabWidget::NewSelectedTab).toInt());
@@ -235,7 +235,7 @@ void BrowserApplication::messageReceived(QLocalSocket *socket)
         mainWindow()->tabWidget()->loadString(message, tab);
         return;
     } else {
-        if (message.startsWith(QLatin1String("arora://getwinid"))) {
+        if (message.startsWith(QLatin1String("endorphin://getwinid"))) {
         #ifdef Q_OS_WIN
             QString winid = QString(QLatin1String("%1")).arg((qlonglong)mainWindow()->winId());
         #else
@@ -249,13 +249,13 @@ void BrowserApplication::messageReceived(QLocalSocket *socket)
         #ifdef BROWSERAPPLICATION_DEBUG
             qDebug() << "BrowserApplication::" << __FUNCTION__ << "sending win id" << winid << mainWindow()->winId();
         #endif
-            QString message = QLatin1String("arora://winid/") + winid;
+            QString message = QLatin1String("endorphin://winid/") + winid;
             socket->write(message.toUtf8());
             socket->waitForBytesWritten();
             return;
 	}
 
-       if (message.startsWith(QLatin1String("arora://winid"))) {
+       if (message.startsWith(QLatin1String("endorphin://winid"))) {
             QString winid = message.mid(21);
         #ifdef BROWSERAPPLICATION_DEBUG
             qDebug() << "BrowserApplication::" << __FUNCTION__ << "got win id:" << winid;
@@ -473,7 +473,7 @@ bool BrowserApplication::restoreLastSession()
         settings.beginGroup(QLatin1String("MainWindow"));
         if (settings.value(QLatin1String("restoring"), false).toBool()) {
             QMessageBox::StandardButton result = QMessageBox::question(0, tr("Restore failed"),
-                tr("Arora crashed while trying to restore this session.  Should I try again?"), QMessageBox::Yes | QMessageBox::No);
+                tr("Endorphin crashed while trying to restore this session.  Should I try again?"), QMessageBox::Yes | QMessageBox::No);
             if (result == QMessageBox::No)
                 return false;
         }
@@ -665,7 +665,7 @@ QString BrowserApplication::installedDataDirectory()
 
 QString BrowserApplication::dataFilePath(const QString &fileName)
 {
-    QString directory = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/data/Arora";
+    QString directory = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/data/Endorphin";
     if (directory.isEmpty())
         directory = QDir::homePath() + QLatin1String("/.") + QCoreApplication::applicationName();
     if (!QFile::exists(directory)) {

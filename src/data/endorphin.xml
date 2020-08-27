@@ -3,10 +3,10 @@
 <default-apps>
   <web-browsers>
     <web-browser>
-      <name>Arora</name>
-      <executable>arora</executable>
-      <command>arora %s</command>
-      <icon-name>arora</icon-name>
+      <name>Endorphin</name>
+      <executable>endorphin</executable>
+      <command>endorphin %s</command>
+      <icon-name>endorphin</icon-name>
       <run-in-terminal>false</run-in-terminal>
       <netscape-remote>false</netscape-remote>
     </web-browser>

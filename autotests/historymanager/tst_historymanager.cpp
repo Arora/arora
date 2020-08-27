@@ -18,7 +18,7 @@
  */
 
 #include <QtTest/QtTest>
-#include "qtest_arora.h"
+#include "qtest_endorphin.h"
 
 #include <historymanager.h>
 #include <history.h>

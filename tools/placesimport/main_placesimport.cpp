@@ -42,11 +42,11 @@ static HistoryEntry formatEntry(QByteArray url, QByteArray title, qlonglong prda
 int main(int argc, char **argv)
 {
     SingleApplication application(argc, argv);
-    QCoreApplication::setOrganizationDomain(QLatin1String("arora-browser.org"));
-    QCoreApplication::setApplicationName(QLatin1String("Arora"));
+    QCoreApplication::setOrganizationDomain(QLatin1String("aarondewes.github.io/endorphin/"));
+    QCoreApplication::setApplicationName(QLatin1String("Endorphin"));
 
     if (application.sendMessage(QByteArray())) {
-        qWarning() << "To prevent the loss of any history please exit Arora while this is tool is being run";
+        qWarning() << "To prevent the loss of any history please exit Endorphin while this is tool is being run";
         return 1;
     }
 
@@ -54,8 +54,8 @@ int main(int argc, char **argv)
     args.takeFirst();
     if (args.isEmpty()) {
         QTextStream stream(stdout);
-        stream << "arora-placesimport is a tool for importing browser history from Firefox 3 and up" << endl;
-        stream << "arora-placesinfo ~/.mozilla/firefox/[profile-dir]/places.sqlite" << endl;
+        stream << "endorphin-placesimport is a tool for importing browser history from Firefox 3 and up" << endl;
+        stream << "endorphin-placesinfo ~/.mozilla/firefox/[profile-dir]/places.sqlite" << endl;
         return 0;
     }
 

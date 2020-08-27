@@ -26,17 +26,24 @@
  * SUCH DAMAGE.
  */
 
-#include "arorawebplugin.h"
+#ifndef ENDORPHINWEBPLUGIN_H
+#define ENDORPHINWEBPLUGIN_H
 
-AroraWebPlugin::AroraWebPlugin()
-{
-}
+#include <qwebpluginfactory.h>
 
-AroraWebPlugin::~AroraWebPlugin()
+class EndorphinWebPlugin
 {
-}
 
-bool AroraWebPlugin::isAnonymous() const
-{
-    return false;
-}
+public:
+    EndorphinWebPlugin();
+    virtual ~EndorphinWebPlugin();
+
+    virtual QWebPluginFactory::Plugin metaPlugin() = 0;
+    virtual QWidget *create(const QString &mimeType, const QUrl &url,
+                            const QStringList &argumentNames, const QStringList &argumentValues) = 0;
+    virtual void configure() = 0;
+    virtual bool isAnonymous() const;
+};
+
+#endif // ENDORPHINWEBPLUGIN_H
+

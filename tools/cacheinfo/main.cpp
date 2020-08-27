@@ -32,15 +32,15 @@ public:
 int main(int argc, char **argv)
 {
     QCoreApplication application(argc, argv);
-    QCoreApplication::setOrganizationDomain(QLatin1String("arora-browser.org"));
-    QCoreApplication::setApplicationName(QLatin1String("Arora"));
+    QCoreApplication::setOrganizationDomain(QLatin1String("aarondewes.github.io/endorphin/"));
+    QCoreApplication::setApplicationName(QLatin1String("Endorphin"));
 
     QStringList args = application.arguments();
     args.takeFirst();
     if (args.isEmpty()) {
         QTextStream stream(stdout);
-        stream << "arora-cacheinfo is a tool for viewing and extracting information out of Arora cache files." << Qt::endl;
-        stream << "arora-cacheinfo [-o cachefile] [file | url]" << Qt::endl;
+        stream << "endorphin-cacheinfo is a tool for viewing and extracting information out of Endorphin cache files." << Qt::endl;
+        stream << "endorphin-cacheinfo [-o cachefile] [file | url]" << Qt::endl;
         return 0;
     }
 

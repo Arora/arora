@@ -7,22 +7,22 @@
         //<![CDATA[
         function update()
         {
-            var searchEngine = window.arora.currentEngine;
+            var searchEngine = window.endorphin.currentEngine;
 
-            document.title = window.arora.translate('Welcome to Arora!');
-            document.getElementById('headerTitle').innerHTML = window.arora.translate('Arora Start');
-            document.getElementById('searchButton').value = window.arora.translate('Search!');
-            document.getElementById('footer').innerHTML = window.arora.translate('Search results provided by') + ' '
-                                                          + searchEngine.name + ' | ' + '<a href="http://arora-browser.org/">'
-                                                          + window.arora.translate('About Arora') + '</a>';
-            document.getElementById('lineEdit').placeholder = window.arora.translate('Search the Web with') + ' ' + searchEngine.name;
+            document.title = window.endorphin.translate('Welcome to Endorphin!');
+            document.getElementById('headerTitle').innerHTML = window.endorphin.translate('Endorphin Start');
+            document.getElementById('searchButton').value = window.endorphin.translate('Search!');
+            document.getElementById('footer').innerHTML = window.endorphin.translate('Search results provided by') + ' '
+                                                          + searchEngine.name + ' | ' + '<a href="http://aarondewes.github.io/endorphin/">'
+                                                          + window.endorphin.translate('About Endorphin') + '</a>';
+            document.getElementById('lineEdit').placeholder = window.endorphin.translate('Search the Web with') + ' ' + searchEngine.name;
 
             // Try to change the direction of the page:
             //   This string is defined in QApplication
             //   src/gui/kernel/qapplication.cpp#qt_detectRTLLanguage()
             //   it should contain LTR or RTL
 
-            var newDir = window.arora.translate('QT_LAYOUT_DIRECTION');
+            var newDir = window.endorphin.translate('QT_LAYOUT_DIRECTION');
             newDir = newDir.toLowerCase();
             if ((newDir != 'ltr') && (newDir != 'rtl'))
                 newDir = 'ltr';
@@ -36,7 +36,7 @@
             if (string.length == 0)
                 return;
 
-            var url = window.arora.searchUrl(string);
+            var url = window.endorphin.searchUrl(string);
             window.location.href = url;
         }
         //]]>
@@ -45,7 +45,7 @@
 <body onload="document.forms[0].lineEdit.select(); update();">
     <div id="header">
         <h1 id="headerTitle"></h1>
-        <img src="qrc:/arora.svg" alt="Arora">
+        <img src="qrc:/endorphin.svg" alt="Endorphin">
     </div>
     <div id="search">
         <form action="javascript:formSubmitted();">

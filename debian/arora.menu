@@ -1,3 +1,0 @@
-?package(arora):needs="x11" section="Applications/Network/Web Browsing" \
-  title="Arora" longtitle="Arora Web Browser" \
-  command="arora" icon="/usr/share/pixmaps/arora.xpm"

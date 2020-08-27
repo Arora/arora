@@ -3,9 +3,9 @@
 # This script requires the use of the macdeployqt tool that is found in Qt 4.5
 #
 
-APP="Arora"
+APP="Endorphin"
 VERSION="0.12.1"
-#BACKGROUND="src/data/512x512/arora.png"
+#BACKGROUND="src/data/512x512/endorphin.png"
 
 DIR="bundle"
 if [ -d $DIR.app ] ; then

@@ -3,9 +3,9 @@ DEPENDPATH += $$PWD
 VPATH += $$PWD
 
 HEADERS += \
-  arorawebplugin.h \
+  endorphinwebplugin.h \
   webpluginfactory.h
 
 SOURCES += \
-  arorawebplugin.cpp \
+  endorphinwebplugin.cpp \
   webpluginfactory.cpp

@@ -1,6 +1,6 @@
 # Some common settings
 
-project(Arora)
+project(Endorphin)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
@@ -40,7 +40,7 @@ endif()
 add_definitions(-DGITVERSION=\"\\\"${GIT_REV}\\\"\")
 add_definitions(-DGITCHANGENUMBER=${GIT_CHANGENUMBER})
 # Add all files
-set(Arora_SRCS
+set(Endorphin_SRCS
 	aboutdialog.cpp
 	acceptlanguagedialog.cpp
 	autosaver.cpp
@@ -111,7 +111,7 @@ set(Arora_SRCS
 	opensearch/opensearchmanager.cpp
 	opensearch/opensearchreader.cpp
 	opensearch/opensearchwriter.cpp
-	qwebplugins/arorawebplugin.cpp
+	qwebplugins/endorphinwebplugin.cpp
 	qwebplugins/webpluginfactory.cpp
 	useragent/useragentmenu.cpp
 	utils/editlistview.cpp
@@ -126,7 +126,7 @@ set(Arora_SRCS
 	utils/webpageproxy.cpp
 )
 
-set(Arora_UIS
+set(Endorphin_UIS
 	aboutdialog.ui
 	autofilldialog.ui
 	acceptlanguagedialog.ui
@@ -144,18 +144,18 @@ set(Arora_UIS
 	network/cookiejar/cookiesexceptions.ui
 	opensearch/opensearchdialog.ui
 )
-QT5_WRAP_UI(UIS ${Arora_UIS})
+QT5_WRAP_UI(UIS ${Endorphin_UIS})
 
-set(Arora_RSCS
+set(Endorphin_RSCS
 	data/data.qrc
 	data/graphics/graphics.qrc
 	data/searchengines/searchengines.qrc
 	htmls/htmls.qrc
 	useragent/useragents.qrc
 )
-QT5_ADD_RESOURCES(RSCS ${Arora_RSCS})
+QT5_ADD_RESOURCES(RSCS ${Endorphin_RSCS})
 
-set(Arora_MOCS
+set(Endorphin_MOCS
 	aboutdialog.h
 	acceptlanguagedialog.h
 	autosaver.h
@@ -183,7 +183,7 @@ set(Arora_MOCS
 	webview.h
 	webviewsearch.h
 )
-QT5_WRAP_CPP(MOCS ${Arora_MOCS})
+QT5_WRAP_CPP(MOCS ${Endorphin_MOCS})
 
 # Translations
 qt5_create_translation(QM_FILES ${CMAKE_CURRENT_SOURCE_DIR}/locale/ast.ts)
@@ -220,16 +220,16 @@ qt5_create_translation(QM_FILES ${CMAKE_CURRENT_SOURCE_DIR}/locale/zh_CN.ts)
 qt5_create_translation(QM_FILES ${CMAKE_CURRENT_SOURCE_DIR}/locale/zh_TW.ts)
 
 # Generate executable
-add_executable(arora ${Arora_SRCS} ${UIS} ${RSCS} ${TRS} ${MOCS} ${QM_FILES})
-qt5_use_modules(arora Widgets)
-qt5_use_modules(arora Core)
-qt5_use_modules(arora Gui)
-qt5_use_modules(arora WebKit)
-qt5_use_modules(arora Network)
-qt5_use_modules(arora WebKitWidgets)
-qt5_use_modules(arora PrintSupport)
+add_executable(endorphin ${Endorphin_SRCS} ${UIS} ${RSCS} ${TRS} ${MOCS} ${QM_FILES})
+qt5_use_modules(endorphin Widgets)
+qt5_use_modules(endorphin Core)
+qt5_use_modules(endorphin Gui)
+qt5_use_modules(endorphin WebKit)
+qt5_use_modules(endorphin Network)
+qt5_use_modules(endorphin WebKitWidgets)
+qt5_use_modules(endorphin PrintSupport)
 
 if(Qt5UiTools_FOUND)
-	qt5_use_modules(arora UiTools)
+	qt5_use_modules(endorphin UiTools)
 endif()
-qt5_use_modules(arora Script)
+qt5_use_modules(endorphin Script)

@@ -123,7 +123,7 @@ void BookmarksManager::load()
         return;
     m_loaded = true;
 
-    QString dir = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/data/Arora";
+    QString dir = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/data/Endorphin";
     QString bookmarkFile = dir + QLatin1String("/bookmarks.xbel");
     if (!QFile::exists(bookmarkFile))
         bookmarkFile = QLatin1String(":defaultbookmarks.xbel");
@@ -184,7 +184,7 @@ void BookmarksManager::save() const
         return;
 
     XbelWriter writer;
-    QString dir = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/data/Arora";
+    QString dir = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/data/Endorphin";
     QString bookmarkFile = dir + QLatin1String("/bookmarks.xbel");
     // Save root folder titles in English (i.e. not localized)
     m_menu->title = QLatin1String(BOOKMARKMENU);
@@ -299,7 +299,7 @@ void BookmarksManager::importBookmarks()
         if (process.error() != QProcess::UnknownError) {
             if (process.error() == QProcess::FailedToStart) {
                 QMessageBox::warning(0, tr("htmlToXBel tool required"),
-                    tr("htmlToXBel tool, which is shipped with Arora and is needed to import HTML bookmarks, "
+                    tr("htmlToXBel tool, which is shipped with Endorphin and is needed to import HTML bookmarks, "
                        "is not installed or not available in the search paths."));
             } else {
                 QMessageBox::warning(0, tr("Loading Bookmark"),

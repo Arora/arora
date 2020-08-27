@@ -1,5 +1,5 @@
 lessThan(QT_VERSION, 5.0) {
-    error("Arora requires Qt 5.0 or greater")
+    error("Endorphin requires Qt 5.0 or greater")
 }
 
 TEMPLATE = subdirs

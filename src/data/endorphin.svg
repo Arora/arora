@@ -14,9 +14,9 @@
    id="svg2383"
    sodipodi:version="0.32"
    inkscape:version="0.46"
-   sodipodi:docname="arora.svg"
+   sodipodi:docname="endorphin.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
-   inkscape:export-filename="/home/jbache/icon/arora-16.png"
+   inkscape:export-filename="/home/jbache/icon/endorphin-16.png"
    inkscape:export-xdpi="22.5"
    inkscape:export-ydpi="22.5">
   <defs
@@ -302,7 +302,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title>Arora icon</dc:title>
+        <dc:title>Endorphin icon</dc:title>
         <dc:date>1/5/2008</dc:date>
         <dc:creator>
           <cc:Agent>
@@ -314,7 +314,7 @@
         <dc:description>Cute polar bear</dc:description>
         <dc:subject>
           <rdf:Bag>
-            <rdf:li>polar bear arora</rdf:li>
+            <rdf:li>polar bear endorphin</rdf:li>
           </rdf:Bag>
         </dc:subject>
       </cc:Work>

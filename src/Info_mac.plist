@@ -9,7 +9,7 @@
         <key>CFBundleGetInfoString</key>
         <string>Created by Qt/QMake</string>
         <key>CFBundleIdentifier</key>
-        <string>com.Arora.Arora</string>
+        <string>com.endorphin.Endorphin</string>
         <key>CFBundleSignature</key>
         <string>ttxt</string>
         <key>CFBundleExecutable</key>
@@ -38,6 +38,6 @@
                 </dict>
         </array>
         <key>NOTE</key>
-        <string>Arora Browser by the Arora team</string>
+        <string>Endorphin Browser by the Endorphin team</string>
 </dict>
 </plist>

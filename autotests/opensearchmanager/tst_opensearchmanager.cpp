@@ -19,7 +19,7 @@
 
 #include <QtTest/QtTest>
 
-#include "qtest_arora.h"
+#include "qtest_endorphin.h"
 
 #include "opensearchengine.h"
 #include "opensearchmanager.h"

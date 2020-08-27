@@ -1,13 +1,13 @@
 UNRELEASED:
 
 Fixed issues:
-    arora-placesimport sometimes resulted in an "Invalid cross-device link" error.
+    endorphin-placesimport sometimes resulted in an "Invalid cross-device link" error.
 
 Behind the scene:
     Add alternative CMake build system
         This is not final yet, and currently only works on Linux.
         When it is finished, it will replace qmake.
-        CMake currently reduces the size of arora-placesimport from about 2 MB to about 250 KB.
+        CMake currently reduces the size of endorphin-placesimport from about 2 MB to about 250 KB.
         This improvement will be added to QMake later.
 
 Other:
@@ -77,7 +77,7 @@ Build system:
     Add an application icon for os2.
     For finding the locale tools on os2 behave like win32
     When building in debug mode on OS2 just like with Windows enable the console.
-    Move Arora's hooks to the git-hooks format to utilize git-hooks (See: http://github.com/icefox/git-hooks)
+    Move Endorphin's hooks to the git-hooks format to utilize git-hooks (See: http://github.com/icefox/git-hooks)
     Default to lrelease and not lrelease-qt4 on non unix platforms.
     QMAKE_EXTRA_UNIX_TARGETS is deprecated; use QMAKE_EXTRA_TARGETS instead.
     Enable the raster graphics system by default for X11
@@ -92,7 +92,7 @@ Translation:
 
 0.10.2
 The major issues:
-    - When compiling with Qt 4.6 Arora had been using some API that changes
+    - When compiling with Qt 4.6 Endorphin had been using some API that changes
     shortly before the release of Qt 4.6.0 after an API review was done for
     the new API in QtWebKit.  This release changes the code to build with the
     final API that is found in Qt 4.6.0
@@ -102,7 +102,7 @@ The major issues:
 0.10.1
 The major issues:
     Issue: 666 Sites were showing a "SSL handshake failure". With the new NetworkAccessManagerProxy the signals were being sent to the proxy and not the primary networkaccessmanager.
-    Issue: 683: Arora crashes when using privacy mode.
+    Issue: 683: Endorphin crashes when using privacy mode.
 	When switching to private mode the primary networkaccessmanagers swaps cookiejar's which caused a segfault. Introduce a CookieJarProxy class which will pass the cookie requests to the primary networkaccessmanager's cookiejar.
 
 Translations:
@@ -140,16 +140,16 @@ Interface
 - Issue #650: Save the toolbar location allowing the toolbars to be next to each other
 - Add ctrl-z shortcut to undo the closing of the last tab.
 - Behave better when access keys are enabled by adding a slight delay to make sure that the ctrl is actually for access keys and not for another shortcut such as ctrl-tab or ctrl-a
-- When arora crashed on the previous startup give the user a way to bypass the failsafe and restore their session if they really want.
+- When endorphin crashed on the previous startup give the user a way to bypass the failsafe and restore their session if they really want.
 - Add the ability to set the length of a session cookie
 - Enable DNS prefetching and WebKit version in the about dialog when building against Qt 4.6.
 - Remember what tab you were on when you close the settings dialog
 - Add a browse button next to the style sheet line edit to help users find files and automatically translate them into url's.
 - Add icons to the menu actions on freedesktop systems.
 - Show the configure search engines action in the tools menu
-- Change default bookmarks to only have a link to htpp://arora-browser.org
+- Change default bookmarks to only have a link to htpp://endorphin-browser.org
     Removed all of Qt development type entries
-    From discussion on http://arorabrowser.blogspot.com/2009/08/arora-090.html and also the Kubuntu guys strip the bookmarks in their release so it make sense.
+    From discussion on http://endorphinbrowser.blogspot.com/2009/08/endorphin-090.html and also the Kubuntu guys strip the bookmarks in their release so it make sense.
 - Move the Preferences menu item to Tools|Options
 - Set placeholder text for the start page search box
 - Add a checkbox to hide/show hidden files in the directory listing.
@@ -163,7 +163,7 @@ Behind the scenes
 - Rename lineedit -> locationbar functions & variables
 - Enhance SingleApplication so that the host can send messages back to the second application.
     On Windows this is used to send the window id back to the application that was just started
-    so it can raise the arora window to the front.
+    so it can raise the endorphin window to the front.
 - Fix some old MSVC compile warnings
 - Make it possible to retranslate the bookmarks toolbar title
 - Set the maximumPagesInCache to 3 (default is 0) and provide a way for users to set this value through QSettings.
@@ -295,7 +295,7 @@ Behind the scenes
 - OpenSearch: localization improvements.
 
 Build system
-- Include an additional XML file in the installation, which will make Arora appear in Gnome Control Center on the list of available web browsers that can be set as default.
+- Include an additional XML file in the installation, which will make Endorphin appear in Gnome Control Center on the list of available web browsers that can be set as default.
 - Add man pages for the tools.
 - webkit.pri now supports building QtWebKit as a framework on mac.
 
@@ -317,7 +317,7 @@ Interface
 - Add a setting specifying if the application should quit when last tab is closed.
 - Revert the check for the Oxygen style so when under KDE4 Oxygen will be
 used even if it has issues.
-- Fix mid click to paste urls into Arora to have them be loaded
+- Fix mid click to paste urls into Endorphin to have them be loaded
 - Fix crash in Clear Privacy Dialog when cache is disabled
 - In the download manager change the "Ok" Button to "Close"
 - Fix the positioning of new tab and close tab buttons. Comparing to 0.6 they are just swapped now.
@@ -348,7 +348,7 @@ used even if it has issues.
 Behind the scenes
 - Add a subclass of QWebPluginFactory that can be used for managing QWebPlugin's
 - Add a static BrowserMainWindow::parentWindow(QWidget *) method that returns a main window being one of the passed widget's parents.
-- Move QTRY functions into their own header file as it has no dependency on Arora and can be used by tests that don't require BrowserApplication
+- Move QTRY functions into their own header file as it has no dependency on Endorphin and can be used by tests that don't require BrowserApplication
 - Mark strings as not translatable where it doesn't make sense
 - Move location bar site icon class into its own file
 - Move the privacy indicator out into its own class and file
@@ -372,17 +372,17 @@ Build system
 - When building by default don't have lrelase be verbose as it du/mps a lot of junk on the console
 - Add commit hook to do basic style checking on the files being commited
 - unset GIT_DIR to fix warnings that are printed to the console
-- When building Arora also don't allow casts to ascii to detect bugs.
-- Share compiled object files with the main arora binary to reduce build times
+- When building Endorphin also don't allow casts to ascii to detect bugs.
+- Share compiled object files with the main endorphin binary to reduce build times
 
 
 0.6.1
-When using Arora with Qt 4.5.1 after a little while pages will stop rendering.
+When using Endorphin with Qt 4.5.1 after a little while pages will stop rendering.
 This is because of a bug in 4.5.1 where renaming a file will cause the file
 descriptor to not be closed.  QNetworkDiskCache is a simple cache and uses
 QTemporaryFile's for each new cached file and eventually the kernel
 wont let QNetworkDiskCache open a cache file because all of the previous files were not
-closed.  When running against Qt 4.5.1 Arora will now disable the disk cache.
+closed.  When running against Qt 4.5.1 Endorphin will now disable the disk cache.
 
 
 0.6
@@ -406,7 +406,7 @@ Interface
 - Allow to close the browser with more than one window opened, which was previously impossible (it might be useful when you restore session on startup).
 - Revert to the default tab selection behavior after closing a tab to match other browsers
 - Middle button role should be inverted when "Select tabs and windows as they created" is selected
-- Add support for MidClick/Ctrl-Click/Shift-Ctrl-Click to all urls in Arora.  Be it in menus, toolbars, links and javascript links.
+- Add support for MidClick/Ctrl-Click/Shift-Ctrl-Click to all urls in Endorphin.  Be it in menus, toolbars, links and javascript links.
 - Add support for XButton1 and XButton2 to be back/forward on the webview
 - Add the ability to turn pop-up blocking off
 - More control to the users! Added a possibility to control where target="_blank" links will be opened and default to a new tab.
@@ -434,12 +434,12 @@ Behind the scenes
  - Re-code searchlineedit to just be a LineEdit subclass that has a search button and a clear button and nothing more.
  - Re-code the SearchButton to use the QCompleter, take up less width when there isn't one and use a QImage.
  - Update the toolbar search widget to use the completer rather then the old QMenu
-- Significantly improve the startup time of Arora.
+- Significantly improve the startup time of Endorphin.
 - Add new access functions to the DownloadItem data.
 - Move the ClearButton and SearchButton class into its own file
 - Fix searchbar for special chars such as '+'. This seems a bug in Qt's addQueryItem.  Workaround is to use addEncodedQueryItem.
 - delete the root bookmark node on exit to not generate errors in valgrind
-- fix memory leaks in the autotest to confirm that Arora's xbel doesn't have any leaks
+- fix memory leaks in the autotest to confirm that Endorphin's xbel doesn't have any leaks
 - Only clear the cookies if we have loaded them
 - In ModelMenu rather then all submenu's being QMenu let them be specified by the implementation and as the default use ModelMenu.
 - Add new menumodel manualtest
@@ -503,7 +503,7 @@ Behind the scenes
 - The error web pages are now translatable.
 - Encode urls rather then use toString in various places to prevent loss of url data.
 - When using foreach try to use a const reference so a copy isn't made (slower) compared to the reference (faster).
-- Add a new tool to convert bookmarks that are in the html format into the XBel format (not used in Arora yet).
+- Add a new tool to convert bookmarks that are in the html format into the XBel format (not used in Endorphin yet).
 - Various code style and general keeping the code clean fixes
 - Add Implementation to get the current username on Windows for the single application
 
@@ -519,7 +519,7 @@ Interface
 - Make middle click on bookmarks menus open the user in a new tab.
 - Added the ability to change the language from the Help menu.
 - Double left click location bar selects all of the text.
-- Incorporate Jens Explorer style into Arora on Window for a better look and feel on XP and Vista. http://labs.trolltech.com/blogs/2007/06/08/explorer-style-toolbars/
+- Incorporate Jens Explorer style into Endorphin on Window for a better look and feel on XP and Vista. http://labs.trolltech.com/blogs/2007/06/08/explorer-style-toolbars/
 - Change the "icon" on the next/prev search for RTL desktops: next points to the right, and previous points to the right
 - Various RightToLeft fixes for for Mozilla's bug https://bugzilla.mozilla.org/show_bug.cgi?id=219070
 - When the url scheme is https make the location bar background turn yellow.
@@ -567,15 +567,15 @@ Build system
 - Tweak action accelerators (the same ones were being used)
 
 Build system
-- Allow building Arora with both Debug/Release of WebKit trunk
+- Allow building Endorphin with both Debug/Release of WebKit trunk
 - Only include the sha1 and change number in the version when using git.
-- Create utils directory to contain non-Arora specific classes
+- Create utils directory to contain non-Endorphin specific classes
 - Run desktop file through desktop-file-validate and correct the errors
 
 Autotests
 - Add QTRY_COMPARE and QTRY_VERIFY for the autotests to use.
-- add AUTOTESTS define when running autotests to prevent accessing running arora's and sending url's to it
-- Fix autotest failures (test related, not arora)
+- add AUTOTESTS define when running autotests to prevent accessing running endorphin's and sending url's to it
+- Fix autotest failures (test related, not endorphin)
 - Detect which version of qmake to use when building the autotests
 - Give a 1 second punishment if there is no autotest for the source file that was changed
 - Emit a warning of a file doesn't have a matching autotest
@@ -590,6 +590,6 @@ Autotests
  - New reset dialog
  - New about dialog
  - Add search banner
- - Rename to Arora and a new application icon
+ - Rename to Endorphin and a new application icon
  - Project specific git hooks
  - Branch from the Qt demo browser with new autotests and manualtests

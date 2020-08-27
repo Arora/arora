@@ -133,17 +133,7 @@
       </sizepolicy>
      </property>
      <property name="text">
-      <string>&lt;html&gt;
-&lt;body style=&quot; font-size:9pt;&quot;&gt;
-&lt;p&gt;
-Copyright © 2007-2010 Benjamin C. Meyer &amp;lt;
-&lt;a href=&quot;mailto:ben@meyerhome.net&quot;&gt;ben@meyerhome.net&lt;/a&gt;&amp;gt;
-&lt;/p&gt;
-&lt;p&gt;This is an unofficial fork by Aaron Dewes &amp;lt;
-&lt;a href=&quot;mailto:ben@meyerhome.net&quot;&gt;aaron.dewes@web.de&lt;/a&gt;&amp;gt;
-&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;Copyright © 2007-2010 Benjamin C. Meyer &amp;lt; &lt;/span&gt;&lt;a href=&quot;mailto:ben@meyerhome.net&quot;&gt;&lt;span style=&quot; font-size:9pt; text-decoration: underline; color:#0000ff;&quot;&gt;ben@meyerhome.net&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;&amp;gt; &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;Copyright © 2020 Aaron Dewes &amp;lt; &lt;/span&gt;&lt;a href=&quot;mailto:ben@meyerhome.net&quot;&gt;&lt;span style=&quot; font-size:9pt; text-decoration: underline; color:#0000ff;&quot;&gt;aaron.dewes@web.de&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;&amp;gt; &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>

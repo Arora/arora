@@ -21,7 +21,7 @@
 #include <QtGui/QtGui>
 #include <QAction>
 #include <QLineEdit>
-#include "qtest_arora.h"
+#include "qtest_endorphin.h"
 
 #include <tabwidget.h>
 #include <webview.h>

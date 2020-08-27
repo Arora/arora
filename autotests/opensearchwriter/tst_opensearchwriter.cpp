@@ -77,7 +77,7 @@ void tst_OpenSearchWriter::write_data()
             << QString() << OpenSearchEngine::Parameters() << OpenSearchEngine::Parameters()
             << QString() << QString("get") << QString(":/testfile1.xml");
 
-    QTest::newRow("testfile2") << QString("Arora!") << QString("a cross platform web browser built using Qt and WebKit")
+    QTest::newRow("testfile2") << QString("Endorphin!") << QString("a cross platform web browser built using Qt and WebKit")
             << QString("http://foobar.barfoo/search") << QString("http://foobar.barfoo/suggest") << QString()
             << OpenSearchEngine::Parameters() << OpenSearchEngine::Parameters()
             << QString("get") << QString("post") << QString(":/testfile2.xml");

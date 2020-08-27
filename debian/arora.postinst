@@ -1,8 +1,0 @@
-#!/bin/sh
-set -e
-
-update-alternatives --install \
-    /usr/bin/x-www-browser x-www-browser /usr/bin/arora 90 \
-        --slave /usr/share/man/man1/x-www-browser.1.gz x-www-browser.1.gz /usr/share/man/man1/arora.1.gz
-
-#DEBHELPER#

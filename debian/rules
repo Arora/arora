@@ -33,7 +33,7 @@ install: build
 	dh_testdir
 	dh_testroot
 	dh_clean -k 
-	cd builddir && $(MAKE) INSTALL_ROOT=$(CURDIR)/debian/arora install
+	cd builddir && $(MAKE) INSTALL_ROOT=$(CURDIR)/debian/endorphin install
 
 binary-indep: build install
 

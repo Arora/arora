@@ -2,10 +2,10 @@
 
 SetCompressor /SOLID /FINAL lzma
 
-!define PRODUCT_NAME "Arora"
+!define PRODUCT_NAME "Endorphin"
 !define /date PRODUCT_VERSION "0.12.1"
 ;!define /date PRODUCT_VERSION "Snapshot (%#m-%#d-%#Y)"
-!define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\arora.exe"
+!define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\endorphin.exe"
 !define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
 !define PRODUCT_UNINST_ROOT_KEY "HKLM"
 !define QTDIR "C:\Qt\qt-all-opensource-src-5.15.0"
@@ -18,7 +18,7 @@ SetCompressor /SOLID /FINAL lzma
 !insertmacro MUI_PAGE_WELCOME
 !insertmacro MUI_PAGE_DIRECTORY
 !insertmacro MUI_PAGE_INSTFILES
-!define MUI_FINISHPAGE_RUN "$INSTDIR\arora.exe"
+!define MUI_FINISHPAGE_RUN "$INSTDIR\endorphin.exe"
 !insertmacro MUI_PAGE_FINISH
 
 !insertmacro MUI_UNPAGE_CONFIRM
@@ -33,15 +33,15 @@ ShowInstDetails show
 ShowUnInstDetails show
 
 Section "Main Components"
-  KillProcDLL::KillProc "arora.exe"
+  KillProcDLL::KillProc "endorphin.exe"
   Sleep 100
   SetOverwrite on
 
   SetOutPath "$INSTDIR"
-  File "arora.exe"
+  File "endorphin.exe"
   File "tools\htmlToXbel\release\htmlToXBel.exe"
-  File "tools\cacheinfo\release\arora-cacheinfo.exe"
-  File "tools\placesimport\release\arora-placesimport.exe"
+  File "tools\cacheinfo\release\endorphin-cacheinfo.exe"
+  File "tools\placesimport\release\endorphin-placesimport.exe"
   File "${QTDIR}\lib\QtCore5.dll"
   File "${QTDIR}\lib\QtGui5.dll"
   File "${QTDIR}\lib\QtNetwork5.dll"
@@ -81,15 +81,15 @@ Section "Main Components"
 SectionEnd
 
 Section Icons
-  CreateShortCut "$SMPROGRAMS\Arora.lnk" "$INSTDIR\arora.exe"
+  CreateShortCut "$SMPROGRAMS\Endorphin.lnk" "$INSTDIR\endorphin.exe"
 SectionEnd
 
 Section Uninstaller
   WriteUninstaller "$INSTDIR\uninst.exe"
-  WriteRegStr HKLM "${PRODUCT_DIR_REGKEY}" "" "$INSTDIR\arora.exe"
+  WriteRegStr HKLM "${PRODUCT_DIR_REGKEY}" "" "$INSTDIR\endorphin.exe"
   WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "DisplayName" "$(^Name)"
   WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "UninstallString" "$INSTDIR\uninst.exe"
-  WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "DisplayIcon" "$INSTDIR\arora.exe"
+  WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "DisplayIcon" "$INSTDIR\endorphin.exe"
   WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "DisplayVersion" "${PRODUCT_VERSION}"
 SectionEnd
 
@@ -102,12 +102,12 @@ Section MSVC
 SectionEnd
 
 Section Uninstall
-  KillProcDLL::KillProc "arora.exe"
+  KillProcDLL::KillProc "endorphin.exe"
   Sleep 100
-  Delete $SMPROGRAMS\Arora.lnk
+  Delete $SMPROGRAMS\Endorphin.lnk
   RMDir /r "$INSTDIR"
   DeleteRegKey ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}"
   DeleteRegKey HKLM "${PRODUCT_DIR_REGKEY}"
 SectionEnd
 
-BrandingText "arora-browser.org"
+BrandingText "Endorphin Browser"

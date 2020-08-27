@@ -1,13 +1,13 @@
-Source: arora
+Source: endorphin
 Section: web
 Priority: extra
 Maintainer: Aaron Dewes <aaron.dewes@web.de>
 Build-Depends: debhelper (>= 5), qtbase5-dev (>= 5.14), cmake (>= 3.16)
 Standards-Version: 3.7.3
 
-Package: arora
+Package: endorphin
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Provides: www-browser
-Description: Arora is an open-source browser project that aims to build a cross-platform
+Description: Endorphin is an open-source browser project that aims to build a cross-platform
  WebKit browser that integrates with every desktop.
